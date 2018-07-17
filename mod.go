@@ -36,20 +36,20 @@ type KMSClient kmsiface.KMSAPI
 
 // Manager handles API calls to AWS.
 type Manager struct {
-	sm              SMClient
-	ssm             SSMClient
-	kms             KMSClient
-	IgnoreRunErrors bool
+	sm           SMClient
+	ssm          SSMClient
+	kms          KMSClient
+	IgnoreErrors bool
 }
 
 // New creates a new manager for handling AWS API calls.
 func New(sess *session.Session, region string) *Manager {
 	config := &aws.Config{Region: aws.String(region)}
 	return &Manager{
-		sm:              secretsmanager.New(sess, config),
-		ssm:             ssm.New(sess, config),
-		kms:             kms.New(sess, config),
-		IgnoreRunErrors: false,
+		sm:           secretsmanager.New(sess, config),
+		ssm:          ssm.New(sess, config),
+		kms:          kms.New(sess, config),
+		IgnoreErrors: false,
 	}
 }
 
@@ -67,7 +67,7 @@ func (m *Manager) Replace() error {
 		if strings.HasPrefix(value, ssmPrefix) {
 			secret, err := m.getParameter(strings.TrimPrefix(value, ssmPrefix))
 			if err != nil {
-				if m.IgnoreRunErrors {
+				if m.IgnoreErrors {
 					continue
 				}
 				return fmt.Errorf("failed to get secret from parameter store: %s", err)
@@ -78,7 +78,7 @@ func (m *Manager) Replace() error {
 		if strings.HasPrefix(value, smPrefix) {
 			secret, err := m.getSecretValue(strings.TrimPrefix(value, smPrefix))
 			if err != nil {
-				if m.IgnoreRunErrors {
+				if m.IgnoreErrors {
 					continue
 				}
 				return fmt.Errorf("failed to get secret from secret manager: %s", err)
@@ -89,7 +89,7 @@ func (m *Manager) Replace() error {
 		if strings.HasPrefix(value, kmsPrefix) {
 			secret, err := m.decrypt(strings.TrimPrefix(value, kmsPrefix))
 			if err != nil {
-				if m.IgnoreRunErrors {
+				if m.IgnoreErrors {
 					continue
 				}
 				return fmt.Errorf("failed to decrypt kms secret: %s", err)
