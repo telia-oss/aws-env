@@ -1,0 +1,13 @@
+language: go
+sudo: false
+matrix:
+  include:
+  - os: linux
+    go: 1.10.x
+    env:
+    - TARGET=linux
+    - ARCH=amd64
+notifications:
+  email: false
+script:
+- make
