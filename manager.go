@@ -20,7 +20,6 @@ const (
 	smPrefix  = "sm://"
 	ssmPrefix = "ssm://"
 	kmsPrefix = "kms://"
-	envDelim  = "="
 )
 
 // SMClient (secrets manager client) for testing purposes.
@@ -109,7 +108,7 @@ func (m *Manager) Replace() error {
 }
 
 func parseEnvironmentVariable(s string) (string, string) {
-	pair := strings.SplitN(s, envDelim, 2)
+	pair := strings.SplitN(s, "=", 2)
 	return pair[0], pair[1]
 }
 
