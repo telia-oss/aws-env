@@ -1,7 +1,5 @@
 language: go
 sudo: false
-services:
-- docker
 env:
   global:
   - BINARY_NAME=aws-env

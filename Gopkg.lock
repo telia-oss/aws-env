@@ -50,6 +50,12 @@
   version = "v1.38.1"
 
 [[projects]]
+  name = "github.com/golang/mock"
+  packages = ["gomock"]
+  revision = "c34cdb4725f4c3844d095133c6e40e448b86589b"
+  version = "v1.1.1"
+
+[[projects]]
   name = "github.com/jessevdk/go-flags"
   packages = ["."]
   revision = "c6ca198ec95c841fdb89fc0de7496fed11ab854e"
@@ -60,9 +66,15 @@
   packages = ["."]
   revision = "0b12d6b5"
 
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = ["context"]
+  revision = "d0887baf81f4598189d4e12a37c6da86f0bba4d0"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "7431fe01fdaa6137a0010c27bc9ca5ce031ded1e7c229cc0cd4e7911636d24f3"
+  inputs-digest = "8715a9ecf604c673ec513c219f32b4ccc58cd10e3b7f4720dfded8bff97a3a6a"
   solver-name = "gps-cdcl"
   solver-version = 1
