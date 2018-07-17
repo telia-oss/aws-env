@@ -20,6 +20,10 @@ run: test
 	@echo "== Run =="
 	go run cmd/main.go
 
+e2e: test
+	@echo "== Integration =="
+	go test -race -v ./... -tags=e2e
+
 build: test
 	@echo "== Build =="
 	go build -o $(BINARY_NAME) -v cmd/main.go

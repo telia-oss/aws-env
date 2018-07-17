@@ -16,15 +16,16 @@ const (
 	cmdDelim = "--"
 )
 
+var command rootCommand
+
 // RootCommand options
 type rootCommand struct {
-	Run runCommand `command:"run" description:"Run a command."`
+	Run    runCommand `command:"exec" description:"Run a command."`
+	Region string     `long:"region" env:"AWS_DEFAULT_REGION" description:"AWS region to use for API calls."`
 }
 
 // RunCommand options
-type runCommand struct {
-	Region string `long:"region" env:"REGION" description:"AWS region to use for API calls."`
-}
+type runCommand struct{}
 
 // Execute command
 func (c *runCommand) Execute(args []string) error {
@@ -41,7 +42,7 @@ func (c *runCommand) Execute(args []string) error {
 		return fmt.Errorf("failed to create new session: %s", err)
 	}
 
-	env := awsenv.New(sess, c.Region)
+	env := awsenv.New(sess, command.Region)
 	if err != nil {
 		return fmt.Errorf("failed to create new manager: %s", err)
 	}
@@ -56,9 +57,7 @@ func (c *runCommand) Execute(args []string) error {
 	return nil
 }
 
-// export SSM_TEST="ssm:///some/secret/ssm" SM_TEST="sm://some/secret/secretsmanager" SSM_TEST2="ssm:///some/secret2/ssm" SM_TEST2="sm:///some/secret2/secretsmanager" KMS_TEST="kms://AQICAHhCeTewA9s/tWLvjxRlvSrGuJ2Hx3m0oaBwrQrJOrGRKwEY1xstBFoqjvC9tFux0XndAAAAcjBwBgkqhkiG9w0BBwagYzBhAgEAMFwGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM5HBtdBQV5709ed34AgEQgC+Fdrv/349TRP/WyeeY6Urxg7Y4+8aaa15BXrpJf514Ogn78V7ZxwjIWqZh786Llw=="
 func main() {
-	var command rootCommand
 	_, err := flags.Parse(&command)
 	if err != nil {
 		if flagsErr, ok := err.(*flags.Error); ok && flagsErr.Type == flags.ErrHelp {
