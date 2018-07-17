@@ -23,23 +23,21 @@ const (
 	envDelim  = "="
 )
 
-// export SSM_TEST="ssm:///some/secret/ssm" SM_TEST="sm://some/secret/secretsmanager" SSM_TEST2="ssm:///some/secret2/ssm" SM_TEST2="sm:///some/secret2/secretsmanager" KMS_TEST="kms://AQICAHhCeTewA9s/tWLvjxRlvSrGuJ2Hx3m0oaBwrQrJOrGRKwEY1xstBFoqjvC9tFux0XndAAAAcjBwBgkqhkiG9w0BBwagYzBhAgEAMFwGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM5HBtdBQV5709ed34AgEQgC+Fdrv/349TRP/WyeeY6Urxg7Y4+8aaa15BXrpJf514Ogn78V7ZxwjIWqZh786Llw=="
-
-// SecretsClient for testing purposes.
-//go:generate mockgen -destination=mocks/mock_secrets_manager.go -package=mocks github.com/telia-oss/concourse-github-lambda SecretsManager
-type SecretsClient secretsmanageriface.SecretsManagerAPI
+// SMClient (secrets manager client) for testing purposes.
+//go:generate mockgen -destination=mocks/mock_sm_client.go -package=mocks github.com/telia-oss/aws-env SMClient
+type SMClient secretsmanageriface.SecretsManagerAPI
 
 // SSMClient for testing purposes.
-//go:generate mockgen -destination=mocks/mock_secrets_manager.go -package=mocks github.com/telia-oss/concourse-github-lambda SecretsManager
+//go:generate mockgen -destination=mocks/mock_ssm_client.go -package=mocks github.com/telia-oss/aws-env SSMClient
 type SSMClient ssmiface.SSMAPI
 
 // KMSClient for testing purposes.
-//go:generate mockgen -destination=mocks/mock_secrets_manager.go -package=mocks github.com/telia-oss/concourse-github-lambda SecretsManager
+//go:generate mockgen -destination=mocks/mock_kms_client.go -package=mocks github.com/telia-oss/aws-env KMSClient
 type KMSClient kmsiface.KMSAPI
 
 // Manager handles API calls to AWS.
 type Manager struct {
-	sm              SecretsClient
+	sm              SMClient
 	ssm             SSMClient
 	kms             KMSClient
 	IgnoreRunErrors bool
@@ -57,7 +55,7 @@ func New(sess *session.Session, region string) *Manager {
 }
 
 // NewTestManager ...
-func NewTestManager(sm SecretsClient, ssm SSMClient, kms KMSClient) *Manager {
+func NewTestManager(sm SMClient, ssm SSMClient, kms KMSClient) *Manager {
 	return &Manager{sm: sm, ssm: ssm, kms: kms}
 }
 
