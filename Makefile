@@ -1,14 +1,20 @@
 BINARY_NAME=aws-env
-TARGET ?= linux
+TARGET ?= darwin
 ARCH ?= amd64
+EXT ?= ""
 SRC=$(shell find . -type f -name '*.go' -not -path "./vendor/*")
-DIR=$(shell pwd)
 
 default: test
 
 generate:
 	@echo "== Go Generate =="
 	go generate ./...
+
+test:
+	@echo "== Test =="
+	gofmt -s -l -w $(SRC)
+	go vet -v ./...
+	go test -race -v ./...
 
 run: test
 	@echo "== Run =="
@@ -18,19 +24,12 @@ build: test
 	@echo "== Build =="
 	go build -o $(BINARY_NAME) -v cmd/main.go
 
+release: test
+	@echo "== Release build =="
+	CGO_ENABLED=0 GOOS=$(TARGET) GOARCH=$(ARCH) go build -o $(BINARY_NAME)-$(TARGET)-$(ARCH)$(EXT) -v cmd/main.go
+
 clean:
 	@echo "== Cleaning =="
-	rm $(BINARY_NAME) || true
-	rm concourse-github-lambda.zip || true
+	rm $(BINARY_NAME)* || true
 
-release:
-	@echo "== Release build =="
-	CGO_ENABLED=0 GOOS=$(TARGET) GOARCH=$(ARCH) go build -o $(BINARY_NAME) -v cmd/main.go
-
-test:
-	@echo "== Test =="
-	gofmt -s -l -w $(SRC)
-	go vet -v ./...
-	go test -race -v ./...
-
-.PHONY: default build test release test-code generate
+.PHONY: default generate test run build release clean
