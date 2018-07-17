@@ -55,7 +55,7 @@ func New(sess *session.Session, region string) *Manager {
 
 // NewTestManager ...
 func NewTestManager(sm SMClient, ssm SSMClient, kms KMSClient) *Manager {
-	return &Manager{sm: sm, ssm: ssm, kms: kms}
+	return &Manager{sm: sm, ssm: ssm, kms: kms, IgnoreErrors: false}
 }
 
 // Replace all environment variables with their secrets.
