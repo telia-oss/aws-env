@@ -16,6 +16,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/secretsmanager/secretsmanageriface"
 	"github.com/aws/aws-sdk-go/service/ssm"
 	"github.com/aws/aws-sdk-go/service/ssm/ssmiface"
+	"github.com/sirupsen/logrus"
 )
 
 const (
@@ -38,14 +39,14 @@ type KMSClient kmsiface.KMSAPI
 
 // Manager handles API calls to AWS.
 type Manager struct {
-	sm           SMClient
-	ssm          SSMClient
-	kms          KMSClient
-	IgnoreErrors bool
+	sm     SMClient
+	ssm    SSMClient
+	kms    KMSClient
+	logger *logrus.Logger
 }
 
 // New creates a new manager for handling AWS API calls.
-func New(sess *session.Session) (*Manager, error) {
+func New(sess *session.Session, logger *logrus.Logger) (*Manager, error) {
 	var (
 		region string
 		err    error
@@ -63,66 +64,76 @@ func New(sess *session.Session) (*Manager, error) {
 		}
 	}
 
-	config := &aws.Config{Region: aws.String(region)}
+	config := &aws.Config{Region: aws.String("eu-west-1")}
 	return &Manager{
-		sm:           secretsmanager.New(sess, config),
-		ssm:          ssm.New(sess, config),
-		kms:          kms.New(sess, config),
-		IgnoreErrors: false,
+		sm:     secretsmanager.New(sess, config),
+		ssm:    ssm.New(sess, config),
+		kms:    kms.New(sess, config),
+		logger: logger,
 	}, nil
 }
 
 // NewTestManager ...
-func NewTestManager(sm SMClient, ssm SSMClient, kms KMSClient) *Manager {
-	return &Manager{sm: sm, ssm: ssm, kms: kms, IgnoreErrors: false}
+func NewTestManager(sm SMClient, ssm SSMClient, kms KMSClient, logger *logrus.Logger) *Manager {
+	return &Manager{sm: sm, ssm: ssm, kms: kms, logger: logger}
 }
 
 // Replace all environment variables with their secrets.
 func (m *Manager) Replace() error {
+	var errorCount int
+
 	env := make(map[string]string)
 	for _, v := range os.Environ() {
+		var (
+			secret string
+			err    error
+		)
+
 		name, value := parseEnvironmentVariable(v)
 
 		if strings.HasPrefix(value, ssmPrefix) {
-			secret, err := m.getParameter(strings.TrimPrefix(value, ssmPrefix))
+			secret, err = m.getParameter(strings.TrimPrefix(value, ssmPrefix))
 			if err != nil {
-				if m.IgnoreErrors {
-					continue
-				}
-				return fmt.Errorf("failed to get secret from parameter store: %s", err)
+				err = fmt.Errorf("failed to get secret from parameter store: %s", err)
 			}
-			env[name] = secret
 		}
-
 		if strings.HasPrefix(value, smPrefix) {
-			secret, err := m.getSecretValue(strings.TrimPrefix(value, smPrefix))
+			secret, err = m.getSecretValue(strings.TrimPrefix(value, smPrefix))
 			if err != nil {
-				if m.IgnoreErrors {
-					continue
-				}
-				return fmt.Errorf("failed to get secret from secret manager: %s", err)
+				err = fmt.Errorf("failed to get secret from secret manager: %s", err)
 			}
-			env[name] = secret
 		}
-
 		if strings.HasPrefix(value, kmsPrefix) {
-			secret, err := m.decrypt(strings.TrimPrefix(value, kmsPrefix))
+			secret, err = m.decrypt(strings.TrimPrefix(value, kmsPrefix))
 			if err != nil {
-				if m.IgnoreErrors {
-					continue
-				}
-				return fmt.Errorf("failed to decrypt kms secret: %s", err)
+				err = fmt.Errorf("failed to decrypt kms secret: %s", err)
 			}
+		}
+
+		if err != nil {
+			if m.logger != nil {
+				m.logger.WithField("variable", name).Warn(err)
+			}
+			errorCount++
+		}
+		if secret != "" {
 			env[name] = secret
 		}
 	}
 
-	for name, value := range env {
-		if err := os.Setenv(name, value); err != nil {
-			return fmt.Errorf("failed to set environment variable: %s", err)
+	for name, secret := range env {
+		if err := os.Setenv(name, secret); err != nil {
+			err = fmt.Errorf("failed to set environment variable: %s", err)
+			if m.logger != nil {
+				m.logger.WithField("variable", name).Warn(err)
+			}
+			errorCount++
 		}
 	}
 
+	if errorCount > 0 {
+		return fmt.Errorf("%d errors occured - check logs", errorCount)
+	}
 	return nil
 }
 

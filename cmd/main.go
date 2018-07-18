@@ -9,6 +9,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	flags "github.com/jessevdk/go-flags"
+	"github.com/sirupsen/logrus"
 	awsenv "github.com/telia-oss/aws-env"
 )
 
@@ -18,13 +19,13 @@ const (
 
 var command rootCommand
 
-// RootCommand options
 type rootCommand struct {
-	Run execCommand `command:"exec" description:"Run a command."`
+	Exec execCommand `command:"exec" description:"Execute a command."`
 }
 
-// RunCommand options
-type execCommand struct{}
+type execCommand struct {
+	JSON bool `long:"json" description:"Use JSON formatting when logging."`
+}
 
 // Execute command
 func (c *execCommand) Execute(args []string) error {
@@ -41,11 +42,15 @@ func (c *execCommand) Execute(args []string) error {
 		return fmt.Errorf("failed to create new session: %s", err)
 	}
 
-	env, err := awsenv.New(sess)
+	logger := logrus.New()
+	if c.JSON {
+		logger.Formatter = &logrus.JSONFormatter{}
+	}
+
+	env, err := awsenv.New(sess, logger)
 	if err != nil {
 		return fmt.Errorf("failed to create new manager: %s", err)
 	}
-
 	if err := env.Replace(); err != nil {
 		return fmt.Errorf("failed to set up environment: %s", err)
 	}
