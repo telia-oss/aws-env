@@ -2,11 +2,13 @@ package awsenv
 
 import (
 	"encoding/base64"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/ec2metadata"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/kms"
 	"github.com/aws/aws-sdk-go/service/kms/kmsiface"
@@ -43,14 +45,31 @@ type Manager struct {
 }
 
 // New creates a new manager for handling AWS API calls.
-func New(sess *session.Session, region string) *Manager {
+func New(sess *session.Session) (*Manager, error) {
+	var (
+		region string
+		err    error
+	)
+
+	region = os.Getenv("AWS_DEFAULT_REGION")
+	if region == "" {
+		metadata := ec2metadata.New(sess)
+		if !metadata.Available() {
+			return nil, errors.New("'AWS_DEFAULT_REGION' must be set when EC2 metadata is unavailable")
+		}
+		region, err = metadata.Region()
+		if err != nil {
+			return nil, fmt.Errorf("failed to get region from EC2 metadata: %s", err)
+		}
+	}
+
 	config := &aws.Config{Region: aws.String(region)}
 	return &Manager{
 		sm:           secretsmanager.New(sess, config),
 		ssm:          ssm.New(sess, config),
 		kms:          kms.New(sess, config),
 		IgnoreErrors: false,
-	}
+	}, nil
 }
 
 // NewTestManager ...

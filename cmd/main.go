@@ -20,15 +20,14 @@ var command rootCommand
 
 // RootCommand options
 type rootCommand struct {
-	Run    runCommand `command:"exec" description:"Run a command."`
-	Region string     `long:"region" env:"AWS_DEFAULT_REGION" description:"AWS region to use for API calls."`
+	Run execCommand `command:"exec" description:"Run a command."`
 }
 
 // RunCommand options
-type runCommand struct{}
+type execCommand struct{}
 
 // Execute command
-func (c *runCommand) Execute(args []string) error {
+func (c *execCommand) Execute(args []string) error {
 	if len(args) <= 0 {
 		return errors.New("please supply a command to run")
 	}
@@ -42,7 +41,7 @@ func (c *runCommand) Execute(args []string) error {
 		return fmt.Errorf("failed to create new session: %s", err)
 	}
 
-	env := awsenv.New(sess, command.Region)
+	env, err := awsenv.New(sess)
 	if err != nil {
 		return fmt.Errorf("failed to create new manager: %s", err)
 	}
