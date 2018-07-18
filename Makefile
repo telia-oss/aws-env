@@ -6,7 +6,9 @@ SRC=$(shell find . -type f -name '*.go' -not -path "./vendor/*")
 
 default: test
 
-generate:
+setup:
+	@echo "== Dep ensure =="
+	dep ensure
 	@echo "== Go Generate =="
 	go generate ./...
 
@@ -36,4 +38,4 @@ clean:
 	@echo "== Cleaning =="
 	rm $(BINARY_NAME)* || true
 
-.PHONY: default generate test run build release clean
+.PHONY: default setup test run build release clean
