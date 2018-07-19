@@ -20,7 +20,7 @@ Where `<path>` is the name of the secret in secrets manager or parameter store. 
 in the `AWS_DEFAULT_REGION` environment variable, and if it is unset or empty it will contact the EC2 Metadata endpoint (if possible) and
 find/use the region where it is deployed.
 
-Require IAM privileges:
+Required IAM privileges:
 - Secrets manager: `secretsmanager:GetSecretValue` on the resource. And `kms:Decrypt` if not using the `aws/secretsmanager` key alias.
 - SSM Parameter store: `ssm:GetParameter` on the resource. `kms:Decrypt` on the KMS key used to encrypt the secret.
 - KMS: `kms:Decrypt` on the key used to encrypt the secret.
