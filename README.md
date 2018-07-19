@@ -16,16 +16,14 @@ For instance:
 - `export PARAMETERSTORE=ssm://<path>`
 - `export KMSENCRYPTED=kms://<encrypted-secret>`
 
-Where `<path>` is the name of the secret in secrets manager or parameter store.
+Where `<path>` is the name of the secret in secrets manager or parameter store. `aws-env` will look up secrets in the region specified
+in the `AWS_DEFAULT_REGION` environment variable, and if it is unset or empty it will contact the EC2 Metadata endpoint (if possible) and
+find/use the region where it is deployed.
 
-For information about which credentials are required for these actions:
-- Secrets manager: `secretsmanager:GetSecretValue` on the resource. If the secret is encrypted with a non-default KMS key, it also requires `kms:Decrypt` on said key.
+Require IAM privileges:
+- Secrets manager: `secretsmanager:GetSecretValue` on the resource. And `kms:Decrypt` if not using the `aws/secretsmanager` key alias.
 - SSM Parameter store: `ssm:GetParameter` on the resource. `kms:Decrypt` on the KMS key used to encrypt the secret.
-- KMS: `kms:Decrypt` on the key used to encrypt the secret string.
-
-#### Region
-
-The region used is determined by looking for `AWS_DEFAULT_REGION` first, and if it is unset or empty, it will attempt to get the region from the EC2 Metadata endpoint.
+- KMS: `kms:Decrypt` on the key used to encrypt the secret.
 
 #### Binary
 
