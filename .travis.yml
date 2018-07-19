@@ -35,6 +35,7 @@ deploy:
   api_key:
     secure: LcpNp6Mc4pCv9FRJfb21RJeRmjl1HR8SUAxWs7ytYrwPs4dtTl7QFWfluSPNpOjQddxnHXxdTpselqY5RtAbDxt+1MSKY6tMHheUuQrqt2ryLJ5oiYDIVYYMOKfaSEmzr456HSCnp5tzcJXqx4O6klBTUcyHXBDj3hFKA29h6geb62NNKIrzQFdlHq0CRmKfjtuFtisUManF7QtTlIu0zsFMESSijE7IkrA2P1YqHF/WpbS1XlSvhLXTqHVI2Cbua+Jji24wDGb8nzF7IGjiN6p2Oj3EQmyQfy8fEfquj5rNCRnQLsFyTS+gpzi/MKpbZdK1BYBPlI6a1IwsSFHtzJPJr1h4azErMZurwPbkR2Gc1qrd9W9UVtkPplzli7Z6/Dq18NmlaMPwz0weik9XUtURWy+7kiCnVMSNdAI/IVvm0pW7Y1ybalC5TmHXm2OBe5j+B/dcVYbPTNMM+z51wiXOn2C+dAKsRHs9z0nJ5KidvZxoLDQl407+cck5SN970h2MlolesfuMVaBltbAr1OzfEicBts0ToVPgoxt6i4/m9aki39LfQadv3UvgkGkQI/PlLf5Gnz9lYEp3IiXEHmeN2Q7oD7w8dnXSkg/s7cfZWfYyAVAprD9h6AlZdk736KhNdPfIJqOKNGepp01eFJhdkxe1yvAM0rjpF54fOHg=
   file: ${BINARY_NAME}-${TARGET}-${ARCH}${EXT}
+  skip_cleanup: true
   on:
     repo: telia-oss/aws-env
     tags: true
