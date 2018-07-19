@@ -78,8 +78,8 @@ func NewTestManager(sm SMClient, ssm SSMClient, kms KMSClient, logger *logrus.Lo
 	return &Manager{sm: sm, ssm: ssm, kms: kms, logger: logger}
 }
 
-// Replace all environment variables with their secrets.
-func (m *Manager) Replace() error {
+// Populate all environment variables with their secrets.
+func (m *Manager) Populate() error {
 	var errorCount int
 
 	env := make(map[string]string)

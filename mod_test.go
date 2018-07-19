@@ -91,7 +91,7 @@ func TestMain(t *testing.T) {
 			// Run tests
 			logger, _ := logrus.NewNullLogger()
 			env := awsenv.NewTestManager(sm, ssm, kms, logger)
-			if err := env.Replace(); err != nil {
+			if err := env.Populate(); err != nil {
 				t.Fatalf("unexpected error: %s", err)
 			}
 

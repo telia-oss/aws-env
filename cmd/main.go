@@ -51,7 +51,7 @@ func (c *execCommand) Execute(args []string) error {
 	if err != nil {
 		return fmt.Errorf("failed to create new manager: %s", err)
 	}
-	if err := env.Replace(); err != nil {
+	if err := env.Populate(); err != nil {
 		return fmt.Errorf("failed to set up environment: %s", err)
 	}
 
