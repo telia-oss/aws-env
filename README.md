@@ -24,6 +24,10 @@ For information about which credentials are required for these actions:
 - SSM Parameter store: `ssm:GetParameter` on the resource. `kms:Decrypt` on the KMS key used to encrypt the secret.
 - KMS: `kms:Decrypt` on the key used to encrypt the secret string.
 
+#### Region
+
+The region used is determined by looking for `AWS_DEFAULT_REGION` first, and if it is unset or empty, it will attempt to get the region from the EC2 Metadata endpoint.
+
 #### Binary
 
 Grab a binary from the [releases](https://github.com/telia-oss/aws-env/releases) and start your process with:
