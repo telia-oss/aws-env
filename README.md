@@ -12,12 +12,9 @@ for this to work, the instance profile (EC2), task role (ECS), or execution role
 to retrive the secret values and/or decrypt the secret using KMS.
 
 For instance:
-- `SM=sm://example/secrets-manager`:
-  - Replaces the variable `SM` with the value of `example/secrets-manager` in Secrets manager.
-- `SSM=ssm:///example/parameter-store`:
-  -  Replaces the variable `SSM` with the value of `/example/parameter-store` in SSM Parameter store.
-- `KMS=kms://<secret>`: 
-  - Replaces the variable `KMS` with the KMS decrypted value of `<secret>`.
+- `export SECRETSMANAGER=sm://example/secrets-manager`
+- `export PARAMETERSTORE=ssm:///example/parameter-store`
+- `export KMSENCRYPTED=kms://<encrypted-secret>`
 
 For information about which credentials are required for these actions:
 - Secrets manager: `secretsmanager:GetSecretValue` on the resource. If the secret is encrypted with a non-default KMS key, it also requires `kms:Decrypt` on said key.
