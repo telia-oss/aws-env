@@ -1,4 +1,4 @@
-package awsenv_test
+package environment_test
 
 import (
 	"encoding/base64"
@@ -10,7 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/secretsmanager"
 	"github.com/aws/aws-sdk-go/service/ssm"
 	"github.com/golang/mock/gomock"
-	awsenv "github.com/telia-oss/aws-env"
+	environment "github.com/telia-oss/aws-env"
 	"github.com/telia-oss/aws-env/mocks"
 )
 
@@ -88,7 +88,7 @@ func TestMain(t *testing.T) {
 			}()
 
 			// Run tests
-			env := awsenv.NewTestManager(sm, ssm, kms)
+			env := environment.NewTestManager(sm, ssm, kms)
 			if err := env.Populate(); err != nil {
 				t.Fatalf("unexpected error: %s", err)
 			}

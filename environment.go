@@ -1,4 +1,4 @@
-package awsenv
+package environment
 
 import (
 	"encoding/base64"

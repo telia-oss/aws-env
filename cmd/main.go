@@ -9,7 +9,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	flags "github.com/jessevdk/go-flags"
-	awsenv "github.com/telia-oss/aws-env"
+	environment "github.com/telia-oss/aws-env"
 )
 
 const (
@@ -36,15 +36,15 @@ func (c *execCommand) Execute(args []string) error {
 
 	sess, err := session.NewSession()
 	if err != nil {
-		return fmt.Errorf("failed to create new session: %s", err)
+		return fmt.Errorf("failed to create new aws session: %s", err)
 	}
 
-	env, err := awsenv.New(sess)
+	env, err := environment.New(sess)
 	if err != nil {
-		return fmt.Errorf("failed to create new manager: %s", err)
+		return fmt.Errorf("failed to initialize aws-env: %s", err)
 	}
 	if err := env.Populate(); err != nil {
-		return fmt.Errorf("failed to set up environment: %s", err)
+		return fmt.Errorf("failed to populate environment: %s", err)
 	}
 
 	if err := syscall.Exec(path, args, os.Environ()); err != nil {

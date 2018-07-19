@@ -46,28 +46,24 @@ Import the library and invoke it prior to parsing flags or reading environment v
 package main
 
 import (
-	"github.com/sirupsen/logrus"
-	awsenv "github.com/telia-oss/aws-env"
+	"github.com/aws/aws-sdk-go/aws/session"
+	environment "github.com/telia-oss/aws-env"
 )
 
 func main() {
-	// New logger
-	logger := logrus.New()
-	logger.Formatter = &logrus.JSONFormatter{}
-
 	// New AWS Session
 	sess, err := session.NewSession()
 	if err != nil {
-		logger.Fatalf("failed to create a new session: %s", err)
+		panic(fmt.Errorf("failed to create new aws session: %s", err))
 	}
 
-	// Populate secrets using awsenv
-	env, err := awsenv.New(sess, logger)
+	// Populate secrets using aws-env
+	env, err := environment.New(sess)
 	if err != nil {
-		logger.Fatalf("failed to initialize awsenv: %s", err)
+		panic(fmt.Errorf("failed to initialize aws-env: %s", err))
 	}
-	if err := env.Replace(); err != nil {
-		logger.Fatalf("failed to populate environment variables: %s", err)
+	if err := env.Populate(); err != nil {
+		panic(fmt.Errorf("failed to populate environment: %s", err))
 	}
 }
 ```
