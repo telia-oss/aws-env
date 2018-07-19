@@ -22,9 +22,7 @@ type rootCommand struct {
 	Exec execCommand `command:"exec" description:"Execute a command."`
 }
 
-type execCommand struct {
-	JSON bool `long:"json" description:"Use JSON formatting when logging."`
-}
+type execCommand struct{}
 
 // Execute command
 func (c *execCommand) Execute(args []string) error {
