@@ -10,7 +10,6 @@ import (
 	"github.com/aws/aws-sdk-go/service/secretsmanager"
 	"github.com/aws/aws-sdk-go/service/ssm"
 	"github.com/golang/mock/gomock"
-	logrus "github.com/sirupsen/logrus/hooks/test"
 	awsenv "github.com/telia-oss/aws-env"
 	"github.com/telia-oss/aws-env/mocks"
 )
@@ -89,8 +88,7 @@ func TestMain(t *testing.T) {
 			}()
 
 			// Run tests
-			logger, _ := logrus.NewNullLogger()
-			env := awsenv.NewTestManager(sm, ssm, kms, logger)
+			env := awsenv.NewTestManager(sm, ssm, kms)
 			if err := env.Populate(); err != nil {
 				t.Fatalf("unexpected error: %s", err)
 			}

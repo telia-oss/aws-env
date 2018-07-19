@@ -16,7 +16,6 @@ import (
 	"github.com/aws/aws-sdk-go/service/secretsmanager/secretsmanageriface"
 	"github.com/aws/aws-sdk-go/service/ssm"
 	"github.com/aws/aws-sdk-go/service/ssm/ssmiface"
-	"github.com/sirupsen/logrus"
 )
 
 const (
@@ -39,14 +38,13 @@ type KMSClient kmsiface.KMSAPI
 
 // Manager handles API calls to AWS.
 type Manager struct {
-	sm     SMClient
-	ssm    SSMClient
-	kms    KMSClient
-	logger *logrus.Logger
+	sm  SMClient
+	ssm SSMClient
+	kms KMSClient
 }
 
 // New creates a new manager for handling AWS API calls.
-func New(sess *session.Session, logger *logrus.Logger) (*Manager, error) {
+func New(sess *session.Session) (*Manager, error) {
 	var (
 		region string
 		err    error
@@ -66,22 +64,19 @@ func New(sess *session.Session, logger *logrus.Logger) (*Manager, error) {
 
 	config := &aws.Config{Region: aws.String("eu-west-1")}
 	return &Manager{
-		sm:     secretsmanager.New(sess, config),
-		ssm:    ssm.New(sess, config),
-		kms:    kms.New(sess, config),
-		logger: logger,
+		sm:  secretsmanager.New(sess, config),
+		ssm: ssm.New(sess, config),
+		kms: kms.New(sess, config),
 	}, nil
 }
 
 // NewTestManager ...
-func NewTestManager(sm SMClient, ssm SSMClient, kms KMSClient, logger *logrus.Logger) *Manager {
-	return &Manager{sm: sm, ssm: ssm, kms: kms, logger: logger}
+func NewTestManager(sm SMClient, ssm SSMClient, kms KMSClient) *Manager {
+	return &Manager{sm: sm, ssm: ssm, kms: kms}
 }
 
 // Populate all environment variables with their secrets.
 func (m *Manager) Populate() error {
-	var errorCount int
-
 	env := make(map[string]string)
 	for _, v := range os.Environ() {
 		var (
@@ -94,28 +89,22 @@ func (m *Manager) Populate() error {
 		if strings.HasPrefix(value, ssmPrefix) {
 			secret, err = m.getParameter(strings.TrimPrefix(value, ssmPrefix))
 			if err != nil {
-				err = fmt.Errorf("failed to get secret from parameter store: %s", err)
+				return fmt.Errorf("failed to get secret from parameter store: '%s': %s", name, err)
 			}
 		}
 		if strings.HasPrefix(value, smPrefix) {
 			secret, err = m.getSecretValue(strings.TrimPrefix(value, smPrefix))
 			if err != nil {
-				err = fmt.Errorf("failed to get secret from secret manager: %s", err)
+				return fmt.Errorf("failed to get secret from secret manager: '%s': %s", name, err)
 			}
 		}
 		if strings.HasPrefix(value, kmsPrefix) {
 			secret, err = m.decrypt(strings.TrimPrefix(value, kmsPrefix))
 			if err != nil {
-				err = fmt.Errorf("failed to decrypt kms secret: %s", err)
+				return fmt.Errorf("failed to decrypt kms secret: '%s': %s", name, err)
 			}
 		}
 
-		if err != nil {
-			if m.logger != nil {
-				m.logger.WithField("variable", name).Warn(err)
-			}
-			errorCount++
-		}
 		if secret != "" {
 			env[name] = secret
 		}
@@ -123,16 +112,8 @@ func (m *Manager) Populate() error {
 
 	for name, secret := range env {
 		if err := os.Setenv(name, secret); err != nil {
-			err = fmt.Errorf("failed to set environment variable: %s", err)
-			if m.logger != nil {
-				m.logger.WithField("variable", name).Warn(err)
-			}
-			errorCount++
+			return fmt.Errorf("failed to set environment variable: '%s': %s", name, err)
 		}
-	}
-
-	if errorCount > 0 {
-		return fmt.Errorf("%d errors occured - check logs", errorCount)
 	}
 	return nil
 }

@@ -9,7 +9,6 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	flags "github.com/jessevdk/go-flags"
-	"github.com/sirupsen/logrus"
 	awsenv "github.com/telia-oss/aws-env"
 )
 
@@ -42,12 +41,7 @@ func (c *execCommand) Execute(args []string) error {
 		return fmt.Errorf("failed to create new session: %s", err)
 	}
 
-	logger := logrus.New()
-	if c.JSON {
-		logger.Formatter = &logrus.JSONFormatter{}
-	}
-
-	env, err := awsenv.New(sess, logger)
+	env, err := awsenv.New(sess)
 	if err != nil {
 		return fmt.Errorf("failed to create new manager: %s", err)
 	}
