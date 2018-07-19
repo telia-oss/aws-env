@@ -36,6 +36,11 @@ type SSMClient ssmiface.SSMAPI
 //go:generate mockgen -destination=mocks/mock_kms_client.go -package=mocks github.com/telia-oss/aws-env KMSClient
 type KMSClient kmsiface.KMSAPI
 
+// NewTestManager for testing purposes.
+func NewTestManager(sm SMClient, ssm SSMClient, kms KMSClient) *Manager {
+	return &Manager{sm: sm, ssm: ssm, kms: kms}
+}
+
 // Manager handles API calls to AWS.
 type Manager struct {
 	sm  SMClient
@@ -43,7 +48,7 @@ type Manager struct {
 	kms KMSClient
 }
 
-// New creates a new manager for handling AWS API calls.
+// New creates a new manager for populating secret values.
 func New(sess *session.Session) (*Manager, error) {
 	var (
 		region string
@@ -70,12 +75,7 @@ func New(sess *session.Session) (*Manager, error) {
 	}, nil
 }
 
-// NewTestManager ...
-func NewTestManager(sm SMClient, ssm SSMClient, kms KMSClient) *Manager {
-	return &Manager{sm: sm, ssm: ssm, kms: kms}
-}
-
-// Populate all environment variables with their secrets.
+// Populate environment variables with their secret values from either Secrets manager, SSM Parameter store or KMS.
 func (m *Manager) Populate() error {
 	env := make(map[string]string)
 	for _, v := range os.Environ() {

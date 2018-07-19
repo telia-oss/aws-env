@@ -12,19 +12,13 @@ import (
 	environment "github.com/telia-oss/aws-env"
 )
 
-const (
-	cmdDelim = "--"
-)
-
-var command rootCommand
-
 type rootCommand struct {
 	Exec execCommand `command:"exec" description:"Execute a command."`
 }
 
 type execCommand struct{}
 
-// Execute command
+// Execute the exec subcommand.
 func (c *execCommand) Execute(args []string) error {
 	if len(args) <= 0 {
 		return errors.New("please supply a command to run")
@@ -52,6 +46,8 @@ func (c *execCommand) Execute(args []string) error {
 	}
 	return nil
 }
+
+var command rootCommand
 
 func main() {
 	_, err := flags.Parse(&command)
