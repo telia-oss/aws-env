@@ -40,8 +40,8 @@
     "service/ssm/ssmiface",
     "service/sts"
   ]
-  revision = "94b80148ea4b1b136682116294b151766a3b85c2"
-  version = "v1.14.27"
+  revision = "bc3f534c19ffdf835e524e11f0f825b3eaf541c3"
+  version = "v1.14.31"
 
 [[projects]]
   name = "github.com/go-ini/ini"
@@ -70,7 +70,7 @@
   branch = "master"
   name = "golang.org/x/net"
   packages = ["context"]
-  revision = "d0887baf81f4598189d4e12a37c6da86f0bba4d0"
+  revision = "a680a1efc54dd51c040b3b5ce4939ea3cf2ea0d1"
 
 [solve-meta]
   analyzer-name = "dep"
