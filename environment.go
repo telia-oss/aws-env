@@ -67,7 +67,7 @@ func New(sess *session.Session) (*Manager, error) {
 		}
 	}
 
-	config := &aws.Config{Region: aws.String("eu-west-1")}
+	config := &aws.Config{Region: aws.String(region)}
 	return &Manager{
 		sm:  secretsmanager.New(sess, config),
 		ssm: ssm.New(sess, config),
