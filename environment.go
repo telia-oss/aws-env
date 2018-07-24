@@ -50,24 +50,20 @@ type Manager struct {
 
 // New creates a new manager for populating secret values.
 func New(sess *session.Session) (*Manager, error) {
-	var (
-		region string
-		err    error
-	)
+	var config *aws.Config
 
-	region = os.Getenv("AWS_DEFAULT_REGION")
-	if region == "" {
+	if os.Getenv("AWS_REGION") == "" && os.Getenv("AWS_DEFAULT_REGION") == "" {
 		metadata := ec2metadata.New(sess)
 		if !metadata.Available() {
-			return nil, errors.New("'AWS_DEFAULT_REGION' must be set when EC2 metadata is unavailable")
+			return nil, errors.New("'AWS_REGION' or 'AWS_DEFAULT_REGION' must be set when EC2 metadata is unavailable")
 		}
-		region, err = metadata.Region()
+		region, err := metadata.Region()
 		if err != nil {
 			return nil, fmt.Errorf("failed to get region from EC2 metadata: %s", err)
 		}
+		config = &aws.Config{Region: aws.String(region)}
 	}
 
-	config := &aws.Config{Region: aws.String(region)}
 	return &Manager{
 		sm:  secretsmanager.New(sess, config),
 		ssm: ssm.New(sess, config),
