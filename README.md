@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/telia-oss/aws-env.svg?branch=master)](https://travis-ci.com/telia-oss/aws-env)
 
-A small library and binary for securely handling secrets in environment variables on AWS. Supports KMS, SSM Parameter store and secrets manager.
+A small library and binary for securely handling secrets in environment variables on AWS. Supports KMS, SSM Parameter store and secrets manager. Inspired by [ssm-env](https://github.com/remind101/ssm-env).
 
 ## Usage
 
