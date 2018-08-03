@@ -32,7 +32,7 @@ build: test
 
 release: test
 	@echo "== Release build =="
-	CGO_ENABLED=0 GOOS=$(TARGET) GOARCH=$(ARCH) go build -o $(BINARY_NAME)-$(TARGET)-$(ARCH)$(EXT) -v cmd/main.go
+	CGO_ENABLED=0 GOOS=$(TARGET) GOARCH=$(ARCH) go build -ldflags="-s -w" -o $(BINARY_NAME)-$(TARGET)-$(ARCH)$(EXT) -v cmd/main.go
 
 clean:
 	@echo "== Cleaning =="
