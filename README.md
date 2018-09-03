@@ -33,7 +33,8 @@ Grab a binary from the [releases](https://github.com/telia-oss/aws-env/releases)
 aws-env exec -- <command>
 ```
 
-This will populate all the secrets in the environment, and hand over the process to your `<command>` with the same PID.
+This will populate all the secrets in the environment, and hand over the process to your `<command>` with the same PID. The
+populated secrets are only made available to the `<command>` and 'disappear' when the process exits.
 
 #### Library
 
