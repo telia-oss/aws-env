@@ -76,6 +76,7 @@ func (m *Manager) Populate() error {
 	env := make(map[string]string)
 	for _, v := range os.Environ() {
 		var (
+			found  bool
 			secret string
 			err    error
 		)
@@ -87,21 +88,24 @@ func (m *Manager) Populate() error {
 			if err != nil {
 				return fmt.Errorf("failed to get secret from parameter store: '%s': %s", name, err)
 			}
+			found = true
 		}
 		if strings.HasPrefix(value, smPrefix) {
 			secret, err = m.getSecretValue(strings.TrimPrefix(value, smPrefix))
 			if err != nil {
 				return fmt.Errorf("failed to get secret from secret manager: '%s': %s", name, err)
 			}
+			found = true
 		}
 		if strings.HasPrefix(value, kmsPrefix) {
 			secret, err = m.decrypt(strings.TrimPrefix(value, kmsPrefix))
 			if err != nil {
 				return fmt.Errorf("failed to decrypt kms secret: '%s': %s", name, err)
 			}
+			found = true
 		}
 
-		if secret != "" {
+		if found {
 			env[name] = secret
 		}
 	}

@@ -19,6 +19,7 @@ func TestMain(t *testing.T) {
 		description string
 		key         string
 		value       string
+		expect      string
 		callsSM     bool
 		smOutput    *secretsmanager.GetSecretValueOutput
 		callsSSM    bool
@@ -27,9 +28,26 @@ func TestMain(t *testing.T) {
 		kmsOutput   *kms.DecryptOutput
 	}{
 		{
+			description: "does not have sideffects for the regular environment",
+			key:         "TEST",
+			value:       "somevalue",
+			expect:      "somevalue",
+		},
+		{
+			description: "allows empty strings as secrets",
+			key:         "TEST",
+			value:       "sm://<secret-path>",
+			expect:      "",
+			callsSM:     true,
+			smOutput: &secretsmanager.GetSecretValueOutput{
+				SecretString: aws.String(""),
+			},
+		},
+		{
 			description: "picks up sm secrets",
 			key:         "TEST",
 			value:       "sm://<secret-path>",
+			expect:      "secret",
 			callsSM:     true,
 			smOutput: &secretsmanager.GetSecretValueOutput{
 				SecretString: aws.String("secret"),
@@ -39,6 +57,7 @@ func TestMain(t *testing.T) {
 			description: "picks up ssm secrets",
 			key:         "TEST",
 			value:       "ssm://<parameter-path>",
+			expect:      "secret",
 			callsSSM:    true,
 			ssmOutput: &ssm.GetParameterOutput{
 				Parameter: &ssm.Parameter{
@@ -50,6 +69,7 @@ func TestMain(t *testing.T) {
 			description: "picks up kms secrets",
 			key:         "TEST",
 			value:       "kms://" + base64.StdEncoding.EncodeToString([]byte("<encrypted>")),
+			expect:      "secret",
 			callsKMS:    true,
 			kmsOutput: &kms.DecryptOutput{
 				Plaintext: []byte("secret"),
@@ -92,7 +112,9 @@ func TestMain(t *testing.T) {
 			if err := env.Populate(); err != nil {
 				t.Fatalf("unexpected error: %s", err)
 			}
-
+			if got, want := os.Getenv(tc.key), tc.expect; got != want {
+				t.Errorf("\ngot: %s\nwanted: %s", got, want)
+			}
 		})
 	}
 }
