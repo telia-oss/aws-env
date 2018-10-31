@@ -69,5 +69,5 @@ func main() {
 ## Security
 
 There are a couple of things to keep in mind when using `aws-env`:
-- Spawned processes will inherit their parents environment by default. If your `<command>` spawns new processes you should be hand-rolling their environments.
+- Spawned processes will inherit their parents environment by default. If your `<command>` spawns new processes they will inherit the environment _with the secrets already populated_, unless you hand-roll the environment for the new process.
 - The environment for a running process can be read by the root user (and yourself) _after secrets have been populated_ by running `cat /proc/<pid>/environ` on Linux, and `ps eww <pid>` on OSX. However, if root or the spawning user is compromised a malicious user can just as easily fetch the secrets directly from the AWS APIs ¯\_(ツ)_/¯
