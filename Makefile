@@ -40,4 +40,4 @@ clean:
 	@echo "== Cleaning =="
 	rm $(BINARY_NAME)* || true
 
-.PHONY: default setup test run build release clean
+.PHONY: default generate test run build release clean
