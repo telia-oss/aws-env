@@ -1,14 +1,15 @@
-BINARY_NAME=aws-env
+BINARY  = aws-env
 TARGET ?= darwin
-ARCH ?= amd64
-EXT ?= ""
+ARCH   ?= amd64
+EXT    ?= ""
+
 SRC=$(shell find . -type f -name '*.go' -not -path "./vendor/*")
+
+export GO111MODULE=on
 
 default: test
 
 setup:
-	@echo "== Dep ensure =="
-	dep ensure
 	@echo "== Go Generate =="
 	go generate ./...
 
@@ -32,7 +33,7 @@ build: test
 
 release: test
 	@echo "== Release build =="
-	CGO_ENABLED=0 GOOS=$(TARGET) GOARCH=$(ARCH) go build -ldflags="-s -w" -o $(BINARY_NAME)-$(TARGET)-$(ARCH)$(EXT) -v cmd/main.go
+	CGO_ENABLED=0 GOOS=$(TARGET) GOARCH=$(ARCH) go build -ldflags="-s -w" -o $(BINARY)-$(TARGET)-$(ARCH)$(EXT) -v cmd/main.go
 
 clean:
 	@echo "== Cleaning =="
