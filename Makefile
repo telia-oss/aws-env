@@ -9,7 +9,7 @@ export GO111MODULE=on
 
 default: test
 
-setup:
+generate:
 	@echo "== Go Generate =="
 	go generate ./...
 

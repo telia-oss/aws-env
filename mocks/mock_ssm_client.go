@@ -123,6 +123,50 @@ func (mr *MockSSMClientMockRecorder) CancelCommandWithContext(arg0, arg1 interfa
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CancelCommandWithContext", reflect.TypeOf((*MockSSMClient)(nil).CancelCommandWithContext), varargs...)
 }
 
+// CancelMaintenanceWindowExecution mocks base method
+func (m *MockSSMClient) CancelMaintenanceWindowExecution(arg0 *ssm.CancelMaintenanceWindowExecutionInput) (*ssm.CancelMaintenanceWindowExecutionOutput, error) {
+	ret := m.ctrl.Call(m, "CancelMaintenanceWindowExecution", arg0)
+	ret0, _ := ret[0].(*ssm.CancelMaintenanceWindowExecutionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CancelMaintenanceWindowExecution indicates an expected call of CancelMaintenanceWindowExecution
+func (mr *MockSSMClientMockRecorder) CancelMaintenanceWindowExecution(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CancelMaintenanceWindowExecution", reflect.TypeOf((*MockSSMClient)(nil).CancelMaintenanceWindowExecution), arg0)
+}
+
+// CancelMaintenanceWindowExecutionRequest mocks base method
+func (m *MockSSMClient) CancelMaintenanceWindowExecutionRequest(arg0 *ssm.CancelMaintenanceWindowExecutionInput) (*request.Request, *ssm.CancelMaintenanceWindowExecutionOutput) {
+	ret := m.ctrl.Call(m, "CancelMaintenanceWindowExecutionRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.CancelMaintenanceWindowExecutionOutput)
+	return ret0, ret1
+}
+
+// CancelMaintenanceWindowExecutionRequest indicates an expected call of CancelMaintenanceWindowExecutionRequest
+func (mr *MockSSMClientMockRecorder) CancelMaintenanceWindowExecutionRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CancelMaintenanceWindowExecutionRequest", reflect.TypeOf((*MockSSMClient)(nil).CancelMaintenanceWindowExecutionRequest), arg0)
+}
+
+// CancelMaintenanceWindowExecutionWithContext mocks base method
+func (m *MockSSMClient) CancelMaintenanceWindowExecutionWithContext(arg0 aws.Context, arg1 *ssm.CancelMaintenanceWindowExecutionInput, arg2 ...request.Option) (*ssm.CancelMaintenanceWindowExecutionOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "CancelMaintenanceWindowExecutionWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.CancelMaintenanceWindowExecutionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CancelMaintenanceWindowExecutionWithContext indicates an expected call of CancelMaintenanceWindowExecutionWithContext
+func (mr *MockSSMClientMockRecorder) CancelMaintenanceWindowExecutionWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CancelMaintenanceWindowExecutionWithContext", reflect.TypeOf((*MockSSMClient)(nil).CancelMaintenanceWindowExecutionWithContext), varargs...)
+}
+
 // CreateActivation mocks base method
 func (m *MockSSMClient) CreateActivation(arg0 *ssm.CreateActivationInput) (*ssm.CreateActivationOutput, error) {
 	ret := m.ctrl.Call(m, "CreateActivation", arg0)
@@ -1941,6 +1985,50 @@ func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowExecutionsWithCont
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeMaintenanceWindowExecutionsWithContext", reflect.TypeOf((*MockSSMClient)(nil).DescribeMaintenanceWindowExecutionsWithContext), varargs...)
 }
 
+// DescribeMaintenanceWindowSchedule mocks base method
+func (m *MockSSMClient) DescribeMaintenanceWindowSchedule(arg0 *ssm.DescribeMaintenanceWindowScheduleInput) (*ssm.DescribeMaintenanceWindowScheduleOutput, error) {
+	ret := m.ctrl.Call(m, "DescribeMaintenanceWindowSchedule", arg0)
+	ret0, _ := ret[0].(*ssm.DescribeMaintenanceWindowScheduleOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeMaintenanceWindowSchedule indicates an expected call of DescribeMaintenanceWindowSchedule
+func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowSchedule(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeMaintenanceWindowSchedule", reflect.TypeOf((*MockSSMClient)(nil).DescribeMaintenanceWindowSchedule), arg0)
+}
+
+// DescribeMaintenanceWindowScheduleRequest mocks base method
+func (m *MockSSMClient) DescribeMaintenanceWindowScheduleRequest(arg0 *ssm.DescribeMaintenanceWindowScheduleInput) (*request.Request, *ssm.DescribeMaintenanceWindowScheduleOutput) {
+	ret := m.ctrl.Call(m, "DescribeMaintenanceWindowScheduleRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.DescribeMaintenanceWindowScheduleOutput)
+	return ret0, ret1
+}
+
+// DescribeMaintenanceWindowScheduleRequest indicates an expected call of DescribeMaintenanceWindowScheduleRequest
+func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowScheduleRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeMaintenanceWindowScheduleRequest", reflect.TypeOf((*MockSSMClient)(nil).DescribeMaintenanceWindowScheduleRequest), arg0)
+}
+
+// DescribeMaintenanceWindowScheduleWithContext mocks base method
+func (m *MockSSMClient) DescribeMaintenanceWindowScheduleWithContext(arg0 aws.Context, arg1 *ssm.DescribeMaintenanceWindowScheduleInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowScheduleOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeMaintenanceWindowScheduleWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.DescribeMaintenanceWindowScheduleOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeMaintenanceWindowScheduleWithContext indicates an expected call of DescribeMaintenanceWindowScheduleWithContext
+func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowScheduleWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeMaintenanceWindowScheduleWithContext", reflect.TypeOf((*MockSSMClient)(nil).DescribeMaintenanceWindowScheduleWithContext), varargs...)
+}
+
 // DescribeMaintenanceWindowTargets mocks base method
 func (m *MockSSMClient) DescribeMaintenanceWindowTargets(arg0 *ssm.DescribeMaintenanceWindowTargetsInput) (*ssm.DescribeMaintenanceWindowTargetsOutput, error) {
 	ret := m.ctrl.Call(m, "DescribeMaintenanceWindowTargets", arg0)
@@ -2040,6 +2128,50 @@ func (m *MockSSMClient) DescribeMaintenanceWindows(arg0 *ssm.DescribeMaintenance
 // DescribeMaintenanceWindows indicates an expected call of DescribeMaintenanceWindows
 func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindows(arg0 interface{}) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeMaintenanceWindows", reflect.TypeOf((*MockSSMClient)(nil).DescribeMaintenanceWindows), arg0)
+}
+
+// DescribeMaintenanceWindowsForTarget mocks base method
+func (m *MockSSMClient) DescribeMaintenanceWindowsForTarget(arg0 *ssm.DescribeMaintenanceWindowsForTargetInput) (*ssm.DescribeMaintenanceWindowsForTargetOutput, error) {
+	ret := m.ctrl.Call(m, "DescribeMaintenanceWindowsForTarget", arg0)
+	ret0, _ := ret[0].(*ssm.DescribeMaintenanceWindowsForTargetOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeMaintenanceWindowsForTarget indicates an expected call of DescribeMaintenanceWindowsForTarget
+func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowsForTarget(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeMaintenanceWindowsForTarget", reflect.TypeOf((*MockSSMClient)(nil).DescribeMaintenanceWindowsForTarget), arg0)
+}
+
+// DescribeMaintenanceWindowsForTargetRequest mocks base method
+func (m *MockSSMClient) DescribeMaintenanceWindowsForTargetRequest(arg0 *ssm.DescribeMaintenanceWindowsForTargetInput) (*request.Request, *ssm.DescribeMaintenanceWindowsForTargetOutput) {
+	ret := m.ctrl.Call(m, "DescribeMaintenanceWindowsForTargetRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.DescribeMaintenanceWindowsForTargetOutput)
+	return ret0, ret1
+}
+
+// DescribeMaintenanceWindowsForTargetRequest indicates an expected call of DescribeMaintenanceWindowsForTargetRequest
+func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowsForTargetRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeMaintenanceWindowsForTargetRequest", reflect.TypeOf((*MockSSMClient)(nil).DescribeMaintenanceWindowsForTargetRequest), arg0)
+}
+
+// DescribeMaintenanceWindowsForTargetWithContext mocks base method
+func (m *MockSSMClient) DescribeMaintenanceWindowsForTargetWithContext(arg0 aws.Context, arg1 *ssm.DescribeMaintenanceWindowsForTargetInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowsForTargetOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeMaintenanceWindowsForTargetWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.DescribeMaintenanceWindowsForTargetOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeMaintenanceWindowsForTargetWithContext indicates an expected call of DescribeMaintenanceWindowsForTargetWithContext
+func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowsForTargetWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeMaintenanceWindowsForTargetWithContext", reflect.TypeOf((*MockSSMClient)(nil).DescribeMaintenanceWindowsForTargetWithContext), varargs...)
 }
 
 // DescribeMaintenanceWindowsRequest mocks base method
@@ -2278,6 +2410,50 @@ func (mr *MockSSMClientMockRecorder) DescribePatchGroupsWithContext(arg0, arg1 i
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribePatchGroupsWithContext", reflect.TypeOf((*MockSSMClient)(nil).DescribePatchGroupsWithContext), varargs...)
 }
 
+// DescribeSessions mocks base method
+func (m *MockSSMClient) DescribeSessions(arg0 *ssm.DescribeSessionsInput) (*ssm.DescribeSessionsOutput, error) {
+	ret := m.ctrl.Call(m, "DescribeSessions", arg0)
+	ret0, _ := ret[0].(*ssm.DescribeSessionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeSessions indicates an expected call of DescribeSessions
+func (mr *MockSSMClientMockRecorder) DescribeSessions(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeSessions", reflect.TypeOf((*MockSSMClient)(nil).DescribeSessions), arg0)
+}
+
+// DescribeSessionsRequest mocks base method
+func (m *MockSSMClient) DescribeSessionsRequest(arg0 *ssm.DescribeSessionsInput) (*request.Request, *ssm.DescribeSessionsOutput) {
+	ret := m.ctrl.Call(m, "DescribeSessionsRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.DescribeSessionsOutput)
+	return ret0, ret1
+}
+
+// DescribeSessionsRequest indicates an expected call of DescribeSessionsRequest
+func (mr *MockSSMClientMockRecorder) DescribeSessionsRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeSessionsRequest", reflect.TypeOf((*MockSSMClient)(nil).DescribeSessionsRequest), arg0)
+}
+
+// DescribeSessionsWithContext mocks base method
+func (m *MockSSMClient) DescribeSessionsWithContext(arg0 aws.Context, arg1 *ssm.DescribeSessionsInput, arg2 ...request.Option) (*ssm.DescribeSessionsOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeSessionsWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.DescribeSessionsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeSessionsWithContext indicates an expected call of DescribeSessionsWithContext
+func (mr *MockSSMClientMockRecorder) DescribeSessionsWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeSessionsWithContext", reflect.TypeOf((*MockSSMClient)(nil).DescribeSessionsWithContext), varargs...)
+}
+
 // GetAutomationExecution mocks base method
 func (m *MockSSMClient) GetAutomationExecution(arg0 *ssm.GetAutomationExecutionInput) (*ssm.GetAutomationExecutionOutput, error) {
 	ret := m.ctrl.Call(m, "GetAutomationExecution", arg0)
@@ -2364,6 +2540,50 @@ func (m *MockSSMClient) GetCommandInvocationWithContext(arg0 aws.Context, arg1 *
 func (mr *MockSSMClientMockRecorder) GetCommandInvocationWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetCommandInvocationWithContext", reflect.TypeOf((*MockSSMClient)(nil).GetCommandInvocationWithContext), varargs...)
+}
+
+// GetConnectionStatus mocks base method
+func (m *MockSSMClient) GetConnectionStatus(arg0 *ssm.GetConnectionStatusInput) (*ssm.GetConnectionStatusOutput, error) {
+	ret := m.ctrl.Call(m, "GetConnectionStatus", arg0)
+	ret0, _ := ret[0].(*ssm.GetConnectionStatusOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetConnectionStatus indicates an expected call of GetConnectionStatus
+func (mr *MockSSMClientMockRecorder) GetConnectionStatus(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetConnectionStatus", reflect.TypeOf((*MockSSMClient)(nil).GetConnectionStatus), arg0)
+}
+
+// GetConnectionStatusRequest mocks base method
+func (m *MockSSMClient) GetConnectionStatusRequest(arg0 *ssm.GetConnectionStatusInput) (*request.Request, *ssm.GetConnectionStatusOutput) {
+	ret := m.ctrl.Call(m, "GetConnectionStatusRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.GetConnectionStatusOutput)
+	return ret0, ret1
+}
+
+// GetConnectionStatusRequest indicates an expected call of GetConnectionStatusRequest
+func (mr *MockSSMClientMockRecorder) GetConnectionStatusRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetConnectionStatusRequest", reflect.TypeOf((*MockSSMClient)(nil).GetConnectionStatusRequest), arg0)
+}
+
+// GetConnectionStatusWithContext mocks base method
+func (m *MockSSMClient) GetConnectionStatusWithContext(arg0 aws.Context, arg1 *ssm.GetConnectionStatusInput, arg2 ...request.Option) (*ssm.GetConnectionStatusOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetConnectionStatusWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.GetConnectionStatusOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetConnectionStatusWithContext indicates an expected call of GetConnectionStatusWithContext
+func (mr *MockSSMClientMockRecorder) GetConnectionStatusWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetConnectionStatusWithContext", reflect.TypeOf((*MockSSMClient)(nil).GetConnectionStatusWithContext), varargs...)
 }
 
 // GetDefaultPatchBaseline mocks base method
@@ -3126,6 +3346,50 @@ func (m *MockSSMClient) GetPatchBaselineWithContext(arg0 aws.Context, arg1 *ssm.
 func (mr *MockSSMClientMockRecorder) GetPatchBaselineWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPatchBaselineWithContext", reflect.TypeOf((*MockSSMClient)(nil).GetPatchBaselineWithContext), varargs...)
+}
+
+// LabelParameterVersion mocks base method
+func (m *MockSSMClient) LabelParameterVersion(arg0 *ssm.LabelParameterVersionInput) (*ssm.LabelParameterVersionOutput, error) {
+	ret := m.ctrl.Call(m, "LabelParameterVersion", arg0)
+	ret0, _ := ret[0].(*ssm.LabelParameterVersionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// LabelParameterVersion indicates an expected call of LabelParameterVersion
+func (mr *MockSSMClientMockRecorder) LabelParameterVersion(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LabelParameterVersion", reflect.TypeOf((*MockSSMClient)(nil).LabelParameterVersion), arg0)
+}
+
+// LabelParameterVersionRequest mocks base method
+func (m *MockSSMClient) LabelParameterVersionRequest(arg0 *ssm.LabelParameterVersionInput) (*request.Request, *ssm.LabelParameterVersionOutput) {
+	ret := m.ctrl.Call(m, "LabelParameterVersionRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.LabelParameterVersionOutput)
+	return ret0, ret1
+}
+
+// LabelParameterVersionRequest indicates an expected call of LabelParameterVersionRequest
+func (mr *MockSSMClientMockRecorder) LabelParameterVersionRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LabelParameterVersionRequest", reflect.TypeOf((*MockSSMClient)(nil).LabelParameterVersionRequest), arg0)
+}
+
+// LabelParameterVersionWithContext mocks base method
+func (m *MockSSMClient) LabelParameterVersionWithContext(arg0 aws.Context, arg1 *ssm.LabelParameterVersionInput, arg2 ...request.Option) (*ssm.LabelParameterVersionOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "LabelParameterVersionWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.LabelParameterVersionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// LabelParameterVersionWithContext indicates an expected call of LabelParameterVersionWithContext
+func (mr *MockSSMClientMockRecorder) LabelParameterVersionWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LabelParameterVersionWithContext", reflect.TypeOf((*MockSSMClient)(nil).LabelParameterVersionWithContext), varargs...)
 }
 
 // ListAssociationVersions mocks base method
@@ -4168,6 +4432,50 @@ func (mr *MockSSMClientMockRecorder) RemoveTagsFromResourceWithContext(arg0, arg
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RemoveTagsFromResourceWithContext", reflect.TypeOf((*MockSSMClient)(nil).RemoveTagsFromResourceWithContext), varargs...)
 }
 
+// ResumeSession mocks base method
+func (m *MockSSMClient) ResumeSession(arg0 *ssm.ResumeSessionInput) (*ssm.ResumeSessionOutput, error) {
+	ret := m.ctrl.Call(m, "ResumeSession", arg0)
+	ret0, _ := ret[0].(*ssm.ResumeSessionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ResumeSession indicates an expected call of ResumeSession
+func (mr *MockSSMClientMockRecorder) ResumeSession(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResumeSession", reflect.TypeOf((*MockSSMClient)(nil).ResumeSession), arg0)
+}
+
+// ResumeSessionRequest mocks base method
+func (m *MockSSMClient) ResumeSessionRequest(arg0 *ssm.ResumeSessionInput) (*request.Request, *ssm.ResumeSessionOutput) {
+	ret := m.ctrl.Call(m, "ResumeSessionRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.ResumeSessionOutput)
+	return ret0, ret1
+}
+
+// ResumeSessionRequest indicates an expected call of ResumeSessionRequest
+func (mr *MockSSMClientMockRecorder) ResumeSessionRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResumeSessionRequest", reflect.TypeOf((*MockSSMClient)(nil).ResumeSessionRequest), arg0)
+}
+
+// ResumeSessionWithContext mocks base method
+func (m *MockSSMClient) ResumeSessionWithContext(arg0 aws.Context, arg1 *ssm.ResumeSessionInput, arg2 ...request.Option) (*ssm.ResumeSessionOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ResumeSessionWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.ResumeSessionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ResumeSessionWithContext indicates an expected call of ResumeSessionWithContext
+func (mr *MockSSMClientMockRecorder) ResumeSessionWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResumeSessionWithContext", reflect.TypeOf((*MockSSMClient)(nil).ResumeSessionWithContext), varargs...)
+}
+
 // SendAutomationSignal mocks base method
 func (m *MockSSMClient) SendAutomationSignal(arg0 *ssm.SendAutomationSignalInput) (*ssm.SendAutomationSignalOutput, error) {
 	ret := m.ctrl.Call(m, "SendAutomationSignal", arg0)
@@ -4344,6 +4652,50 @@ func (mr *MockSSMClientMockRecorder) StartAutomationExecutionWithContext(arg0, a
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartAutomationExecutionWithContext", reflect.TypeOf((*MockSSMClient)(nil).StartAutomationExecutionWithContext), varargs...)
 }
 
+// StartSession mocks base method
+func (m *MockSSMClient) StartSession(arg0 *ssm.StartSessionInput) (*ssm.StartSessionOutput, error) {
+	ret := m.ctrl.Call(m, "StartSession", arg0)
+	ret0, _ := ret[0].(*ssm.StartSessionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// StartSession indicates an expected call of StartSession
+func (mr *MockSSMClientMockRecorder) StartSession(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartSession", reflect.TypeOf((*MockSSMClient)(nil).StartSession), arg0)
+}
+
+// StartSessionRequest mocks base method
+func (m *MockSSMClient) StartSessionRequest(arg0 *ssm.StartSessionInput) (*request.Request, *ssm.StartSessionOutput) {
+	ret := m.ctrl.Call(m, "StartSessionRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.StartSessionOutput)
+	return ret0, ret1
+}
+
+// StartSessionRequest indicates an expected call of StartSessionRequest
+func (mr *MockSSMClientMockRecorder) StartSessionRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartSessionRequest", reflect.TypeOf((*MockSSMClient)(nil).StartSessionRequest), arg0)
+}
+
+// StartSessionWithContext mocks base method
+func (m *MockSSMClient) StartSessionWithContext(arg0 aws.Context, arg1 *ssm.StartSessionInput, arg2 ...request.Option) (*ssm.StartSessionOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "StartSessionWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.StartSessionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// StartSessionWithContext indicates an expected call of StartSessionWithContext
+func (mr *MockSSMClientMockRecorder) StartSessionWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartSessionWithContext", reflect.TypeOf((*MockSSMClient)(nil).StartSessionWithContext), varargs...)
+}
+
 // StopAutomationExecution mocks base method
 func (m *MockSSMClient) StopAutomationExecution(arg0 *ssm.StopAutomationExecutionInput) (*ssm.StopAutomationExecutionOutput, error) {
 	ret := m.ctrl.Call(m, "StopAutomationExecution", arg0)
@@ -4386,6 +4738,50 @@ func (m *MockSSMClient) StopAutomationExecutionWithContext(arg0 aws.Context, arg
 func (mr *MockSSMClientMockRecorder) StopAutomationExecutionWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StopAutomationExecutionWithContext", reflect.TypeOf((*MockSSMClient)(nil).StopAutomationExecutionWithContext), varargs...)
+}
+
+// TerminateSession mocks base method
+func (m *MockSSMClient) TerminateSession(arg0 *ssm.TerminateSessionInput) (*ssm.TerminateSessionOutput, error) {
+	ret := m.ctrl.Call(m, "TerminateSession", arg0)
+	ret0, _ := ret[0].(*ssm.TerminateSessionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// TerminateSession indicates an expected call of TerminateSession
+func (mr *MockSSMClientMockRecorder) TerminateSession(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TerminateSession", reflect.TypeOf((*MockSSMClient)(nil).TerminateSession), arg0)
+}
+
+// TerminateSessionRequest mocks base method
+func (m *MockSSMClient) TerminateSessionRequest(arg0 *ssm.TerminateSessionInput) (*request.Request, *ssm.TerminateSessionOutput) {
+	ret := m.ctrl.Call(m, "TerminateSessionRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.TerminateSessionOutput)
+	return ret0, ret1
+}
+
+// TerminateSessionRequest indicates an expected call of TerminateSessionRequest
+func (mr *MockSSMClientMockRecorder) TerminateSessionRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TerminateSessionRequest", reflect.TypeOf((*MockSSMClient)(nil).TerminateSessionRequest), arg0)
+}
+
+// TerminateSessionWithContext mocks base method
+func (m *MockSSMClient) TerminateSessionWithContext(arg0 aws.Context, arg1 *ssm.TerminateSessionInput, arg2 ...request.Option) (*ssm.TerminateSessionOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "TerminateSessionWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.TerminateSessionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// TerminateSessionWithContext indicates an expected call of TerminateSessionWithContext
+func (mr *MockSSMClientMockRecorder) TerminateSessionWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TerminateSessionWithContext", reflect.TypeOf((*MockSSMClient)(nil).TerminateSessionWithContext), varargs...)
 }
 
 // UpdateAssociation mocks base method
