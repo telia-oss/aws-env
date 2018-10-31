@@ -17,8 +17,8 @@ For instance:
 - `export KMSENCRYPTED=kms://<encrypted-secret>`
 
 Where `<path>` is the name of the secret in secrets manager or parameter store. `aws-env` will look up secrets in the region specified
-in the `AWS_DEFAULT_REGION` environment variable, and if it is unset or empty it will contact the EC2 Metadata endpoint (if possible) and
-find/use the region where it is deployed.
+in the `AWS_REGION` or `AWS_DEFAULT_REGION` environment variables, and if they are both unset/empty it will contact the EC2 Metadata endpoint 
+(if possible) and use the region where it is deployed.
 
 Required IAM privileges:
 - Secrets manager: `secretsmanager:GetSecretValue` on the resource. And `kms:Decrypt` if not using the `aws/secretsmanager` key alias.
