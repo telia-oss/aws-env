@@ -3,7 +3,8 @@ TARGET ?= darwin
 ARCH   ?= amd64
 EXT    ?= ""
 
-SRC=$(shell find . -type f -name '*.go' -not -path "./vendor/*")
+TRAVIS_TAG ?= $(shell git describe --tags --candidates=1 --dirty 2>/dev/null || echo "dev")
+SRC         = $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 
 export GO111MODULE=on
 
@@ -33,7 +34,7 @@ build: test
 
 release: test
 	@echo "== Release build =="
-	CGO_ENABLED=0 GOOS=$(TARGET) GOARCH=$(ARCH) go build -ldflags="-s -w" -o $(BINARY)-$(TARGET)-$(ARCH)$(EXT) -v cmd/main.go
+	CGO_ENABLED=0 GOOS=$(TARGET) GOARCH=$(ARCH) go build -ldflags="-s -w -X=main.version=$(TRAVIS_TAG)" -o $(BINARY)-$(TARGET)-$(ARCH)$(EXT) -v cmd/main.go
 
 clean:
 	@echo "== Cleaning =="

@@ -12,8 +12,12 @@ import (
 	environment "github.com/telia-oss/aws-env"
 )
 
+var command rootCommand
+var version string
+
 type rootCommand struct {
-	Exec execCommand `command:"exec" description:"Execute a command."`
+	Version func()      `short:"v" long:"version" description:"Print the version and exit."`
+	Exec    execCommand `command:"exec" description:"Execute a command."`
 }
 
 type execCommand struct{}
@@ -47,7 +51,12 @@ func (c *execCommand) Execute(args []string) error {
 	return nil
 }
 
-var command rootCommand
+func init() {
+	command.Version = func() {
+		fmt.Println(version)
+		os.Exit(0)
+	}
+}
 
 func main() {
 	_, err := flags.Parse(&command)
