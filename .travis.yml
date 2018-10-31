@@ -6,28 +6,23 @@ env:
 matrix:
   include:
   - os: linux 
-    go: 1.10.x
+    go: 1.11.x
     env:
     - TARGET=darwin
     - ARCH=amd64
   - os: linux
-    go: 1.10.x
+    go: 1.11.x
     env:
     - TARGET=linux
     - ARCH=amd64
   - os: linux
-    go: 1.10.x
+    go: 1.11.x
     env:
     - TARGET=windows
     - ARCH=amd64
     - EXT=.exe
 notifications:
   email: false
-before_install:
-- curl -L -s https://github.com/golang/dep/releases/download/v0.4.1/dep-linux-amd64 -o $GOPATH/bin/dep
-- chmod +x $GOPATH/bin/dep
-install:
-- dep ensure
 script:
 - make release
 deploy:
