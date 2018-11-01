@@ -30,7 +30,7 @@ e2e: test
 
 build: test
 	@echo "== Build =="
-	go build -o $(BINARY_NAME) -v cmd/main.go
+	go build -o $(BINARY) -v cmd/main.go
 
 release: test
 	@echo "== Release build =="
@@ -38,6 +38,6 @@ release: test
 
 clean:
 	@echo "== Cleaning =="
-	rm $(BINARY_NAME)* || true
+	rm $(BINARY)* || true
 
 .PHONY: default generate test run build release clean
