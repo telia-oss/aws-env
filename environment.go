@@ -2,9 +2,11 @@ package environment
 
 import (
 	"encoding/base64"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"os"
+	"regexp"
 	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -124,6 +126,21 @@ func parseEnvironmentVariable(s string) (string, string) {
 }
 
 func (m *Manager) getSecretValue(path string) (out string, err error) {
+	re := regexp.MustCompile(`(?P<Path>[\w:/+=.@]+)#?(?P<Secret>\w*)$`)
+	match := re.FindStringSubmatch(path)
+
+	parts := make(map[string]string)
+	for i, name := range re.SubexpNames() {
+		if i > 0 && i <= len(match) {
+			parts[name] = match[i]
+		}
+	}
+
+	path, ok := parts["Path"]
+	if !ok {
+		return "", errors.New("failed to parse secret path")
+	}
+
 	res, err := m.sm.GetSecretValue(&secretsmanager.GetSecretValueInput{SecretId: aws.String(path)})
 	if err != nil {
 		return "", err
@@ -138,6 +155,20 @@ func (m *Manager) getSecretValue(path string) (out string, err error) {
 		}
 		out = string(data)
 	}
+
+	secret, _ := parts["Secret"]
+	if secret != "" {
+		j := make(map[string]string)
+		err := json.Unmarshal([]byte(out), &j)
+		if err != nil {
+			return "", fmt.Errorf("failed to unmarshal secret: %s", err)
+		}
+		out, ok = j[secret]
+		if !ok {
+			return "", fmt.Errorf("failed to get secret value: %s", secret)
+		}
+	}
+
 	return out, nil
 }
 

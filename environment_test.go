@@ -36,7 +36,7 @@ func TestMain(t *testing.T) {
 		{
 			description: "allows empty strings as secrets",
 			key:         "TEST",
-			value:       "sm://<secret-path>",
+			value:       "sm://some/secret",
 			expect:      "",
 			callsSM:     true,
 			smOutput: &secretsmanager.GetSecretValueOutput{
@@ -46,7 +46,7 @@ func TestMain(t *testing.T) {
 		{
 			description: "picks up sm secrets",
 			key:         "TEST",
-			value:       "sm://<secret-path>",
+			value:       "sm://some/secret",
 			expect:      "secret",
 			callsSM:     true,
 			smOutput: &secretsmanager.GetSecretValueOutput{
@@ -56,7 +56,7 @@ func TestMain(t *testing.T) {
 		{
 			description: "picks up ssm secrets",
 			key:         "TEST",
-			value:       "ssm://<parameter-path>",
+			value:       "ssm://some/parameter",
 			expect:      "secret",
 			callsSSM:    true,
 			ssmOutput: &ssm.GetParameterOutput{
@@ -73,6 +73,17 @@ func TestMain(t *testing.T) {
 			callsKMS:    true,
 			kmsOutput: &kms.DecryptOutput{
 				Plaintext: []byte("secret"),
+			},
+		},
+		{
+			description: "supports multi-value secrets in secrets manager",
+			key:         "TEST",
+			value:       "sm://some/secret#password",
+			expect:      "secret",
+			callsSM:     true,
+
+			smOutput: &secretsmanager.GetSecretValueOutput{
+				SecretString: aws.String(`{"name":"admin", "password":"secret"}`),
 			},
 		},
 	}
