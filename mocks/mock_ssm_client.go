@@ -5,7 +5,7 @@
 package mocks
 
 import (
-	aws "github.com/aws/aws-sdk-go/aws"
+	context "context"
 	request "github.com/aws/aws-sdk-go/aws/request"
 	ssm "github.com/aws/aws-sdk-go/service/ssm"
 	gomock "github.com/golang/mock/gomock"
@@ -62,7 +62,7 @@ func (mr *MockSSMClientMockRecorder) AddTagsToResourceRequest(arg0 interface{}) 
 }
 
 // AddTagsToResourceWithContext mocks base method
-func (m *MockSSMClient) AddTagsToResourceWithContext(arg0 aws.Context, arg1 *ssm.AddTagsToResourceInput, arg2 ...request.Option) (*ssm.AddTagsToResourceOutput, error) {
+func (m *MockSSMClient) AddTagsToResourceWithContext(arg0 context.Context, arg1 *ssm.AddTagsToResourceInput, arg2 ...request.Option) (*ssm.AddTagsToResourceOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -106,7 +106,7 @@ func (mr *MockSSMClientMockRecorder) CancelCommandRequest(arg0 interface{}) *gom
 }
 
 // CancelCommandWithContext mocks base method
-func (m *MockSSMClient) CancelCommandWithContext(arg0 aws.Context, arg1 *ssm.CancelCommandInput, arg2 ...request.Option) (*ssm.CancelCommandOutput, error) {
+func (m *MockSSMClient) CancelCommandWithContext(arg0 context.Context, arg1 *ssm.CancelCommandInput, arg2 ...request.Option) (*ssm.CancelCommandOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -150,7 +150,7 @@ func (mr *MockSSMClientMockRecorder) CancelMaintenanceWindowExecutionRequest(arg
 }
 
 // CancelMaintenanceWindowExecutionWithContext mocks base method
-func (m *MockSSMClient) CancelMaintenanceWindowExecutionWithContext(arg0 aws.Context, arg1 *ssm.CancelMaintenanceWindowExecutionInput, arg2 ...request.Option) (*ssm.CancelMaintenanceWindowExecutionOutput, error) {
+func (m *MockSSMClient) CancelMaintenanceWindowExecutionWithContext(arg0 context.Context, arg1 *ssm.CancelMaintenanceWindowExecutionInput, arg2 ...request.Option) (*ssm.CancelMaintenanceWindowExecutionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -194,7 +194,7 @@ func (mr *MockSSMClientMockRecorder) CreateActivationRequest(arg0 interface{}) *
 }
 
 // CreateActivationWithContext mocks base method
-func (m *MockSSMClient) CreateActivationWithContext(arg0 aws.Context, arg1 *ssm.CreateActivationInput, arg2 ...request.Option) (*ssm.CreateActivationOutput, error) {
+func (m *MockSSMClient) CreateActivationWithContext(arg0 context.Context, arg1 *ssm.CreateActivationInput, arg2 ...request.Option) (*ssm.CreateActivationOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -251,7 +251,7 @@ func (mr *MockSSMClientMockRecorder) CreateAssociationBatchRequest(arg0 interfac
 }
 
 // CreateAssociationBatchWithContext mocks base method
-func (m *MockSSMClient) CreateAssociationBatchWithContext(arg0 aws.Context, arg1 *ssm.CreateAssociationBatchInput, arg2 ...request.Option) (*ssm.CreateAssociationBatchOutput, error) {
+func (m *MockSSMClient) CreateAssociationBatchWithContext(arg0 context.Context, arg1 *ssm.CreateAssociationBatchInput, arg2 ...request.Option) (*ssm.CreateAssociationBatchOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -282,7 +282,7 @@ func (mr *MockSSMClientMockRecorder) CreateAssociationRequest(arg0 interface{}) 
 }
 
 // CreateAssociationWithContext mocks base method
-func (m *MockSSMClient) CreateAssociationWithContext(arg0 aws.Context, arg1 *ssm.CreateAssociationInput, arg2 ...request.Option) (*ssm.CreateAssociationOutput, error) {
+func (m *MockSSMClient) CreateAssociationWithContext(arg0 context.Context, arg1 *ssm.CreateAssociationInput, arg2 ...request.Option) (*ssm.CreateAssociationOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -326,7 +326,7 @@ func (mr *MockSSMClientMockRecorder) CreateDocumentRequest(arg0 interface{}) *go
 }
 
 // CreateDocumentWithContext mocks base method
-func (m *MockSSMClient) CreateDocumentWithContext(arg0 aws.Context, arg1 *ssm.CreateDocumentInput, arg2 ...request.Option) (*ssm.CreateDocumentOutput, error) {
+func (m *MockSSMClient) CreateDocumentWithContext(arg0 context.Context, arg1 *ssm.CreateDocumentInput, arg2 ...request.Option) (*ssm.CreateDocumentOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -370,7 +370,7 @@ func (mr *MockSSMClientMockRecorder) CreateMaintenanceWindowRequest(arg0 interfa
 }
 
 // CreateMaintenanceWindowWithContext mocks base method
-func (m *MockSSMClient) CreateMaintenanceWindowWithContext(arg0 aws.Context, arg1 *ssm.CreateMaintenanceWindowInput, arg2 ...request.Option) (*ssm.CreateMaintenanceWindowOutput, error) {
+func (m *MockSSMClient) CreateMaintenanceWindowWithContext(arg0 context.Context, arg1 *ssm.CreateMaintenanceWindowInput, arg2 ...request.Option) (*ssm.CreateMaintenanceWindowOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -385,6 +385,50 @@ func (m *MockSSMClient) CreateMaintenanceWindowWithContext(arg0 aws.Context, arg
 func (mr *MockSSMClientMockRecorder) CreateMaintenanceWindowWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateMaintenanceWindowWithContext", reflect.TypeOf((*MockSSMClient)(nil).CreateMaintenanceWindowWithContext), varargs...)
+}
+
+// CreateOpsItem mocks base method
+func (m *MockSSMClient) CreateOpsItem(arg0 *ssm.CreateOpsItemInput) (*ssm.CreateOpsItemOutput, error) {
+	ret := m.ctrl.Call(m, "CreateOpsItem", arg0)
+	ret0, _ := ret[0].(*ssm.CreateOpsItemOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CreateOpsItem indicates an expected call of CreateOpsItem
+func (mr *MockSSMClientMockRecorder) CreateOpsItem(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateOpsItem", reflect.TypeOf((*MockSSMClient)(nil).CreateOpsItem), arg0)
+}
+
+// CreateOpsItemRequest mocks base method
+func (m *MockSSMClient) CreateOpsItemRequest(arg0 *ssm.CreateOpsItemInput) (*request.Request, *ssm.CreateOpsItemOutput) {
+	ret := m.ctrl.Call(m, "CreateOpsItemRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.CreateOpsItemOutput)
+	return ret0, ret1
+}
+
+// CreateOpsItemRequest indicates an expected call of CreateOpsItemRequest
+func (mr *MockSSMClientMockRecorder) CreateOpsItemRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateOpsItemRequest", reflect.TypeOf((*MockSSMClient)(nil).CreateOpsItemRequest), arg0)
+}
+
+// CreateOpsItemWithContext mocks base method
+func (m *MockSSMClient) CreateOpsItemWithContext(arg0 context.Context, arg1 *ssm.CreateOpsItemInput, arg2 ...request.Option) (*ssm.CreateOpsItemOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "CreateOpsItemWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.CreateOpsItemOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CreateOpsItemWithContext indicates an expected call of CreateOpsItemWithContext
+func (mr *MockSSMClientMockRecorder) CreateOpsItemWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateOpsItemWithContext", reflect.TypeOf((*MockSSMClient)(nil).CreateOpsItemWithContext), varargs...)
 }
 
 // CreatePatchBaseline mocks base method
@@ -414,7 +458,7 @@ func (mr *MockSSMClientMockRecorder) CreatePatchBaselineRequest(arg0 interface{}
 }
 
 // CreatePatchBaselineWithContext mocks base method
-func (m *MockSSMClient) CreatePatchBaselineWithContext(arg0 aws.Context, arg1 *ssm.CreatePatchBaselineInput, arg2 ...request.Option) (*ssm.CreatePatchBaselineOutput, error) {
+func (m *MockSSMClient) CreatePatchBaselineWithContext(arg0 context.Context, arg1 *ssm.CreatePatchBaselineInput, arg2 ...request.Option) (*ssm.CreatePatchBaselineOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -458,7 +502,7 @@ func (mr *MockSSMClientMockRecorder) CreateResourceDataSyncRequest(arg0 interfac
 }
 
 // CreateResourceDataSyncWithContext mocks base method
-func (m *MockSSMClient) CreateResourceDataSyncWithContext(arg0 aws.Context, arg1 *ssm.CreateResourceDataSyncInput, arg2 ...request.Option) (*ssm.CreateResourceDataSyncOutput, error) {
+func (m *MockSSMClient) CreateResourceDataSyncWithContext(arg0 context.Context, arg1 *ssm.CreateResourceDataSyncInput, arg2 ...request.Option) (*ssm.CreateResourceDataSyncOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -502,7 +546,7 @@ func (mr *MockSSMClientMockRecorder) DeleteActivationRequest(arg0 interface{}) *
 }
 
 // DeleteActivationWithContext mocks base method
-func (m *MockSSMClient) DeleteActivationWithContext(arg0 aws.Context, arg1 *ssm.DeleteActivationInput, arg2 ...request.Option) (*ssm.DeleteActivationOutput, error) {
+func (m *MockSSMClient) DeleteActivationWithContext(arg0 context.Context, arg1 *ssm.DeleteActivationInput, arg2 ...request.Option) (*ssm.DeleteActivationOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -546,7 +590,7 @@ func (mr *MockSSMClientMockRecorder) DeleteAssociationRequest(arg0 interface{}) 
 }
 
 // DeleteAssociationWithContext mocks base method
-func (m *MockSSMClient) DeleteAssociationWithContext(arg0 aws.Context, arg1 *ssm.DeleteAssociationInput, arg2 ...request.Option) (*ssm.DeleteAssociationOutput, error) {
+func (m *MockSSMClient) DeleteAssociationWithContext(arg0 context.Context, arg1 *ssm.DeleteAssociationInput, arg2 ...request.Option) (*ssm.DeleteAssociationOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -590,7 +634,7 @@ func (mr *MockSSMClientMockRecorder) DeleteDocumentRequest(arg0 interface{}) *go
 }
 
 // DeleteDocumentWithContext mocks base method
-func (m *MockSSMClient) DeleteDocumentWithContext(arg0 aws.Context, arg1 *ssm.DeleteDocumentInput, arg2 ...request.Option) (*ssm.DeleteDocumentOutput, error) {
+func (m *MockSSMClient) DeleteDocumentWithContext(arg0 context.Context, arg1 *ssm.DeleteDocumentInput, arg2 ...request.Option) (*ssm.DeleteDocumentOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -634,7 +678,7 @@ func (mr *MockSSMClientMockRecorder) DeleteInventoryRequest(arg0 interface{}) *g
 }
 
 // DeleteInventoryWithContext mocks base method
-func (m *MockSSMClient) DeleteInventoryWithContext(arg0 aws.Context, arg1 *ssm.DeleteInventoryInput, arg2 ...request.Option) (*ssm.DeleteInventoryOutput, error) {
+func (m *MockSSMClient) DeleteInventoryWithContext(arg0 context.Context, arg1 *ssm.DeleteInventoryInput, arg2 ...request.Option) (*ssm.DeleteInventoryOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -678,7 +722,7 @@ func (mr *MockSSMClientMockRecorder) DeleteMaintenanceWindowRequest(arg0 interfa
 }
 
 // DeleteMaintenanceWindowWithContext mocks base method
-func (m *MockSSMClient) DeleteMaintenanceWindowWithContext(arg0 aws.Context, arg1 *ssm.DeleteMaintenanceWindowInput, arg2 ...request.Option) (*ssm.DeleteMaintenanceWindowOutput, error) {
+func (m *MockSSMClient) DeleteMaintenanceWindowWithContext(arg0 context.Context, arg1 *ssm.DeleteMaintenanceWindowInput, arg2 ...request.Option) (*ssm.DeleteMaintenanceWindowOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -722,7 +766,7 @@ func (mr *MockSSMClientMockRecorder) DeleteParameterRequest(arg0 interface{}) *g
 }
 
 // DeleteParameterWithContext mocks base method
-func (m *MockSSMClient) DeleteParameterWithContext(arg0 aws.Context, arg1 *ssm.DeleteParameterInput, arg2 ...request.Option) (*ssm.DeleteParameterOutput, error) {
+func (m *MockSSMClient) DeleteParameterWithContext(arg0 context.Context, arg1 *ssm.DeleteParameterInput, arg2 ...request.Option) (*ssm.DeleteParameterOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -766,7 +810,7 @@ func (mr *MockSSMClientMockRecorder) DeleteParametersRequest(arg0 interface{}) *
 }
 
 // DeleteParametersWithContext mocks base method
-func (m *MockSSMClient) DeleteParametersWithContext(arg0 aws.Context, arg1 *ssm.DeleteParametersInput, arg2 ...request.Option) (*ssm.DeleteParametersOutput, error) {
+func (m *MockSSMClient) DeleteParametersWithContext(arg0 context.Context, arg1 *ssm.DeleteParametersInput, arg2 ...request.Option) (*ssm.DeleteParametersOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -810,7 +854,7 @@ func (mr *MockSSMClientMockRecorder) DeletePatchBaselineRequest(arg0 interface{}
 }
 
 // DeletePatchBaselineWithContext mocks base method
-func (m *MockSSMClient) DeletePatchBaselineWithContext(arg0 aws.Context, arg1 *ssm.DeletePatchBaselineInput, arg2 ...request.Option) (*ssm.DeletePatchBaselineOutput, error) {
+func (m *MockSSMClient) DeletePatchBaselineWithContext(arg0 context.Context, arg1 *ssm.DeletePatchBaselineInput, arg2 ...request.Option) (*ssm.DeletePatchBaselineOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -854,7 +898,7 @@ func (mr *MockSSMClientMockRecorder) DeleteResourceDataSyncRequest(arg0 interfac
 }
 
 // DeleteResourceDataSyncWithContext mocks base method
-func (m *MockSSMClient) DeleteResourceDataSyncWithContext(arg0 aws.Context, arg1 *ssm.DeleteResourceDataSyncInput, arg2 ...request.Option) (*ssm.DeleteResourceDataSyncOutput, error) {
+func (m *MockSSMClient) DeleteResourceDataSyncWithContext(arg0 context.Context, arg1 *ssm.DeleteResourceDataSyncInput, arg2 ...request.Option) (*ssm.DeleteResourceDataSyncOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -898,7 +942,7 @@ func (mr *MockSSMClientMockRecorder) DeregisterManagedInstanceRequest(arg0 inter
 }
 
 // DeregisterManagedInstanceWithContext mocks base method
-func (m *MockSSMClient) DeregisterManagedInstanceWithContext(arg0 aws.Context, arg1 *ssm.DeregisterManagedInstanceInput, arg2 ...request.Option) (*ssm.DeregisterManagedInstanceOutput, error) {
+func (m *MockSSMClient) DeregisterManagedInstanceWithContext(arg0 context.Context, arg1 *ssm.DeregisterManagedInstanceInput, arg2 ...request.Option) (*ssm.DeregisterManagedInstanceOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -942,7 +986,7 @@ func (mr *MockSSMClientMockRecorder) DeregisterPatchBaselineForPatchGroupRequest
 }
 
 // DeregisterPatchBaselineForPatchGroupWithContext mocks base method
-func (m *MockSSMClient) DeregisterPatchBaselineForPatchGroupWithContext(arg0 aws.Context, arg1 *ssm.DeregisterPatchBaselineForPatchGroupInput, arg2 ...request.Option) (*ssm.DeregisterPatchBaselineForPatchGroupOutput, error) {
+func (m *MockSSMClient) DeregisterPatchBaselineForPatchGroupWithContext(arg0 context.Context, arg1 *ssm.DeregisterPatchBaselineForPatchGroupInput, arg2 ...request.Option) (*ssm.DeregisterPatchBaselineForPatchGroupOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -986,7 +1030,7 @@ func (mr *MockSSMClientMockRecorder) DeregisterTargetFromMaintenanceWindowReques
 }
 
 // DeregisterTargetFromMaintenanceWindowWithContext mocks base method
-func (m *MockSSMClient) DeregisterTargetFromMaintenanceWindowWithContext(arg0 aws.Context, arg1 *ssm.DeregisterTargetFromMaintenanceWindowInput, arg2 ...request.Option) (*ssm.DeregisterTargetFromMaintenanceWindowOutput, error) {
+func (m *MockSSMClient) DeregisterTargetFromMaintenanceWindowWithContext(arg0 context.Context, arg1 *ssm.DeregisterTargetFromMaintenanceWindowInput, arg2 ...request.Option) (*ssm.DeregisterTargetFromMaintenanceWindowOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1030,7 +1074,7 @@ func (mr *MockSSMClientMockRecorder) DeregisterTaskFromMaintenanceWindowRequest(
 }
 
 // DeregisterTaskFromMaintenanceWindowWithContext mocks base method
-func (m *MockSSMClient) DeregisterTaskFromMaintenanceWindowWithContext(arg0 aws.Context, arg1 *ssm.DeregisterTaskFromMaintenanceWindowInput, arg2 ...request.Option) (*ssm.DeregisterTaskFromMaintenanceWindowOutput, error) {
+func (m *MockSSMClient) DeregisterTaskFromMaintenanceWindowWithContext(arg0 context.Context, arg1 *ssm.DeregisterTaskFromMaintenanceWindowInput, arg2 ...request.Option) (*ssm.DeregisterTaskFromMaintenanceWindowOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1073,7 +1117,7 @@ func (mr *MockSSMClientMockRecorder) DescribeActivationsPages(arg0, arg1 interfa
 }
 
 // DescribeActivationsPagesWithContext mocks base method
-func (m *MockSSMClient) DescribeActivationsPagesWithContext(arg0 aws.Context, arg1 *ssm.DescribeActivationsInput, arg2 func(*ssm.DescribeActivationsOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockSSMClient) DescribeActivationsPagesWithContext(arg0 context.Context, arg1 *ssm.DescribeActivationsInput, arg2 func(*ssm.DescribeActivationsOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -1103,7 +1147,7 @@ func (mr *MockSSMClientMockRecorder) DescribeActivationsRequest(arg0 interface{}
 }
 
 // DescribeActivationsWithContext mocks base method
-func (m *MockSSMClient) DescribeActivationsWithContext(arg0 aws.Context, arg1 *ssm.DescribeActivationsInput, arg2 ...request.Option) (*ssm.DescribeActivationsOutput, error) {
+func (m *MockSSMClient) DescribeActivationsWithContext(arg0 context.Context, arg1 *ssm.DescribeActivationsInput, arg2 ...request.Option) (*ssm.DescribeActivationsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1160,7 +1204,7 @@ func (mr *MockSSMClientMockRecorder) DescribeAssociationExecutionTargetsRequest(
 }
 
 // DescribeAssociationExecutionTargetsWithContext mocks base method
-func (m *MockSSMClient) DescribeAssociationExecutionTargetsWithContext(arg0 aws.Context, arg1 *ssm.DescribeAssociationExecutionTargetsInput, arg2 ...request.Option) (*ssm.DescribeAssociationExecutionTargetsOutput, error) {
+func (m *MockSSMClient) DescribeAssociationExecutionTargetsWithContext(arg0 context.Context, arg1 *ssm.DescribeAssociationExecutionTargetsInput, arg2 ...request.Option) (*ssm.DescribeAssociationExecutionTargetsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1204,7 +1248,7 @@ func (mr *MockSSMClientMockRecorder) DescribeAssociationExecutionsRequest(arg0 i
 }
 
 // DescribeAssociationExecutionsWithContext mocks base method
-func (m *MockSSMClient) DescribeAssociationExecutionsWithContext(arg0 aws.Context, arg1 *ssm.DescribeAssociationExecutionsInput, arg2 ...request.Option) (*ssm.DescribeAssociationExecutionsOutput, error) {
+func (m *MockSSMClient) DescribeAssociationExecutionsWithContext(arg0 context.Context, arg1 *ssm.DescribeAssociationExecutionsInput, arg2 ...request.Option) (*ssm.DescribeAssociationExecutionsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1235,7 +1279,7 @@ func (mr *MockSSMClientMockRecorder) DescribeAssociationRequest(arg0 interface{}
 }
 
 // DescribeAssociationWithContext mocks base method
-func (m *MockSSMClient) DescribeAssociationWithContext(arg0 aws.Context, arg1 *ssm.DescribeAssociationInput, arg2 ...request.Option) (*ssm.DescribeAssociationOutput, error) {
+func (m *MockSSMClient) DescribeAssociationWithContext(arg0 context.Context, arg1 *ssm.DescribeAssociationInput, arg2 ...request.Option) (*ssm.DescribeAssociationOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1279,7 +1323,7 @@ func (mr *MockSSMClientMockRecorder) DescribeAutomationExecutionsRequest(arg0 in
 }
 
 // DescribeAutomationExecutionsWithContext mocks base method
-func (m *MockSSMClient) DescribeAutomationExecutionsWithContext(arg0 aws.Context, arg1 *ssm.DescribeAutomationExecutionsInput, arg2 ...request.Option) (*ssm.DescribeAutomationExecutionsOutput, error) {
+func (m *MockSSMClient) DescribeAutomationExecutionsWithContext(arg0 context.Context, arg1 *ssm.DescribeAutomationExecutionsInput, arg2 ...request.Option) (*ssm.DescribeAutomationExecutionsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1323,7 +1367,7 @@ func (mr *MockSSMClientMockRecorder) DescribeAutomationStepExecutionsRequest(arg
 }
 
 // DescribeAutomationStepExecutionsWithContext mocks base method
-func (m *MockSSMClient) DescribeAutomationStepExecutionsWithContext(arg0 aws.Context, arg1 *ssm.DescribeAutomationStepExecutionsInput, arg2 ...request.Option) (*ssm.DescribeAutomationStepExecutionsOutput, error) {
+func (m *MockSSMClient) DescribeAutomationStepExecutionsWithContext(arg0 context.Context, arg1 *ssm.DescribeAutomationStepExecutionsInput, arg2 ...request.Option) (*ssm.DescribeAutomationStepExecutionsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1367,7 +1411,7 @@ func (mr *MockSSMClientMockRecorder) DescribeAvailablePatchesRequest(arg0 interf
 }
 
 // DescribeAvailablePatchesWithContext mocks base method
-func (m *MockSSMClient) DescribeAvailablePatchesWithContext(arg0 aws.Context, arg1 *ssm.DescribeAvailablePatchesInput, arg2 ...request.Option) (*ssm.DescribeAvailablePatchesOutput, error) {
+func (m *MockSSMClient) DescribeAvailablePatchesWithContext(arg0 context.Context, arg1 *ssm.DescribeAvailablePatchesInput, arg2 ...request.Option) (*ssm.DescribeAvailablePatchesOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1424,7 +1468,7 @@ func (mr *MockSSMClientMockRecorder) DescribeDocumentPermissionRequest(arg0 inte
 }
 
 // DescribeDocumentPermissionWithContext mocks base method
-func (m *MockSSMClient) DescribeDocumentPermissionWithContext(arg0 aws.Context, arg1 *ssm.DescribeDocumentPermissionInput, arg2 ...request.Option) (*ssm.DescribeDocumentPermissionOutput, error) {
+func (m *MockSSMClient) DescribeDocumentPermissionWithContext(arg0 context.Context, arg1 *ssm.DescribeDocumentPermissionInput, arg2 ...request.Option) (*ssm.DescribeDocumentPermissionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1455,7 +1499,7 @@ func (mr *MockSSMClientMockRecorder) DescribeDocumentRequest(arg0 interface{}) *
 }
 
 // DescribeDocumentWithContext mocks base method
-func (m *MockSSMClient) DescribeDocumentWithContext(arg0 aws.Context, arg1 *ssm.DescribeDocumentInput, arg2 ...request.Option) (*ssm.DescribeDocumentOutput, error) {
+func (m *MockSSMClient) DescribeDocumentWithContext(arg0 context.Context, arg1 *ssm.DescribeDocumentInput, arg2 ...request.Option) (*ssm.DescribeDocumentOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1499,7 +1543,7 @@ func (mr *MockSSMClientMockRecorder) DescribeEffectiveInstanceAssociationsReques
 }
 
 // DescribeEffectiveInstanceAssociationsWithContext mocks base method
-func (m *MockSSMClient) DescribeEffectiveInstanceAssociationsWithContext(arg0 aws.Context, arg1 *ssm.DescribeEffectiveInstanceAssociationsInput, arg2 ...request.Option) (*ssm.DescribeEffectiveInstanceAssociationsOutput, error) {
+func (m *MockSSMClient) DescribeEffectiveInstanceAssociationsWithContext(arg0 context.Context, arg1 *ssm.DescribeEffectiveInstanceAssociationsInput, arg2 ...request.Option) (*ssm.DescribeEffectiveInstanceAssociationsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1543,7 +1587,7 @@ func (mr *MockSSMClientMockRecorder) DescribeEffectivePatchesForPatchBaselineReq
 }
 
 // DescribeEffectivePatchesForPatchBaselineWithContext mocks base method
-func (m *MockSSMClient) DescribeEffectivePatchesForPatchBaselineWithContext(arg0 aws.Context, arg1 *ssm.DescribeEffectivePatchesForPatchBaselineInput, arg2 ...request.Option) (*ssm.DescribeEffectivePatchesForPatchBaselineOutput, error) {
+func (m *MockSSMClient) DescribeEffectivePatchesForPatchBaselineWithContext(arg0 context.Context, arg1 *ssm.DescribeEffectivePatchesForPatchBaselineInput, arg2 ...request.Option) (*ssm.DescribeEffectivePatchesForPatchBaselineOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1587,7 +1631,7 @@ func (mr *MockSSMClientMockRecorder) DescribeInstanceAssociationsStatusRequest(a
 }
 
 // DescribeInstanceAssociationsStatusWithContext mocks base method
-func (m *MockSSMClient) DescribeInstanceAssociationsStatusWithContext(arg0 aws.Context, arg1 *ssm.DescribeInstanceAssociationsStatusInput, arg2 ...request.Option) (*ssm.DescribeInstanceAssociationsStatusOutput, error) {
+func (m *MockSSMClient) DescribeInstanceAssociationsStatusWithContext(arg0 context.Context, arg1 *ssm.DescribeInstanceAssociationsStatusInput, arg2 ...request.Option) (*ssm.DescribeInstanceAssociationsStatusOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1630,7 +1674,7 @@ func (mr *MockSSMClientMockRecorder) DescribeInstanceInformationPages(arg0, arg1
 }
 
 // DescribeInstanceInformationPagesWithContext mocks base method
-func (m *MockSSMClient) DescribeInstanceInformationPagesWithContext(arg0 aws.Context, arg1 *ssm.DescribeInstanceInformationInput, arg2 func(*ssm.DescribeInstanceInformationOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockSSMClient) DescribeInstanceInformationPagesWithContext(arg0 context.Context, arg1 *ssm.DescribeInstanceInformationInput, arg2 func(*ssm.DescribeInstanceInformationOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -1660,7 +1704,7 @@ func (mr *MockSSMClientMockRecorder) DescribeInstanceInformationRequest(arg0 int
 }
 
 // DescribeInstanceInformationWithContext mocks base method
-func (m *MockSSMClient) DescribeInstanceInformationWithContext(arg0 aws.Context, arg1 *ssm.DescribeInstanceInformationInput, arg2 ...request.Option) (*ssm.DescribeInstanceInformationOutput, error) {
+func (m *MockSSMClient) DescribeInstanceInformationWithContext(arg0 context.Context, arg1 *ssm.DescribeInstanceInformationInput, arg2 ...request.Option) (*ssm.DescribeInstanceInformationOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1717,7 +1761,7 @@ func (mr *MockSSMClientMockRecorder) DescribeInstancePatchStatesForPatchGroupReq
 }
 
 // DescribeInstancePatchStatesForPatchGroupWithContext mocks base method
-func (m *MockSSMClient) DescribeInstancePatchStatesForPatchGroupWithContext(arg0 aws.Context, arg1 *ssm.DescribeInstancePatchStatesForPatchGroupInput, arg2 ...request.Option) (*ssm.DescribeInstancePatchStatesForPatchGroupOutput, error) {
+func (m *MockSSMClient) DescribeInstancePatchStatesForPatchGroupWithContext(arg0 context.Context, arg1 *ssm.DescribeInstancePatchStatesForPatchGroupInput, arg2 ...request.Option) (*ssm.DescribeInstancePatchStatesForPatchGroupOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1748,7 +1792,7 @@ func (mr *MockSSMClientMockRecorder) DescribeInstancePatchStatesRequest(arg0 int
 }
 
 // DescribeInstancePatchStatesWithContext mocks base method
-func (m *MockSSMClient) DescribeInstancePatchStatesWithContext(arg0 aws.Context, arg1 *ssm.DescribeInstancePatchStatesInput, arg2 ...request.Option) (*ssm.DescribeInstancePatchStatesOutput, error) {
+func (m *MockSSMClient) DescribeInstancePatchStatesWithContext(arg0 context.Context, arg1 *ssm.DescribeInstancePatchStatesInput, arg2 ...request.Option) (*ssm.DescribeInstancePatchStatesOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1792,7 +1836,7 @@ func (mr *MockSSMClientMockRecorder) DescribeInstancePatchesRequest(arg0 interfa
 }
 
 // DescribeInstancePatchesWithContext mocks base method
-func (m *MockSSMClient) DescribeInstancePatchesWithContext(arg0 aws.Context, arg1 *ssm.DescribeInstancePatchesInput, arg2 ...request.Option) (*ssm.DescribeInstancePatchesOutput, error) {
+func (m *MockSSMClient) DescribeInstancePatchesWithContext(arg0 context.Context, arg1 *ssm.DescribeInstancePatchesInput, arg2 ...request.Option) (*ssm.DescribeInstancePatchesOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1836,7 +1880,7 @@ func (mr *MockSSMClientMockRecorder) DescribeInventoryDeletionsRequest(arg0 inte
 }
 
 // DescribeInventoryDeletionsWithContext mocks base method
-func (m *MockSSMClient) DescribeInventoryDeletionsWithContext(arg0 aws.Context, arg1 *ssm.DescribeInventoryDeletionsInput, arg2 ...request.Option) (*ssm.DescribeInventoryDeletionsOutput, error) {
+func (m *MockSSMClient) DescribeInventoryDeletionsWithContext(arg0 context.Context, arg1 *ssm.DescribeInventoryDeletionsInput, arg2 ...request.Option) (*ssm.DescribeInventoryDeletionsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1880,7 +1924,7 @@ func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowExecutionTaskInvoc
 }
 
 // DescribeMaintenanceWindowExecutionTaskInvocationsWithContext mocks base method
-func (m *MockSSMClient) DescribeMaintenanceWindowExecutionTaskInvocationsWithContext(arg0 aws.Context, arg1 *ssm.DescribeMaintenanceWindowExecutionTaskInvocationsInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionTaskInvocationsOutput, error) {
+func (m *MockSSMClient) DescribeMaintenanceWindowExecutionTaskInvocationsWithContext(arg0 context.Context, arg1 *ssm.DescribeMaintenanceWindowExecutionTaskInvocationsInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionTaskInvocationsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1924,7 +1968,7 @@ func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowExecutionTasksRequ
 }
 
 // DescribeMaintenanceWindowExecutionTasksWithContext mocks base method
-func (m *MockSSMClient) DescribeMaintenanceWindowExecutionTasksWithContext(arg0 aws.Context, arg1 *ssm.DescribeMaintenanceWindowExecutionTasksInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionTasksOutput, error) {
+func (m *MockSSMClient) DescribeMaintenanceWindowExecutionTasksWithContext(arg0 context.Context, arg1 *ssm.DescribeMaintenanceWindowExecutionTasksInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionTasksOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1968,7 +2012,7 @@ func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowExecutionsRequest(
 }
 
 // DescribeMaintenanceWindowExecutionsWithContext mocks base method
-func (m *MockSSMClient) DescribeMaintenanceWindowExecutionsWithContext(arg0 aws.Context, arg1 *ssm.DescribeMaintenanceWindowExecutionsInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionsOutput, error) {
+func (m *MockSSMClient) DescribeMaintenanceWindowExecutionsWithContext(arg0 context.Context, arg1 *ssm.DescribeMaintenanceWindowExecutionsInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2012,7 +2056,7 @@ func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowScheduleRequest(ar
 }
 
 // DescribeMaintenanceWindowScheduleWithContext mocks base method
-func (m *MockSSMClient) DescribeMaintenanceWindowScheduleWithContext(arg0 aws.Context, arg1 *ssm.DescribeMaintenanceWindowScheduleInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowScheduleOutput, error) {
+func (m *MockSSMClient) DescribeMaintenanceWindowScheduleWithContext(arg0 context.Context, arg1 *ssm.DescribeMaintenanceWindowScheduleInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowScheduleOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2056,7 +2100,7 @@ func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowTargetsRequest(arg
 }
 
 // DescribeMaintenanceWindowTargetsWithContext mocks base method
-func (m *MockSSMClient) DescribeMaintenanceWindowTargetsWithContext(arg0 aws.Context, arg1 *ssm.DescribeMaintenanceWindowTargetsInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowTargetsOutput, error) {
+func (m *MockSSMClient) DescribeMaintenanceWindowTargetsWithContext(arg0 context.Context, arg1 *ssm.DescribeMaintenanceWindowTargetsInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowTargetsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2100,7 +2144,7 @@ func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowTasksRequest(arg0 
 }
 
 // DescribeMaintenanceWindowTasksWithContext mocks base method
-func (m *MockSSMClient) DescribeMaintenanceWindowTasksWithContext(arg0 aws.Context, arg1 *ssm.DescribeMaintenanceWindowTasksInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowTasksOutput, error) {
+func (m *MockSSMClient) DescribeMaintenanceWindowTasksWithContext(arg0 context.Context, arg1 *ssm.DescribeMaintenanceWindowTasksInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowTasksOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2157,7 +2201,7 @@ func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowsForTargetRequest(
 }
 
 // DescribeMaintenanceWindowsForTargetWithContext mocks base method
-func (m *MockSSMClient) DescribeMaintenanceWindowsForTargetWithContext(arg0 aws.Context, arg1 *ssm.DescribeMaintenanceWindowsForTargetInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowsForTargetOutput, error) {
+func (m *MockSSMClient) DescribeMaintenanceWindowsForTargetWithContext(arg0 context.Context, arg1 *ssm.DescribeMaintenanceWindowsForTargetInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowsForTargetOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2188,7 +2232,7 @@ func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowsRequest(arg0 inte
 }
 
 // DescribeMaintenanceWindowsWithContext mocks base method
-func (m *MockSSMClient) DescribeMaintenanceWindowsWithContext(arg0 aws.Context, arg1 *ssm.DescribeMaintenanceWindowsInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowsOutput, error) {
+func (m *MockSSMClient) DescribeMaintenanceWindowsWithContext(arg0 context.Context, arg1 *ssm.DescribeMaintenanceWindowsInput, arg2 ...request.Option) (*ssm.DescribeMaintenanceWindowsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2203,6 +2247,50 @@ func (m *MockSSMClient) DescribeMaintenanceWindowsWithContext(arg0 aws.Context, 
 func (mr *MockSSMClientMockRecorder) DescribeMaintenanceWindowsWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeMaintenanceWindowsWithContext", reflect.TypeOf((*MockSSMClient)(nil).DescribeMaintenanceWindowsWithContext), varargs...)
+}
+
+// DescribeOpsItems mocks base method
+func (m *MockSSMClient) DescribeOpsItems(arg0 *ssm.DescribeOpsItemsInput) (*ssm.DescribeOpsItemsOutput, error) {
+	ret := m.ctrl.Call(m, "DescribeOpsItems", arg0)
+	ret0, _ := ret[0].(*ssm.DescribeOpsItemsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeOpsItems indicates an expected call of DescribeOpsItems
+func (mr *MockSSMClientMockRecorder) DescribeOpsItems(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeOpsItems", reflect.TypeOf((*MockSSMClient)(nil).DescribeOpsItems), arg0)
+}
+
+// DescribeOpsItemsRequest mocks base method
+func (m *MockSSMClient) DescribeOpsItemsRequest(arg0 *ssm.DescribeOpsItemsInput) (*request.Request, *ssm.DescribeOpsItemsOutput) {
+	ret := m.ctrl.Call(m, "DescribeOpsItemsRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.DescribeOpsItemsOutput)
+	return ret0, ret1
+}
+
+// DescribeOpsItemsRequest indicates an expected call of DescribeOpsItemsRequest
+func (mr *MockSSMClientMockRecorder) DescribeOpsItemsRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeOpsItemsRequest", reflect.TypeOf((*MockSSMClient)(nil).DescribeOpsItemsRequest), arg0)
+}
+
+// DescribeOpsItemsWithContext mocks base method
+func (m *MockSSMClient) DescribeOpsItemsWithContext(arg0 context.Context, arg1 *ssm.DescribeOpsItemsInput, arg2 ...request.Option) (*ssm.DescribeOpsItemsOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeOpsItemsWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.DescribeOpsItemsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeOpsItemsWithContext indicates an expected call of DescribeOpsItemsWithContext
+func (mr *MockSSMClientMockRecorder) DescribeOpsItemsWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeOpsItemsWithContext", reflect.TypeOf((*MockSSMClient)(nil).DescribeOpsItemsWithContext), varargs...)
 }
 
 // DescribeParameters mocks base method
@@ -2231,7 +2319,7 @@ func (mr *MockSSMClientMockRecorder) DescribeParametersPages(arg0, arg1 interfac
 }
 
 // DescribeParametersPagesWithContext mocks base method
-func (m *MockSSMClient) DescribeParametersPagesWithContext(arg0 aws.Context, arg1 *ssm.DescribeParametersInput, arg2 func(*ssm.DescribeParametersOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockSSMClient) DescribeParametersPagesWithContext(arg0 context.Context, arg1 *ssm.DescribeParametersInput, arg2 func(*ssm.DescribeParametersOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -2261,7 +2349,7 @@ func (mr *MockSSMClientMockRecorder) DescribeParametersRequest(arg0 interface{})
 }
 
 // DescribeParametersWithContext mocks base method
-func (m *MockSSMClient) DescribeParametersWithContext(arg0 aws.Context, arg1 *ssm.DescribeParametersInput, arg2 ...request.Option) (*ssm.DescribeParametersOutput, error) {
+func (m *MockSSMClient) DescribeParametersWithContext(arg0 context.Context, arg1 *ssm.DescribeParametersInput, arg2 ...request.Option) (*ssm.DescribeParametersOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2305,7 +2393,7 @@ func (mr *MockSSMClientMockRecorder) DescribePatchBaselinesRequest(arg0 interfac
 }
 
 // DescribePatchBaselinesWithContext mocks base method
-func (m *MockSSMClient) DescribePatchBaselinesWithContext(arg0 aws.Context, arg1 *ssm.DescribePatchBaselinesInput, arg2 ...request.Option) (*ssm.DescribePatchBaselinesOutput, error) {
+func (m *MockSSMClient) DescribePatchBaselinesWithContext(arg0 context.Context, arg1 *ssm.DescribePatchBaselinesInput, arg2 ...request.Option) (*ssm.DescribePatchBaselinesOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2349,7 +2437,7 @@ func (mr *MockSSMClientMockRecorder) DescribePatchGroupStateRequest(arg0 interfa
 }
 
 // DescribePatchGroupStateWithContext mocks base method
-func (m *MockSSMClient) DescribePatchGroupStateWithContext(arg0 aws.Context, arg1 *ssm.DescribePatchGroupStateInput, arg2 ...request.Option) (*ssm.DescribePatchGroupStateOutput, error) {
+func (m *MockSSMClient) DescribePatchGroupStateWithContext(arg0 context.Context, arg1 *ssm.DescribePatchGroupStateInput, arg2 ...request.Option) (*ssm.DescribePatchGroupStateOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2393,7 +2481,7 @@ func (mr *MockSSMClientMockRecorder) DescribePatchGroupsRequest(arg0 interface{}
 }
 
 // DescribePatchGroupsWithContext mocks base method
-func (m *MockSSMClient) DescribePatchGroupsWithContext(arg0 aws.Context, arg1 *ssm.DescribePatchGroupsInput, arg2 ...request.Option) (*ssm.DescribePatchGroupsOutput, error) {
+func (m *MockSSMClient) DescribePatchGroupsWithContext(arg0 context.Context, arg1 *ssm.DescribePatchGroupsInput, arg2 ...request.Option) (*ssm.DescribePatchGroupsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2408,6 +2496,50 @@ func (m *MockSSMClient) DescribePatchGroupsWithContext(arg0 aws.Context, arg1 *s
 func (mr *MockSSMClientMockRecorder) DescribePatchGroupsWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribePatchGroupsWithContext", reflect.TypeOf((*MockSSMClient)(nil).DescribePatchGroupsWithContext), varargs...)
+}
+
+// DescribePatchProperties mocks base method
+func (m *MockSSMClient) DescribePatchProperties(arg0 *ssm.DescribePatchPropertiesInput) (*ssm.DescribePatchPropertiesOutput, error) {
+	ret := m.ctrl.Call(m, "DescribePatchProperties", arg0)
+	ret0, _ := ret[0].(*ssm.DescribePatchPropertiesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribePatchProperties indicates an expected call of DescribePatchProperties
+func (mr *MockSSMClientMockRecorder) DescribePatchProperties(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribePatchProperties", reflect.TypeOf((*MockSSMClient)(nil).DescribePatchProperties), arg0)
+}
+
+// DescribePatchPropertiesRequest mocks base method
+func (m *MockSSMClient) DescribePatchPropertiesRequest(arg0 *ssm.DescribePatchPropertiesInput) (*request.Request, *ssm.DescribePatchPropertiesOutput) {
+	ret := m.ctrl.Call(m, "DescribePatchPropertiesRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.DescribePatchPropertiesOutput)
+	return ret0, ret1
+}
+
+// DescribePatchPropertiesRequest indicates an expected call of DescribePatchPropertiesRequest
+func (mr *MockSSMClientMockRecorder) DescribePatchPropertiesRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribePatchPropertiesRequest", reflect.TypeOf((*MockSSMClient)(nil).DescribePatchPropertiesRequest), arg0)
+}
+
+// DescribePatchPropertiesWithContext mocks base method
+func (m *MockSSMClient) DescribePatchPropertiesWithContext(arg0 context.Context, arg1 *ssm.DescribePatchPropertiesInput, arg2 ...request.Option) (*ssm.DescribePatchPropertiesOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribePatchPropertiesWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.DescribePatchPropertiesOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribePatchPropertiesWithContext indicates an expected call of DescribePatchPropertiesWithContext
+func (mr *MockSSMClientMockRecorder) DescribePatchPropertiesWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribePatchPropertiesWithContext", reflect.TypeOf((*MockSSMClient)(nil).DescribePatchPropertiesWithContext), varargs...)
 }
 
 // DescribeSessions mocks base method
@@ -2437,7 +2569,7 @@ func (mr *MockSSMClientMockRecorder) DescribeSessionsRequest(arg0 interface{}) *
 }
 
 // DescribeSessionsWithContext mocks base method
-func (m *MockSSMClient) DescribeSessionsWithContext(arg0 aws.Context, arg1 *ssm.DescribeSessionsInput, arg2 ...request.Option) (*ssm.DescribeSessionsOutput, error) {
+func (m *MockSSMClient) DescribeSessionsWithContext(arg0 context.Context, arg1 *ssm.DescribeSessionsInput, arg2 ...request.Option) (*ssm.DescribeSessionsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2481,7 +2613,7 @@ func (mr *MockSSMClientMockRecorder) GetAutomationExecutionRequest(arg0 interfac
 }
 
 // GetAutomationExecutionWithContext mocks base method
-func (m *MockSSMClient) GetAutomationExecutionWithContext(arg0 aws.Context, arg1 *ssm.GetAutomationExecutionInput, arg2 ...request.Option) (*ssm.GetAutomationExecutionOutput, error) {
+func (m *MockSSMClient) GetAutomationExecutionWithContext(arg0 context.Context, arg1 *ssm.GetAutomationExecutionInput, arg2 ...request.Option) (*ssm.GetAutomationExecutionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2525,7 +2657,7 @@ func (mr *MockSSMClientMockRecorder) GetCommandInvocationRequest(arg0 interface{
 }
 
 // GetCommandInvocationWithContext mocks base method
-func (m *MockSSMClient) GetCommandInvocationWithContext(arg0 aws.Context, arg1 *ssm.GetCommandInvocationInput, arg2 ...request.Option) (*ssm.GetCommandInvocationOutput, error) {
+func (m *MockSSMClient) GetCommandInvocationWithContext(arg0 context.Context, arg1 *ssm.GetCommandInvocationInput, arg2 ...request.Option) (*ssm.GetCommandInvocationOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2569,7 +2701,7 @@ func (mr *MockSSMClientMockRecorder) GetConnectionStatusRequest(arg0 interface{}
 }
 
 // GetConnectionStatusWithContext mocks base method
-func (m *MockSSMClient) GetConnectionStatusWithContext(arg0 aws.Context, arg1 *ssm.GetConnectionStatusInput, arg2 ...request.Option) (*ssm.GetConnectionStatusOutput, error) {
+func (m *MockSSMClient) GetConnectionStatusWithContext(arg0 context.Context, arg1 *ssm.GetConnectionStatusInput, arg2 ...request.Option) (*ssm.GetConnectionStatusOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2613,7 +2745,7 @@ func (mr *MockSSMClientMockRecorder) GetDefaultPatchBaselineRequest(arg0 interfa
 }
 
 // GetDefaultPatchBaselineWithContext mocks base method
-func (m *MockSSMClient) GetDefaultPatchBaselineWithContext(arg0 aws.Context, arg1 *ssm.GetDefaultPatchBaselineInput, arg2 ...request.Option) (*ssm.GetDefaultPatchBaselineOutput, error) {
+func (m *MockSSMClient) GetDefaultPatchBaselineWithContext(arg0 context.Context, arg1 *ssm.GetDefaultPatchBaselineInput, arg2 ...request.Option) (*ssm.GetDefaultPatchBaselineOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2657,7 +2789,7 @@ func (mr *MockSSMClientMockRecorder) GetDeployablePatchSnapshotForInstanceReques
 }
 
 // GetDeployablePatchSnapshotForInstanceWithContext mocks base method
-func (m *MockSSMClient) GetDeployablePatchSnapshotForInstanceWithContext(arg0 aws.Context, arg1 *ssm.GetDeployablePatchSnapshotForInstanceInput, arg2 ...request.Option) (*ssm.GetDeployablePatchSnapshotForInstanceOutput, error) {
+func (m *MockSSMClient) GetDeployablePatchSnapshotForInstanceWithContext(arg0 context.Context, arg1 *ssm.GetDeployablePatchSnapshotForInstanceInput, arg2 ...request.Option) (*ssm.GetDeployablePatchSnapshotForInstanceOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2701,7 +2833,7 @@ func (mr *MockSSMClientMockRecorder) GetDocumentRequest(arg0 interface{}) *gomoc
 }
 
 // GetDocumentWithContext mocks base method
-func (m *MockSSMClient) GetDocumentWithContext(arg0 aws.Context, arg1 *ssm.GetDocumentInput, arg2 ...request.Option) (*ssm.GetDocumentOutput, error) {
+func (m *MockSSMClient) GetDocumentWithContext(arg0 context.Context, arg1 *ssm.GetDocumentInput, arg2 ...request.Option) (*ssm.GetDocumentOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2771,7 +2903,7 @@ func (mr *MockSSMClientMockRecorder) GetInventorySchemaRequest(arg0 interface{})
 }
 
 // GetInventorySchemaWithContext mocks base method
-func (m *MockSSMClient) GetInventorySchemaWithContext(arg0 aws.Context, arg1 *ssm.GetInventorySchemaInput, arg2 ...request.Option) (*ssm.GetInventorySchemaOutput, error) {
+func (m *MockSSMClient) GetInventorySchemaWithContext(arg0 context.Context, arg1 *ssm.GetInventorySchemaInput, arg2 ...request.Option) (*ssm.GetInventorySchemaOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2789,7 +2921,7 @@ func (mr *MockSSMClientMockRecorder) GetInventorySchemaWithContext(arg0, arg1 in
 }
 
 // GetInventoryWithContext mocks base method
-func (m *MockSSMClient) GetInventoryWithContext(arg0 aws.Context, arg1 *ssm.GetInventoryInput, arg2 ...request.Option) (*ssm.GetInventoryOutput, error) {
+func (m *MockSSMClient) GetInventoryWithContext(arg0 context.Context, arg1 *ssm.GetInventoryInput, arg2 ...request.Option) (*ssm.GetInventoryOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2885,7 +3017,7 @@ func (mr *MockSSMClientMockRecorder) GetMaintenanceWindowExecutionTaskInvocation
 }
 
 // GetMaintenanceWindowExecutionTaskInvocationWithContext mocks base method
-func (m *MockSSMClient) GetMaintenanceWindowExecutionTaskInvocationWithContext(arg0 aws.Context, arg1 *ssm.GetMaintenanceWindowExecutionTaskInvocationInput, arg2 ...request.Option) (*ssm.GetMaintenanceWindowExecutionTaskInvocationOutput, error) {
+func (m *MockSSMClient) GetMaintenanceWindowExecutionTaskInvocationWithContext(arg0 context.Context, arg1 *ssm.GetMaintenanceWindowExecutionTaskInvocationInput, arg2 ...request.Option) (*ssm.GetMaintenanceWindowExecutionTaskInvocationOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2916,7 +3048,7 @@ func (mr *MockSSMClientMockRecorder) GetMaintenanceWindowExecutionTaskRequest(ar
 }
 
 // GetMaintenanceWindowExecutionTaskWithContext mocks base method
-func (m *MockSSMClient) GetMaintenanceWindowExecutionTaskWithContext(arg0 aws.Context, arg1 *ssm.GetMaintenanceWindowExecutionTaskInput, arg2 ...request.Option) (*ssm.GetMaintenanceWindowExecutionTaskOutput, error) {
+func (m *MockSSMClient) GetMaintenanceWindowExecutionTaskWithContext(arg0 context.Context, arg1 *ssm.GetMaintenanceWindowExecutionTaskInput, arg2 ...request.Option) (*ssm.GetMaintenanceWindowExecutionTaskOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2934,7 +3066,7 @@ func (mr *MockSSMClientMockRecorder) GetMaintenanceWindowExecutionTaskWithContex
 }
 
 // GetMaintenanceWindowExecutionWithContext mocks base method
-func (m *MockSSMClient) GetMaintenanceWindowExecutionWithContext(arg0 aws.Context, arg1 *ssm.GetMaintenanceWindowExecutionInput, arg2 ...request.Option) (*ssm.GetMaintenanceWindowExecutionOutput, error) {
+func (m *MockSSMClient) GetMaintenanceWindowExecutionWithContext(arg0 context.Context, arg1 *ssm.GetMaintenanceWindowExecutionInput, arg2 ...request.Option) (*ssm.GetMaintenanceWindowExecutionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -2991,7 +3123,7 @@ func (mr *MockSSMClientMockRecorder) GetMaintenanceWindowTaskRequest(arg0 interf
 }
 
 // GetMaintenanceWindowTaskWithContext mocks base method
-func (m *MockSSMClient) GetMaintenanceWindowTaskWithContext(arg0 aws.Context, arg1 *ssm.GetMaintenanceWindowTaskInput, arg2 ...request.Option) (*ssm.GetMaintenanceWindowTaskOutput, error) {
+func (m *MockSSMClient) GetMaintenanceWindowTaskWithContext(arg0 context.Context, arg1 *ssm.GetMaintenanceWindowTaskInput, arg2 ...request.Option) (*ssm.GetMaintenanceWindowTaskOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3009,7 +3141,7 @@ func (mr *MockSSMClientMockRecorder) GetMaintenanceWindowTaskWithContext(arg0, a
 }
 
 // GetMaintenanceWindowWithContext mocks base method
-func (m *MockSSMClient) GetMaintenanceWindowWithContext(arg0 aws.Context, arg1 *ssm.GetMaintenanceWindowInput, arg2 ...request.Option) (*ssm.GetMaintenanceWindowOutput, error) {
+func (m *MockSSMClient) GetMaintenanceWindowWithContext(arg0 context.Context, arg1 *ssm.GetMaintenanceWindowInput, arg2 ...request.Option) (*ssm.GetMaintenanceWindowOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3024,6 +3156,94 @@ func (m *MockSSMClient) GetMaintenanceWindowWithContext(arg0 aws.Context, arg1 *
 func (mr *MockSSMClientMockRecorder) GetMaintenanceWindowWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetMaintenanceWindowWithContext", reflect.TypeOf((*MockSSMClient)(nil).GetMaintenanceWindowWithContext), varargs...)
+}
+
+// GetOpsItem mocks base method
+func (m *MockSSMClient) GetOpsItem(arg0 *ssm.GetOpsItemInput) (*ssm.GetOpsItemOutput, error) {
+	ret := m.ctrl.Call(m, "GetOpsItem", arg0)
+	ret0, _ := ret[0].(*ssm.GetOpsItemOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetOpsItem indicates an expected call of GetOpsItem
+func (mr *MockSSMClientMockRecorder) GetOpsItem(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOpsItem", reflect.TypeOf((*MockSSMClient)(nil).GetOpsItem), arg0)
+}
+
+// GetOpsItemRequest mocks base method
+func (m *MockSSMClient) GetOpsItemRequest(arg0 *ssm.GetOpsItemInput) (*request.Request, *ssm.GetOpsItemOutput) {
+	ret := m.ctrl.Call(m, "GetOpsItemRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.GetOpsItemOutput)
+	return ret0, ret1
+}
+
+// GetOpsItemRequest indicates an expected call of GetOpsItemRequest
+func (mr *MockSSMClientMockRecorder) GetOpsItemRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOpsItemRequest", reflect.TypeOf((*MockSSMClient)(nil).GetOpsItemRequest), arg0)
+}
+
+// GetOpsItemWithContext mocks base method
+func (m *MockSSMClient) GetOpsItemWithContext(arg0 context.Context, arg1 *ssm.GetOpsItemInput, arg2 ...request.Option) (*ssm.GetOpsItemOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetOpsItemWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.GetOpsItemOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetOpsItemWithContext indicates an expected call of GetOpsItemWithContext
+func (mr *MockSSMClientMockRecorder) GetOpsItemWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOpsItemWithContext", reflect.TypeOf((*MockSSMClient)(nil).GetOpsItemWithContext), varargs...)
+}
+
+// GetOpsSummary mocks base method
+func (m *MockSSMClient) GetOpsSummary(arg0 *ssm.GetOpsSummaryInput) (*ssm.GetOpsSummaryOutput, error) {
+	ret := m.ctrl.Call(m, "GetOpsSummary", arg0)
+	ret0, _ := ret[0].(*ssm.GetOpsSummaryOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetOpsSummary indicates an expected call of GetOpsSummary
+func (mr *MockSSMClientMockRecorder) GetOpsSummary(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOpsSummary", reflect.TypeOf((*MockSSMClient)(nil).GetOpsSummary), arg0)
+}
+
+// GetOpsSummaryRequest mocks base method
+func (m *MockSSMClient) GetOpsSummaryRequest(arg0 *ssm.GetOpsSummaryInput) (*request.Request, *ssm.GetOpsSummaryOutput) {
+	ret := m.ctrl.Call(m, "GetOpsSummaryRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.GetOpsSummaryOutput)
+	return ret0, ret1
+}
+
+// GetOpsSummaryRequest indicates an expected call of GetOpsSummaryRequest
+func (mr *MockSSMClientMockRecorder) GetOpsSummaryRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOpsSummaryRequest", reflect.TypeOf((*MockSSMClient)(nil).GetOpsSummaryRequest), arg0)
+}
+
+// GetOpsSummaryWithContext mocks base method
+func (m *MockSSMClient) GetOpsSummaryWithContext(arg0 context.Context, arg1 *ssm.GetOpsSummaryInput, arg2 ...request.Option) (*ssm.GetOpsSummaryOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetOpsSummaryWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.GetOpsSummaryOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetOpsSummaryWithContext indicates an expected call of GetOpsSummaryWithContext
+func (mr *MockSSMClientMockRecorder) GetOpsSummaryWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOpsSummaryWithContext", reflect.TypeOf((*MockSSMClient)(nil).GetOpsSummaryWithContext), varargs...)
 }
 
 // GetParameter mocks base method
@@ -3065,7 +3285,7 @@ func (mr *MockSSMClientMockRecorder) GetParameterHistoryPages(arg0, arg1 interfa
 }
 
 // GetParameterHistoryPagesWithContext mocks base method
-func (m *MockSSMClient) GetParameterHistoryPagesWithContext(arg0 aws.Context, arg1 *ssm.GetParameterHistoryInput, arg2 func(*ssm.GetParameterHistoryOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockSSMClient) GetParameterHistoryPagesWithContext(arg0 context.Context, arg1 *ssm.GetParameterHistoryInput, arg2 func(*ssm.GetParameterHistoryOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -3095,7 +3315,7 @@ func (mr *MockSSMClientMockRecorder) GetParameterHistoryRequest(arg0 interface{}
 }
 
 // GetParameterHistoryWithContext mocks base method
-func (m *MockSSMClient) GetParameterHistoryWithContext(arg0 aws.Context, arg1 *ssm.GetParameterHistoryInput, arg2 ...request.Option) (*ssm.GetParameterHistoryOutput, error) {
+func (m *MockSSMClient) GetParameterHistoryWithContext(arg0 context.Context, arg1 *ssm.GetParameterHistoryInput, arg2 ...request.Option) (*ssm.GetParameterHistoryOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3126,7 +3346,7 @@ func (mr *MockSSMClientMockRecorder) GetParameterRequest(arg0 interface{}) *gomo
 }
 
 // GetParameterWithContext mocks base method
-func (m *MockSSMClient) GetParameterWithContext(arg0 aws.Context, arg1 *ssm.GetParameterInput, arg2 ...request.Option) (*ssm.GetParameterOutput, error) {
+func (m *MockSSMClient) GetParameterWithContext(arg0 context.Context, arg1 *ssm.GetParameterInput, arg2 ...request.Option) (*ssm.GetParameterOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3182,7 +3402,7 @@ func (mr *MockSSMClientMockRecorder) GetParametersByPathPages(arg0, arg1 interfa
 }
 
 // GetParametersByPathPagesWithContext mocks base method
-func (m *MockSSMClient) GetParametersByPathPagesWithContext(arg0 aws.Context, arg1 *ssm.GetParametersByPathInput, arg2 func(*ssm.GetParametersByPathOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockSSMClient) GetParametersByPathPagesWithContext(arg0 context.Context, arg1 *ssm.GetParametersByPathInput, arg2 func(*ssm.GetParametersByPathOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -3212,7 +3432,7 @@ func (mr *MockSSMClientMockRecorder) GetParametersByPathRequest(arg0 interface{}
 }
 
 // GetParametersByPathWithContext mocks base method
-func (m *MockSSMClient) GetParametersByPathWithContext(arg0 aws.Context, arg1 *ssm.GetParametersByPathInput, arg2 ...request.Option) (*ssm.GetParametersByPathOutput, error) {
+func (m *MockSSMClient) GetParametersByPathWithContext(arg0 context.Context, arg1 *ssm.GetParametersByPathInput, arg2 ...request.Option) (*ssm.GetParametersByPathOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3243,7 +3463,7 @@ func (mr *MockSSMClientMockRecorder) GetParametersRequest(arg0 interface{}) *gom
 }
 
 // GetParametersWithContext mocks base method
-func (m *MockSSMClient) GetParametersWithContext(arg0 aws.Context, arg1 *ssm.GetParametersInput, arg2 ...request.Option) (*ssm.GetParametersOutput, error) {
+func (m *MockSSMClient) GetParametersWithContext(arg0 context.Context, arg1 *ssm.GetParametersInput, arg2 ...request.Option) (*ssm.GetParametersOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3300,7 +3520,7 @@ func (mr *MockSSMClientMockRecorder) GetPatchBaselineForPatchGroupRequest(arg0 i
 }
 
 // GetPatchBaselineForPatchGroupWithContext mocks base method
-func (m *MockSSMClient) GetPatchBaselineForPatchGroupWithContext(arg0 aws.Context, arg1 *ssm.GetPatchBaselineForPatchGroupInput, arg2 ...request.Option) (*ssm.GetPatchBaselineForPatchGroupOutput, error) {
+func (m *MockSSMClient) GetPatchBaselineForPatchGroupWithContext(arg0 context.Context, arg1 *ssm.GetPatchBaselineForPatchGroupInput, arg2 ...request.Option) (*ssm.GetPatchBaselineForPatchGroupOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3331,7 +3551,7 @@ func (mr *MockSSMClientMockRecorder) GetPatchBaselineRequest(arg0 interface{}) *
 }
 
 // GetPatchBaselineWithContext mocks base method
-func (m *MockSSMClient) GetPatchBaselineWithContext(arg0 aws.Context, arg1 *ssm.GetPatchBaselineInput, arg2 ...request.Option) (*ssm.GetPatchBaselineOutput, error) {
+func (m *MockSSMClient) GetPatchBaselineWithContext(arg0 context.Context, arg1 *ssm.GetPatchBaselineInput, arg2 ...request.Option) (*ssm.GetPatchBaselineOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3346,6 +3566,50 @@ func (m *MockSSMClient) GetPatchBaselineWithContext(arg0 aws.Context, arg1 *ssm.
 func (mr *MockSSMClientMockRecorder) GetPatchBaselineWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPatchBaselineWithContext", reflect.TypeOf((*MockSSMClient)(nil).GetPatchBaselineWithContext), varargs...)
+}
+
+// GetServiceSetting mocks base method
+func (m *MockSSMClient) GetServiceSetting(arg0 *ssm.GetServiceSettingInput) (*ssm.GetServiceSettingOutput, error) {
+	ret := m.ctrl.Call(m, "GetServiceSetting", arg0)
+	ret0, _ := ret[0].(*ssm.GetServiceSettingOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetServiceSetting indicates an expected call of GetServiceSetting
+func (mr *MockSSMClientMockRecorder) GetServiceSetting(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetServiceSetting", reflect.TypeOf((*MockSSMClient)(nil).GetServiceSetting), arg0)
+}
+
+// GetServiceSettingRequest mocks base method
+func (m *MockSSMClient) GetServiceSettingRequest(arg0 *ssm.GetServiceSettingInput) (*request.Request, *ssm.GetServiceSettingOutput) {
+	ret := m.ctrl.Call(m, "GetServiceSettingRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.GetServiceSettingOutput)
+	return ret0, ret1
+}
+
+// GetServiceSettingRequest indicates an expected call of GetServiceSettingRequest
+func (mr *MockSSMClientMockRecorder) GetServiceSettingRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetServiceSettingRequest", reflect.TypeOf((*MockSSMClient)(nil).GetServiceSettingRequest), arg0)
+}
+
+// GetServiceSettingWithContext mocks base method
+func (m *MockSSMClient) GetServiceSettingWithContext(arg0 context.Context, arg1 *ssm.GetServiceSettingInput, arg2 ...request.Option) (*ssm.GetServiceSettingOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetServiceSettingWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.GetServiceSettingOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetServiceSettingWithContext indicates an expected call of GetServiceSettingWithContext
+func (mr *MockSSMClientMockRecorder) GetServiceSettingWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetServiceSettingWithContext", reflect.TypeOf((*MockSSMClient)(nil).GetServiceSettingWithContext), varargs...)
 }
 
 // LabelParameterVersion mocks base method
@@ -3375,7 +3639,7 @@ func (mr *MockSSMClientMockRecorder) LabelParameterVersionRequest(arg0 interface
 }
 
 // LabelParameterVersionWithContext mocks base method
-func (m *MockSSMClient) LabelParameterVersionWithContext(arg0 aws.Context, arg1 *ssm.LabelParameterVersionInput, arg2 ...request.Option) (*ssm.LabelParameterVersionOutput, error) {
+func (m *MockSSMClient) LabelParameterVersionWithContext(arg0 context.Context, arg1 *ssm.LabelParameterVersionInput, arg2 ...request.Option) (*ssm.LabelParameterVersionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3419,7 +3683,7 @@ func (mr *MockSSMClientMockRecorder) ListAssociationVersionsRequest(arg0 interfa
 }
 
 // ListAssociationVersionsWithContext mocks base method
-func (m *MockSSMClient) ListAssociationVersionsWithContext(arg0 aws.Context, arg1 *ssm.ListAssociationVersionsInput, arg2 ...request.Option) (*ssm.ListAssociationVersionsOutput, error) {
+func (m *MockSSMClient) ListAssociationVersionsWithContext(arg0 context.Context, arg1 *ssm.ListAssociationVersionsInput, arg2 ...request.Option) (*ssm.ListAssociationVersionsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3462,7 +3726,7 @@ func (mr *MockSSMClientMockRecorder) ListAssociationsPages(arg0, arg1 interface{
 }
 
 // ListAssociationsPagesWithContext mocks base method
-func (m *MockSSMClient) ListAssociationsPagesWithContext(arg0 aws.Context, arg1 *ssm.ListAssociationsInput, arg2 func(*ssm.ListAssociationsOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockSSMClient) ListAssociationsPagesWithContext(arg0 context.Context, arg1 *ssm.ListAssociationsInput, arg2 func(*ssm.ListAssociationsOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -3492,7 +3756,7 @@ func (mr *MockSSMClientMockRecorder) ListAssociationsRequest(arg0 interface{}) *
 }
 
 // ListAssociationsWithContext mocks base method
-func (m *MockSSMClient) ListAssociationsWithContext(arg0 aws.Context, arg1 *ssm.ListAssociationsInput, arg2 ...request.Option) (*ssm.ListAssociationsOutput, error) {
+func (m *MockSSMClient) ListAssociationsWithContext(arg0 context.Context, arg1 *ssm.ListAssociationsInput, arg2 ...request.Option) (*ssm.ListAssociationsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3535,7 +3799,7 @@ func (mr *MockSSMClientMockRecorder) ListCommandInvocationsPages(arg0, arg1 inte
 }
 
 // ListCommandInvocationsPagesWithContext mocks base method
-func (m *MockSSMClient) ListCommandInvocationsPagesWithContext(arg0 aws.Context, arg1 *ssm.ListCommandInvocationsInput, arg2 func(*ssm.ListCommandInvocationsOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockSSMClient) ListCommandInvocationsPagesWithContext(arg0 context.Context, arg1 *ssm.ListCommandInvocationsInput, arg2 func(*ssm.ListCommandInvocationsOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -3565,7 +3829,7 @@ func (mr *MockSSMClientMockRecorder) ListCommandInvocationsRequest(arg0 interfac
 }
 
 // ListCommandInvocationsWithContext mocks base method
-func (m *MockSSMClient) ListCommandInvocationsWithContext(arg0 aws.Context, arg1 *ssm.ListCommandInvocationsInput, arg2 ...request.Option) (*ssm.ListCommandInvocationsOutput, error) {
+func (m *MockSSMClient) ListCommandInvocationsWithContext(arg0 context.Context, arg1 *ssm.ListCommandInvocationsInput, arg2 ...request.Option) (*ssm.ListCommandInvocationsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3608,7 +3872,7 @@ func (mr *MockSSMClientMockRecorder) ListCommandsPages(arg0, arg1 interface{}) *
 }
 
 // ListCommandsPagesWithContext mocks base method
-func (m *MockSSMClient) ListCommandsPagesWithContext(arg0 aws.Context, arg1 *ssm.ListCommandsInput, arg2 func(*ssm.ListCommandsOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockSSMClient) ListCommandsPagesWithContext(arg0 context.Context, arg1 *ssm.ListCommandsInput, arg2 func(*ssm.ListCommandsOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -3638,7 +3902,7 @@ func (mr *MockSSMClientMockRecorder) ListCommandsRequest(arg0 interface{}) *gomo
 }
 
 // ListCommandsWithContext mocks base method
-func (m *MockSSMClient) ListCommandsWithContext(arg0 aws.Context, arg1 *ssm.ListCommandsInput, arg2 ...request.Option) (*ssm.ListCommandsOutput, error) {
+func (m *MockSSMClient) ListCommandsWithContext(arg0 context.Context, arg1 *ssm.ListCommandsInput, arg2 ...request.Option) (*ssm.ListCommandsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3682,7 +3946,7 @@ func (mr *MockSSMClientMockRecorder) ListComplianceItemsRequest(arg0 interface{}
 }
 
 // ListComplianceItemsWithContext mocks base method
-func (m *MockSSMClient) ListComplianceItemsWithContext(arg0 aws.Context, arg1 *ssm.ListComplianceItemsInput, arg2 ...request.Option) (*ssm.ListComplianceItemsOutput, error) {
+func (m *MockSSMClient) ListComplianceItemsWithContext(arg0 context.Context, arg1 *ssm.ListComplianceItemsInput, arg2 ...request.Option) (*ssm.ListComplianceItemsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3726,7 +3990,7 @@ func (mr *MockSSMClientMockRecorder) ListComplianceSummariesRequest(arg0 interfa
 }
 
 // ListComplianceSummariesWithContext mocks base method
-func (m *MockSSMClient) ListComplianceSummariesWithContext(arg0 aws.Context, arg1 *ssm.ListComplianceSummariesInput, arg2 ...request.Option) (*ssm.ListComplianceSummariesOutput, error) {
+func (m *MockSSMClient) ListComplianceSummariesWithContext(arg0 context.Context, arg1 *ssm.ListComplianceSummariesInput, arg2 ...request.Option) (*ssm.ListComplianceSummariesOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3770,7 +4034,7 @@ func (mr *MockSSMClientMockRecorder) ListDocumentVersionsRequest(arg0 interface{
 }
 
 // ListDocumentVersionsWithContext mocks base method
-func (m *MockSSMClient) ListDocumentVersionsWithContext(arg0 aws.Context, arg1 *ssm.ListDocumentVersionsInput, arg2 ...request.Option) (*ssm.ListDocumentVersionsOutput, error) {
+func (m *MockSSMClient) ListDocumentVersionsWithContext(arg0 context.Context, arg1 *ssm.ListDocumentVersionsInput, arg2 ...request.Option) (*ssm.ListDocumentVersionsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3813,7 +4077,7 @@ func (mr *MockSSMClientMockRecorder) ListDocumentsPages(arg0, arg1 interface{}) 
 }
 
 // ListDocumentsPagesWithContext mocks base method
-func (m *MockSSMClient) ListDocumentsPagesWithContext(arg0 aws.Context, arg1 *ssm.ListDocumentsInput, arg2 func(*ssm.ListDocumentsOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockSSMClient) ListDocumentsPagesWithContext(arg0 context.Context, arg1 *ssm.ListDocumentsInput, arg2 func(*ssm.ListDocumentsOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -3843,7 +4107,7 @@ func (mr *MockSSMClientMockRecorder) ListDocumentsRequest(arg0 interface{}) *gom
 }
 
 // ListDocumentsWithContext mocks base method
-func (m *MockSSMClient) ListDocumentsWithContext(arg0 aws.Context, arg1 *ssm.ListDocumentsInput, arg2 ...request.Option) (*ssm.ListDocumentsOutput, error) {
+func (m *MockSSMClient) ListDocumentsWithContext(arg0 context.Context, arg1 *ssm.ListDocumentsInput, arg2 ...request.Option) (*ssm.ListDocumentsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3887,7 +4151,7 @@ func (mr *MockSSMClientMockRecorder) ListInventoryEntriesRequest(arg0 interface{
 }
 
 // ListInventoryEntriesWithContext mocks base method
-func (m *MockSSMClient) ListInventoryEntriesWithContext(arg0 aws.Context, arg1 *ssm.ListInventoryEntriesInput, arg2 ...request.Option) (*ssm.ListInventoryEntriesOutput, error) {
+func (m *MockSSMClient) ListInventoryEntriesWithContext(arg0 context.Context, arg1 *ssm.ListInventoryEntriesInput, arg2 ...request.Option) (*ssm.ListInventoryEntriesOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3931,7 +4195,7 @@ func (mr *MockSSMClientMockRecorder) ListResourceComplianceSummariesRequest(arg0
 }
 
 // ListResourceComplianceSummariesWithContext mocks base method
-func (m *MockSSMClient) ListResourceComplianceSummariesWithContext(arg0 aws.Context, arg1 *ssm.ListResourceComplianceSummariesInput, arg2 ...request.Option) (*ssm.ListResourceComplianceSummariesOutput, error) {
+func (m *MockSSMClient) ListResourceComplianceSummariesWithContext(arg0 context.Context, arg1 *ssm.ListResourceComplianceSummariesInput, arg2 ...request.Option) (*ssm.ListResourceComplianceSummariesOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -3975,7 +4239,7 @@ func (mr *MockSSMClientMockRecorder) ListResourceDataSyncRequest(arg0 interface{
 }
 
 // ListResourceDataSyncWithContext mocks base method
-func (m *MockSSMClient) ListResourceDataSyncWithContext(arg0 aws.Context, arg1 *ssm.ListResourceDataSyncInput, arg2 ...request.Option) (*ssm.ListResourceDataSyncOutput, error) {
+func (m *MockSSMClient) ListResourceDataSyncWithContext(arg0 context.Context, arg1 *ssm.ListResourceDataSyncInput, arg2 ...request.Option) (*ssm.ListResourceDataSyncOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4019,7 +4283,7 @@ func (mr *MockSSMClientMockRecorder) ListTagsForResourceRequest(arg0 interface{}
 }
 
 // ListTagsForResourceWithContext mocks base method
-func (m *MockSSMClient) ListTagsForResourceWithContext(arg0 aws.Context, arg1 *ssm.ListTagsForResourceInput, arg2 ...request.Option) (*ssm.ListTagsForResourceOutput, error) {
+func (m *MockSSMClient) ListTagsForResourceWithContext(arg0 context.Context, arg1 *ssm.ListTagsForResourceInput, arg2 ...request.Option) (*ssm.ListTagsForResourceOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4063,7 +4327,7 @@ func (mr *MockSSMClientMockRecorder) ModifyDocumentPermissionRequest(arg0 interf
 }
 
 // ModifyDocumentPermissionWithContext mocks base method
-func (m *MockSSMClient) ModifyDocumentPermissionWithContext(arg0 aws.Context, arg1 *ssm.ModifyDocumentPermissionInput, arg2 ...request.Option) (*ssm.ModifyDocumentPermissionOutput, error) {
+func (m *MockSSMClient) ModifyDocumentPermissionWithContext(arg0 context.Context, arg1 *ssm.ModifyDocumentPermissionInput, arg2 ...request.Option) (*ssm.ModifyDocumentPermissionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4107,7 +4371,7 @@ func (mr *MockSSMClientMockRecorder) PutComplianceItemsRequest(arg0 interface{})
 }
 
 // PutComplianceItemsWithContext mocks base method
-func (m *MockSSMClient) PutComplianceItemsWithContext(arg0 aws.Context, arg1 *ssm.PutComplianceItemsInput, arg2 ...request.Option) (*ssm.PutComplianceItemsOutput, error) {
+func (m *MockSSMClient) PutComplianceItemsWithContext(arg0 context.Context, arg1 *ssm.PutComplianceItemsInput, arg2 ...request.Option) (*ssm.PutComplianceItemsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4151,7 +4415,7 @@ func (mr *MockSSMClientMockRecorder) PutInventoryRequest(arg0 interface{}) *gomo
 }
 
 // PutInventoryWithContext mocks base method
-func (m *MockSSMClient) PutInventoryWithContext(arg0 aws.Context, arg1 *ssm.PutInventoryInput, arg2 ...request.Option) (*ssm.PutInventoryOutput, error) {
+func (m *MockSSMClient) PutInventoryWithContext(arg0 context.Context, arg1 *ssm.PutInventoryInput, arg2 ...request.Option) (*ssm.PutInventoryOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4195,7 +4459,7 @@ func (mr *MockSSMClientMockRecorder) PutParameterRequest(arg0 interface{}) *gomo
 }
 
 // PutParameterWithContext mocks base method
-func (m *MockSSMClient) PutParameterWithContext(arg0 aws.Context, arg1 *ssm.PutParameterInput, arg2 ...request.Option) (*ssm.PutParameterOutput, error) {
+func (m *MockSSMClient) PutParameterWithContext(arg0 context.Context, arg1 *ssm.PutParameterInput, arg2 ...request.Option) (*ssm.PutParameterOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4239,7 +4503,7 @@ func (mr *MockSSMClientMockRecorder) RegisterDefaultPatchBaselineRequest(arg0 in
 }
 
 // RegisterDefaultPatchBaselineWithContext mocks base method
-func (m *MockSSMClient) RegisterDefaultPatchBaselineWithContext(arg0 aws.Context, arg1 *ssm.RegisterDefaultPatchBaselineInput, arg2 ...request.Option) (*ssm.RegisterDefaultPatchBaselineOutput, error) {
+func (m *MockSSMClient) RegisterDefaultPatchBaselineWithContext(arg0 context.Context, arg1 *ssm.RegisterDefaultPatchBaselineInput, arg2 ...request.Option) (*ssm.RegisterDefaultPatchBaselineOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4283,7 +4547,7 @@ func (mr *MockSSMClientMockRecorder) RegisterPatchBaselineForPatchGroupRequest(a
 }
 
 // RegisterPatchBaselineForPatchGroupWithContext mocks base method
-func (m *MockSSMClient) RegisterPatchBaselineForPatchGroupWithContext(arg0 aws.Context, arg1 *ssm.RegisterPatchBaselineForPatchGroupInput, arg2 ...request.Option) (*ssm.RegisterPatchBaselineForPatchGroupOutput, error) {
+func (m *MockSSMClient) RegisterPatchBaselineForPatchGroupWithContext(arg0 context.Context, arg1 *ssm.RegisterPatchBaselineForPatchGroupInput, arg2 ...request.Option) (*ssm.RegisterPatchBaselineForPatchGroupOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4327,7 +4591,7 @@ func (mr *MockSSMClientMockRecorder) RegisterTargetWithMaintenanceWindowRequest(
 }
 
 // RegisterTargetWithMaintenanceWindowWithContext mocks base method
-func (m *MockSSMClient) RegisterTargetWithMaintenanceWindowWithContext(arg0 aws.Context, arg1 *ssm.RegisterTargetWithMaintenanceWindowInput, arg2 ...request.Option) (*ssm.RegisterTargetWithMaintenanceWindowOutput, error) {
+func (m *MockSSMClient) RegisterTargetWithMaintenanceWindowWithContext(arg0 context.Context, arg1 *ssm.RegisterTargetWithMaintenanceWindowInput, arg2 ...request.Option) (*ssm.RegisterTargetWithMaintenanceWindowOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4371,7 +4635,7 @@ func (mr *MockSSMClientMockRecorder) RegisterTaskWithMaintenanceWindowRequest(ar
 }
 
 // RegisterTaskWithMaintenanceWindowWithContext mocks base method
-func (m *MockSSMClient) RegisterTaskWithMaintenanceWindowWithContext(arg0 aws.Context, arg1 *ssm.RegisterTaskWithMaintenanceWindowInput, arg2 ...request.Option) (*ssm.RegisterTaskWithMaintenanceWindowOutput, error) {
+func (m *MockSSMClient) RegisterTaskWithMaintenanceWindowWithContext(arg0 context.Context, arg1 *ssm.RegisterTaskWithMaintenanceWindowInput, arg2 ...request.Option) (*ssm.RegisterTaskWithMaintenanceWindowOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4415,7 +4679,7 @@ func (mr *MockSSMClientMockRecorder) RemoveTagsFromResourceRequest(arg0 interfac
 }
 
 // RemoveTagsFromResourceWithContext mocks base method
-func (m *MockSSMClient) RemoveTagsFromResourceWithContext(arg0 aws.Context, arg1 *ssm.RemoveTagsFromResourceInput, arg2 ...request.Option) (*ssm.RemoveTagsFromResourceOutput, error) {
+func (m *MockSSMClient) RemoveTagsFromResourceWithContext(arg0 context.Context, arg1 *ssm.RemoveTagsFromResourceInput, arg2 ...request.Option) (*ssm.RemoveTagsFromResourceOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4430,6 +4694,50 @@ func (m *MockSSMClient) RemoveTagsFromResourceWithContext(arg0 aws.Context, arg1
 func (mr *MockSSMClientMockRecorder) RemoveTagsFromResourceWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RemoveTagsFromResourceWithContext", reflect.TypeOf((*MockSSMClient)(nil).RemoveTagsFromResourceWithContext), varargs...)
+}
+
+// ResetServiceSetting mocks base method
+func (m *MockSSMClient) ResetServiceSetting(arg0 *ssm.ResetServiceSettingInput) (*ssm.ResetServiceSettingOutput, error) {
+	ret := m.ctrl.Call(m, "ResetServiceSetting", arg0)
+	ret0, _ := ret[0].(*ssm.ResetServiceSettingOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ResetServiceSetting indicates an expected call of ResetServiceSetting
+func (mr *MockSSMClientMockRecorder) ResetServiceSetting(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResetServiceSetting", reflect.TypeOf((*MockSSMClient)(nil).ResetServiceSetting), arg0)
+}
+
+// ResetServiceSettingRequest mocks base method
+func (m *MockSSMClient) ResetServiceSettingRequest(arg0 *ssm.ResetServiceSettingInput) (*request.Request, *ssm.ResetServiceSettingOutput) {
+	ret := m.ctrl.Call(m, "ResetServiceSettingRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.ResetServiceSettingOutput)
+	return ret0, ret1
+}
+
+// ResetServiceSettingRequest indicates an expected call of ResetServiceSettingRequest
+func (mr *MockSSMClientMockRecorder) ResetServiceSettingRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResetServiceSettingRequest", reflect.TypeOf((*MockSSMClient)(nil).ResetServiceSettingRequest), arg0)
+}
+
+// ResetServiceSettingWithContext mocks base method
+func (m *MockSSMClient) ResetServiceSettingWithContext(arg0 context.Context, arg1 *ssm.ResetServiceSettingInput, arg2 ...request.Option) (*ssm.ResetServiceSettingOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ResetServiceSettingWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.ResetServiceSettingOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ResetServiceSettingWithContext indicates an expected call of ResetServiceSettingWithContext
+func (mr *MockSSMClientMockRecorder) ResetServiceSettingWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ResetServiceSettingWithContext", reflect.TypeOf((*MockSSMClient)(nil).ResetServiceSettingWithContext), varargs...)
 }
 
 // ResumeSession mocks base method
@@ -4459,7 +4767,7 @@ func (mr *MockSSMClientMockRecorder) ResumeSessionRequest(arg0 interface{}) *gom
 }
 
 // ResumeSessionWithContext mocks base method
-func (m *MockSSMClient) ResumeSessionWithContext(arg0 aws.Context, arg1 *ssm.ResumeSessionInput, arg2 ...request.Option) (*ssm.ResumeSessionOutput, error) {
+func (m *MockSSMClient) ResumeSessionWithContext(arg0 context.Context, arg1 *ssm.ResumeSessionInput, arg2 ...request.Option) (*ssm.ResumeSessionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4503,7 +4811,7 @@ func (mr *MockSSMClientMockRecorder) SendAutomationSignalRequest(arg0 interface{
 }
 
 // SendAutomationSignalWithContext mocks base method
-func (m *MockSSMClient) SendAutomationSignalWithContext(arg0 aws.Context, arg1 *ssm.SendAutomationSignalInput, arg2 ...request.Option) (*ssm.SendAutomationSignalOutput, error) {
+func (m *MockSSMClient) SendAutomationSignalWithContext(arg0 context.Context, arg1 *ssm.SendAutomationSignalInput, arg2 ...request.Option) (*ssm.SendAutomationSignalOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4547,7 +4855,7 @@ func (mr *MockSSMClientMockRecorder) SendCommandRequest(arg0 interface{}) *gomoc
 }
 
 // SendCommandWithContext mocks base method
-func (m *MockSSMClient) SendCommandWithContext(arg0 aws.Context, arg1 *ssm.SendCommandInput, arg2 ...request.Option) (*ssm.SendCommandOutput, error) {
+func (m *MockSSMClient) SendCommandWithContext(arg0 context.Context, arg1 *ssm.SendCommandInput, arg2 ...request.Option) (*ssm.SendCommandOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4591,7 +4899,7 @@ func (mr *MockSSMClientMockRecorder) StartAssociationsOnceRequest(arg0 interface
 }
 
 // StartAssociationsOnceWithContext mocks base method
-func (m *MockSSMClient) StartAssociationsOnceWithContext(arg0 aws.Context, arg1 *ssm.StartAssociationsOnceInput, arg2 ...request.Option) (*ssm.StartAssociationsOnceOutput, error) {
+func (m *MockSSMClient) StartAssociationsOnceWithContext(arg0 context.Context, arg1 *ssm.StartAssociationsOnceInput, arg2 ...request.Option) (*ssm.StartAssociationsOnceOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4635,7 +4943,7 @@ func (mr *MockSSMClientMockRecorder) StartAutomationExecutionRequest(arg0 interf
 }
 
 // StartAutomationExecutionWithContext mocks base method
-func (m *MockSSMClient) StartAutomationExecutionWithContext(arg0 aws.Context, arg1 *ssm.StartAutomationExecutionInput, arg2 ...request.Option) (*ssm.StartAutomationExecutionOutput, error) {
+func (m *MockSSMClient) StartAutomationExecutionWithContext(arg0 context.Context, arg1 *ssm.StartAutomationExecutionInput, arg2 ...request.Option) (*ssm.StartAutomationExecutionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4679,7 +4987,7 @@ func (mr *MockSSMClientMockRecorder) StartSessionRequest(arg0 interface{}) *gomo
 }
 
 // StartSessionWithContext mocks base method
-func (m *MockSSMClient) StartSessionWithContext(arg0 aws.Context, arg1 *ssm.StartSessionInput, arg2 ...request.Option) (*ssm.StartSessionOutput, error) {
+func (m *MockSSMClient) StartSessionWithContext(arg0 context.Context, arg1 *ssm.StartSessionInput, arg2 ...request.Option) (*ssm.StartSessionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4723,7 +5031,7 @@ func (mr *MockSSMClientMockRecorder) StopAutomationExecutionRequest(arg0 interfa
 }
 
 // StopAutomationExecutionWithContext mocks base method
-func (m *MockSSMClient) StopAutomationExecutionWithContext(arg0 aws.Context, arg1 *ssm.StopAutomationExecutionInput, arg2 ...request.Option) (*ssm.StopAutomationExecutionOutput, error) {
+func (m *MockSSMClient) StopAutomationExecutionWithContext(arg0 context.Context, arg1 *ssm.StopAutomationExecutionInput, arg2 ...request.Option) (*ssm.StopAutomationExecutionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4767,7 +5075,7 @@ func (mr *MockSSMClientMockRecorder) TerminateSessionRequest(arg0 interface{}) *
 }
 
 // TerminateSessionWithContext mocks base method
-func (m *MockSSMClient) TerminateSessionWithContext(arg0 aws.Context, arg1 *ssm.TerminateSessionInput, arg2 ...request.Option) (*ssm.TerminateSessionOutput, error) {
+func (m *MockSSMClient) TerminateSessionWithContext(arg0 context.Context, arg1 *ssm.TerminateSessionInput, arg2 ...request.Option) (*ssm.TerminateSessionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4837,7 +5145,7 @@ func (mr *MockSSMClientMockRecorder) UpdateAssociationStatusRequest(arg0 interfa
 }
 
 // UpdateAssociationStatusWithContext mocks base method
-func (m *MockSSMClient) UpdateAssociationStatusWithContext(arg0 aws.Context, arg1 *ssm.UpdateAssociationStatusInput, arg2 ...request.Option) (*ssm.UpdateAssociationStatusOutput, error) {
+func (m *MockSSMClient) UpdateAssociationStatusWithContext(arg0 context.Context, arg1 *ssm.UpdateAssociationStatusInput, arg2 ...request.Option) (*ssm.UpdateAssociationStatusOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4855,7 +5163,7 @@ func (mr *MockSSMClientMockRecorder) UpdateAssociationStatusWithContext(arg0, ar
 }
 
 // UpdateAssociationWithContext mocks base method
-func (m *MockSSMClient) UpdateAssociationWithContext(arg0 aws.Context, arg1 *ssm.UpdateAssociationInput, arg2 ...request.Option) (*ssm.UpdateAssociationOutput, error) {
+func (m *MockSSMClient) UpdateAssociationWithContext(arg0 context.Context, arg1 *ssm.UpdateAssociationInput, arg2 ...request.Option) (*ssm.UpdateAssociationOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4912,7 +5220,7 @@ func (mr *MockSSMClientMockRecorder) UpdateDocumentDefaultVersionRequest(arg0 in
 }
 
 // UpdateDocumentDefaultVersionWithContext mocks base method
-func (m *MockSSMClient) UpdateDocumentDefaultVersionWithContext(arg0 aws.Context, arg1 *ssm.UpdateDocumentDefaultVersionInput, arg2 ...request.Option) (*ssm.UpdateDocumentDefaultVersionOutput, error) {
+func (m *MockSSMClient) UpdateDocumentDefaultVersionWithContext(arg0 context.Context, arg1 *ssm.UpdateDocumentDefaultVersionInput, arg2 ...request.Option) (*ssm.UpdateDocumentDefaultVersionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -4943,7 +5251,7 @@ func (mr *MockSSMClientMockRecorder) UpdateDocumentRequest(arg0 interface{}) *go
 }
 
 // UpdateDocumentWithContext mocks base method
-func (m *MockSSMClient) UpdateDocumentWithContext(arg0 aws.Context, arg1 *ssm.UpdateDocumentInput, arg2 ...request.Option) (*ssm.UpdateDocumentOutput, error) {
+func (m *MockSSMClient) UpdateDocumentWithContext(arg0 context.Context, arg1 *ssm.UpdateDocumentInput, arg2 ...request.Option) (*ssm.UpdateDocumentOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -5013,7 +5321,7 @@ func (mr *MockSSMClientMockRecorder) UpdateMaintenanceWindowTargetRequest(arg0 i
 }
 
 // UpdateMaintenanceWindowTargetWithContext mocks base method
-func (m *MockSSMClient) UpdateMaintenanceWindowTargetWithContext(arg0 aws.Context, arg1 *ssm.UpdateMaintenanceWindowTargetInput, arg2 ...request.Option) (*ssm.UpdateMaintenanceWindowTargetOutput, error) {
+func (m *MockSSMClient) UpdateMaintenanceWindowTargetWithContext(arg0 context.Context, arg1 *ssm.UpdateMaintenanceWindowTargetInput, arg2 ...request.Option) (*ssm.UpdateMaintenanceWindowTargetOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -5057,7 +5365,7 @@ func (mr *MockSSMClientMockRecorder) UpdateMaintenanceWindowTaskRequest(arg0 int
 }
 
 // UpdateMaintenanceWindowTaskWithContext mocks base method
-func (m *MockSSMClient) UpdateMaintenanceWindowTaskWithContext(arg0 aws.Context, arg1 *ssm.UpdateMaintenanceWindowTaskInput, arg2 ...request.Option) (*ssm.UpdateMaintenanceWindowTaskOutput, error) {
+func (m *MockSSMClient) UpdateMaintenanceWindowTaskWithContext(arg0 context.Context, arg1 *ssm.UpdateMaintenanceWindowTaskInput, arg2 ...request.Option) (*ssm.UpdateMaintenanceWindowTaskOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -5075,7 +5383,7 @@ func (mr *MockSSMClientMockRecorder) UpdateMaintenanceWindowTaskWithContext(arg0
 }
 
 // UpdateMaintenanceWindowWithContext mocks base method
-func (m *MockSSMClient) UpdateMaintenanceWindowWithContext(arg0 aws.Context, arg1 *ssm.UpdateMaintenanceWindowInput, arg2 ...request.Option) (*ssm.UpdateMaintenanceWindowOutput, error) {
+func (m *MockSSMClient) UpdateMaintenanceWindowWithContext(arg0 context.Context, arg1 *ssm.UpdateMaintenanceWindowInput, arg2 ...request.Option) (*ssm.UpdateMaintenanceWindowOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -5119,7 +5427,7 @@ func (mr *MockSSMClientMockRecorder) UpdateManagedInstanceRoleRequest(arg0 inter
 }
 
 // UpdateManagedInstanceRoleWithContext mocks base method
-func (m *MockSSMClient) UpdateManagedInstanceRoleWithContext(arg0 aws.Context, arg1 *ssm.UpdateManagedInstanceRoleInput, arg2 ...request.Option) (*ssm.UpdateManagedInstanceRoleOutput, error) {
+func (m *MockSSMClient) UpdateManagedInstanceRoleWithContext(arg0 context.Context, arg1 *ssm.UpdateManagedInstanceRoleInput, arg2 ...request.Option) (*ssm.UpdateManagedInstanceRoleOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -5134,6 +5442,50 @@ func (m *MockSSMClient) UpdateManagedInstanceRoleWithContext(arg0 aws.Context, a
 func (mr *MockSSMClientMockRecorder) UpdateManagedInstanceRoleWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateManagedInstanceRoleWithContext", reflect.TypeOf((*MockSSMClient)(nil).UpdateManagedInstanceRoleWithContext), varargs...)
+}
+
+// UpdateOpsItem mocks base method
+func (m *MockSSMClient) UpdateOpsItem(arg0 *ssm.UpdateOpsItemInput) (*ssm.UpdateOpsItemOutput, error) {
+	ret := m.ctrl.Call(m, "UpdateOpsItem", arg0)
+	ret0, _ := ret[0].(*ssm.UpdateOpsItemOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// UpdateOpsItem indicates an expected call of UpdateOpsItem
+func (mr *MockSSMClientMockRecorder) UpdateOpsItem(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateOpsItem", reflect.TypeOf((*MockSSMClient)(nil).UpdateOpsItem), arg0)
+}
+
+// UpdateOpsItemRequest mocks base method
+func (m *MockSSMClient) UpdateOpsItemRequest(arg0 *ssm.UpdateOpsItemInput) (*request.Request, *ssm.UpdateOpsItemOutput) {
+	ret := m.ctrl.Call(m, "UpdateOpsItemRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.UpdateOpsItemOutput)
+	return ret0, ret1
+}
+
+// UpdateOpsItemRequest indicates an expected call of UpdateOpsItemRequest
+func (mr *MockSSMClientMockRecorder) UpdateOpsItemRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateOpsItemRequest", reflect.TypeOf((*MockSSMClient)(nil).UpdateOpsItemRequest), arg0)
+}
+
+// UpdateOpsItemWithContext mocks base method
+func (m *MockSSMClient) UpdateOpsItemWithContext(arg0 context.Context, arg1 *ssm.UpdateOpsItemInput, arg2 ...request.Option) (*ssm.UpdateOpsItemOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "UpdateOpsItemWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.UpdateOpsItemOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// UpdateOpsItemWithContext indicates an expected call of UpdateOpsItemWithContext
+func (mr *MockSSMClientMockRecorder) UpdateOpsItemWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateOpsItemWithContext", reflect.TypeOf((*MockSSMClient)(nil).UpdateOpsItemWithContext), varargs...)
 }
 
 // UpdatePatchBaseline mocks base method
@@ -5163,7 +5515,7 @@ func (mr *MockSSMClientMockRecorder) UpdatePatchBaselineRequest(arg0 interface{}
 }
 
 // UpdatePatchBaselineWithContext mocks base method
-func (m *MockSSMClient) UpdatePatchBaselineWithContext(arg0 aws.Context, arg1 *ssm.UpdatePatchBaselineInput, arg2 ...request.Option) (*ssm.UpdatePatchBaselineOutput, error) {
+func (m *MockSSMClient) UpdatePatchBaselineWithContext(arg0 context.Context, arg1 *ssm.UpdatePatchBaselineInput, arg2 ...request.Option) (*ssm.UpdatePatchBaselineOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -5178,4 +5530,92 @@ func (m *MockSSMClient) UpdatePatchBaselineWithContext(arg0 aws.Context, arg1 *s
 func (mr *MockSSMClientMockRecorder) UpdatePatchBaselineWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdatePatchBaselineWithContext", reflect.TypeOf((*MockSSMClient)(nil).UpdatePatchBaselineWithContext), varargs...)
+}
+
+// UpdateResourceDataSync mocks base method
+func (m *MockSSMClient) UpdateResourceDataSync(arg0 *ssm.UpdateResourceDataSyncInput) (*ssm.UpdateResourceDataSyncOutput, error) {
+	ret := m.ctrl.Call(m, "UpdateResourceDataSync", arg0)
+	ret0, _ := ret[0].(*ssm.UpdateResourceDataSyncOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// UpdateResourceDataSync indicates an expected call of UpdateResourceDataSync
+func (mr *MockSSMClientMockRecorder) UpdateResourceDataSync(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateResourceDataSync", reflect.TypeOf((*MockSSMClient)(nil).UpdateResourceDataSync), arg0)
+}
+
+// UpdateResourceDataSyncRequest mocks base method
+func (m *MockSSMClient) UpdateResourceDataSyncRequest(arg0 *ssm.UpdateResourceDataSyncInput) (*request.Request, *ssm.UpdateResourceDataSyncOutput) {
+	ret := m.ctrl.Call(m, "UpdateResourceDataSyncRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.UpdateResourceDataSyncOutput)
+	return ret0, ret1
+}
+
+// UpdateResourceDataSyncRequest indicates an expected call of UpdateResourceDataSyncRequest
+func (mr *MockSSMClientMockRecorder) UpdateResourceDataSyncRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateResourceDataSyncRequest", reflect.TypeOf((*MockSSMClient)(nil).UpdateResourceDataSyncRequest), arg0)
+}
+
+// UpdateResourceDataSyncWithContext mocks base method
+func (m *MockSSMClient) UpdateResourceDataSyncWithContext(arg0 context.Context, arg1 *ssm.UpdateResourceDataSyncInput, arg2 ...request.Option) (*ssm.UpdateResourceDataSyncOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "UpdateResourceDataSyncWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.UpdateResourceDataSyncOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// UpdateResourceDataSyncWithContext indicates an expected call of UpdateResourceDataSyncWithContext
+func (mr *MockSSMClientMockRecorder) UpdateResourceDataSyncWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateResourceDataSyncWithContext", reflect.TypeOf((*MockSSMClient)(nil).UpdateResourceDataSyncWithContext), varargs...)
+}
+
+// UpdateServiceSetting mocks base method
+func (m *MockSSMClient) UpdateServiceSetting(arg0 *ssm.UpdateServiceSettingInput) (*ssm.UpdateServiceSettingOutput, error) {
+	ret := m.ctrl.Call(m, "UpdateServiceSetting", arg0)
+	ret0, _ := ret[0].(*ssm.UpdateServiceSettingOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// UpdateServiceSetting indicates an expected call of UpdateServiceSetting
+func (mr *MockSSMClientMockRecorder) UpdateServiceSetting(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateServiceSetting", reflect.TypeOf((*MockSSMClient)(nil).UpdateServiceSetting), arg0)
+}
+
+// UpdateServiceSettingRequest mocks base method
+func (m *MockSSMClient) UpdateServiceSettingRequest(arg0 *ssm.UpdateServiceSettingInput) (*request.Request, *ssm.UpdateServiceSettingOutput) {
+	ret := m.ctrl.Call(m, "UpdateServiceSettingRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.UpdateServiceSettingOutput)
+	return ret0, ret1
+}
+
+// UpdateServiceSettingRequest indicates an expected call of UpdateServiceSettingRequest
+func (mr *MockSSMClientMockRecorder) UpdateServiceSettingRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateServiceSettingRequest", reflect.TypeOf((*MockSSMClient)(nil).UpdateServiceSettingRequest), arg0)
+}
+
+// UpdateServiceSettingWithContext mocks base method
+func (m *MockSSMClient) UpdateServiceSettingWithContext(arg0 context.Context, arg1 *ssm.UpdateServiceSettingInput, arg2 ...request.Option) (*ssm.UpdateServiceSettingOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "UpdateServiceSettingWithContext", varargs...)
+	ret0, _ := ret[0].(*ssm.UpdateServiceSettingOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// UpdateServiceSettingWithContext indicates an expected call of UpdateServiceSettingWithContext
+func (mr *MockSSMClientMockRecorder) UpdateServiceSettingWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateServiceSettingWithContext", reflect.TypeOf((*MockSSMClient)(nil).UpdateServiceSettingWithContext), varargs...)
 }
