@@ -5,7 +5,7 @@
 package mocks
 
 import (
-	aws "github.com/aws/aws-sdk-go/aws"
+	context "context"
 	request "github.com/aws/aws-sdk-go/aws/request"
 	kms "github.com/aws/aws-sdk-go/service/kms"
 	gomock "github.com/golang/mock/gomock"
@@ -62,7 +62,7 @@ func (mr *MockKMSClientMockRecorder) CancelKeyDeletionRequest(arg0 interface{}) 
 }
 
 // CancelKeyDeletionWithContext mocks base method
-func (m *MockKMSClient) CancelKeyDeletionWithContext(arg0 aws.Context, arg1 *kms.CancelKeyDeletionInput, arg2 ...request.Option) (*kms.CancelKeyDeletionOutput, error) {
+func (m *MockKMSClient) CancelKeyDeletionWithContext(arg0 context.Context, arg1 *kms.CancelKeyDeletionInput, arg2 ...request.Option) (*kms.CancelKeyDeletionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -77,6 +77,50 @@ func (m *MockKMSClient) CancelKeyDeletionWithContext(arg0 aws.Context, arg1 *kms
 func (mr *MockKMSClientMockRecorder) CancelKeyDeletionWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CancelKeyDeletionWithContext", reflect.TypeOf((*MockKMSClient)(nil).CancelKeyDeletionWithContext), varargs...)
+}
+
+// ConnectCustomKeyStore mocks base method
+func (m *MockKMSClient) ConnectCustomKeyStore(arg0 *kms.ConnectCustomKeyStoreInput) (*kms.ConnectCustomKeyStoreOutput, error) {
+	ret := m.ctrl.Call(m, "ConnectCustomKeyStore", arg0)
+	ret0, _ := ret[0].(*kms.ConnectCustomKeyStoreOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ConnectCustomKeyStore indicates an expected call of ConnectCustomKeyStore
+func (mr *MockKMSClientMockRecorder) ConnectCustomKeyStore(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ConnectCustomKeyStore", reflect.TypeOf((*MockKMSClient)(nil).ConnectCustomKeyStore), arg0)
+}
+
+// ConnectCustomKeyStoreRequest mocks base method
+func (m *MockKMSClient) ConnectCustomKeyStoreRequest(arg0 *kms.ConnectCustomKeyStoreInput) (*request.Request, *kms.ConnectCustomKeyStoreOutput) {
+	ret := m.ctrl.Call(m, "ConnectCustomKeyStoreRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*kms.ConnectCustomKeyStoreOutput)
+	return ret0, ret1
+}
+
+// ConnectCustomKeyStoreRequest indicates an expected call of ConnectCustomKeyStoreRequest
+func (mr *MockKMSClientMockRecorder) ConnectCustomKeyStoreRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ConnectCustomKeyStoreRequest", reflect.TypeOf((*MockKMSClient)(nil).ConnectCustomKeyStoreRequest), arg0)
+}
+
+// ConnectCustomKeyStoreWithContext mocks base method
+func (m *MockKMSClient) ConnectCustomKeyStoreWithContext(arg0 context.Context, arg1 *kms.ConnectCustomKeyStoreInput, arg2 ...request.Option) (*kms.ConnectCustomKeyStoreOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ConnectCustomKeyStoreWithContext", varargs...)
+	ret0, _ := ret[0].(*kms.ConnectCustomKeyStoreOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ConnectCustomKeyStoreWithContext indicates an expected call of ConnectCustomKeyStoreWithContext
+func (mr *MockKMSClientMockRecorder) ConnectCustomKeyStoreWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ConnectCustomKeyStoreWithContext", reflect.TypeOf((*MockKMSClient)(nil).ConnectCustomKeyStoreWithContext), varargs...)
 }
 
 // CreateAlias mocks base method
@@ -106,7 +150,7 @@ func (mr *MockKMSClientMockRecorder) CreateAliasRequest(arg0 interface{}) *gomoc
 }
 
 // CreateAliasWithContext mocks base method
-func (m *MockKMSClient) CreateAliasWithContext(arg0 aws.Context, arg1 *kms.CreateAliasInput, arg2 ...request.Option) (*kms.CreateAliasOutput, error) {
+func (m *MockKMSClient) CreateAliasWithContext(arg0 context.Context, arg1 *kms.CreateAliasInput, arg2 ...request.Option) (*kms.CreateAliasOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -121,6 +165,50 @@ func (m *MockKMSClient) CreateAliasWithContext(arg0 aws.Context, arg1 *kms.Creat
 func (mr *MockKMSClientMockRecorder) CreateAliasWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateAliasWithContext", reflect.TypeOf((*MockKMSClient)(nil).CreateAliasWithContext), varargs...)
+}
+
+// CreateCustomKeyStore mocks base method
+func (m *MockKMSClient) CreateCustomKeyStore(arg0 *kms.CreateCustomKeyStoreInput) (*kms.CreateCustomKeyStoreOutput, error) {
+	ret := m.ctrl.Call(m, "CreateCustomKeyStore", arg0)
+	ret0, _ := ret[0].(*kms.CreateCustomKeyStoreOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CreateCustomKeyStore indicates an expected call of CreateCustomKeyStore
+func (mr *MockKMSClientMockRecorder) CreateCustomKeyStore(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateCustomKeyStore", reflect.TypeOf((*MockKMSClient)(nil).CreateCustomKeyStore), arg0)
+}
+
+// CreateCustomKeyStoreRequest mocks base method
+func (m *MockKMSClient) CreateCustomKeyStoreRequest(arg0 *kms.CreateCustomKeyStoreInput) (*request.Request, *kms.CreateCustomKeyStoreOutput) {
+	ret := m.ctrl.Call(m, "CreateCustomKeyStoreRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*kms.CreateCustomKeyStoreOutput)
+	return ret0, ret1
+}
+
+// CreateCustomKeyStoreRequest indicates an expected call of CreateCustomKeyStoreRequest
+func (mr *MockKMSClientMockRecorder) CreateCustomKeyStoreRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateCustomKeyStoreRequest", reflect.TypeOf((*MockKMSClient)(nil).CreateCustomKeyStoreRequest), arg0)
+}
+
+// CreateCustomKeyStoreWithContext mocks base method
+func (m *MockKMSClient) CreateCustomKeyStoreWithContext(arg0 context.Context, arg1 *kms.CreateCustomKeyStoreInput, arg2 ...request.Option) (*kms.CreateCustomKeyStoreOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "CreateCustomKeyStoreWithContext", varargs...)
+	ret0, _ := ret[0].(*kms.CreateCustomKeyStoreOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CreateCustomKeyStoreWithContext indicates an expected call of CreateCustomKeyStoreWithContext
+func (mr *MockKMSClientMockRecorder) CreateCustomKeyStoreWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateCustomKeyStoreWithContext", reflect.TypeOf((*MockKMSClient)(nil).CreateCustomKeyStoreWithContext), varargs...)
 }
 
 // CreateGrant mocks base method
@@ -150,7 +238,7 @@ func (mr *MockKMSClientMockRecorder) CreateGrantRequest(arg0 interface{}) *gomoc
 }
 
 // CreateGrantWithContext mocks base method
-func (m *MockKMSClient) CreateGrantWithContext(arg0 aws.Context, arg1 *kms.CreateGrantInput, arg2 ...request.Option) (*kms.CreateGrantOutput, error) {
+func (m *MockKMSClient) CreateGrantWithContext(arg0 context.Context, arg1 *kms.CreateGrantInput, arg2 ...request.Option) (*kms.CreateGrantOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -194,7 +282,7 @@ func (mr *MockKMSClientMockRecorder) CreateKeyRequest(arg0 interface{}) *gomock.
 }
 
 // CreateKeyWithContext mocks base method
-func (m *MockKMSClient) CreateKeyWithContext(arg0 aws.Context, arg1 *kms.CreateKeyInput, arg2 ...request.Option) (*kms.CreateKeyOutput, error) {
+func (m *MockKMSClient) CreateKeyWithContext(arg0 context.Context, arg1 *kms.CreateKeyInput, arg2 ...request.Option) (*kms.CreateKeyOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -238,7 +326,7 @@ func (mr *MockKMSClientMockRecorder) DecryptRequest(arg0 interface{}) *gomock.Ca
 }
 
 // DecryptWithContext mocks base method
-func (m *MockKMSClient) DecryptWithContext(arg0 aws.Context, arg1 *kms.DecryptInput, arg2 ...request.Option) (*kms.DecryptOutput, error) {
+func (m *MockKMSClient) DecryptWithContext(arg0 context.Context, arg1 *kms.DecryptInput, arg2 ...request.Option) (*kms.DecryptOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -282,7 +370,7 @@ func (mr *MockKMSClientMockRecorder) DeleteAliasRequest(arg0 interface{}) *gomoc
 }
 
 // DeleteAliasWithContext mocks base method
-func (m *MockKMSClient) DeleteAliasWithContext(arg0 aws.Context, arg1 *kms.DeleteAliasInput, arg2 ...request.Option) (*kms.DeleteAliasOutput, error) {
+func (m *MockKMSClient) DeleteAliasWithContext(arg0 context.Context, arg1 *kms.DeleteAliasInput, arg2 ...request.Option) (*kms.DeleteAliasOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -297,6 +385,50 @@ func (m *MockKMSClient) DeleteAliasWithContext(arg0 aws.Context, arg1 *kms.Delet
 func (mr *MockKMSClientMockRecorder) DeleteAliasWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteAliasWithContext", reflect.TypeOf((*MockKMSClient)(nil).DeleteAliasWithContext), varargs...)
+}
+
+// DeleteCustomKeyStore mocks base method
+func (m *MockKMSClient) DeleteCustomKeyStore(arg0 *kms.DeleteCustomKeyStoreInput) (*kms.DeleteCustomKeyStoreOutput, error) {
+	ret := m.ctrl.Call(m, "DeleteCustomKeyStore", arg0)
+	ret0, _ := ret[0].(*kms.DeleteCustomKeyStoreOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DeleteCustomKeyStore indicates an expected call of DeleteCustomKeyStore
+func (mr *MockKMSClientMockRecorder) DeleteCustomKeyStore(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteCustomKeyStore", reflect.TypeOf((*MockKMSClient)(nil).DeleteCustomKeyStore), arg0)
+}
+
+// DeleteCustomKeyStoreRequest mocks base method
+func (m *MockKMSClient) DeleteCustomKeyStoreRequest(arg0 *kms.DeleteCustomKeyStoreInput) (*request.Request, *kms.DeleteCustomKeyStoreOutput) {
+	ret := m.ctrl.Call(m, "DeleteCustomKeyStoreRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*kms.DeleteCustomKeyStoreOutput)
+	return ret0, ret1
+}
+
+// DeleteCustomKeyStoreRequest indicates an expected call of DeleteCustomKeyStoreRequest
+func (mr *MockKMSClientMockRecorder) DeleteCustomKeyStoreRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteCustomKeyStoreRequest", reflect.TypeOf((*MockKMSClient)(nil).DeleteCustomKeyStoreRequest), arg0)
+}
+
+// DeleteCustomKeyStoreWithContext mocks base method
+func (m *MockKMSClient) DeleteCustomKeyStoreWithContext(arg0 context.Context, arg1 *kms.DeleteCustomKeyStoreInput, arg2 ...request.Option) (*kms.DeleteCustomKeyStoreOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DeleteCustomKeyStoreWithContext", varargs...)
+	ret0, _ := ret[0].(*kms.DeleteCustomKeyStoreOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DeleteCustomKeyStoreWithContext indicates an expected call of DeleteCustomKeyStoreWithContext
+func (mr *MockKMSClientMockRecorder) DeleteCustomKeyStoreWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteCustomKeyStoreWithContext", reflect.TypeOf((*MockKMSClient)(nil).DeleteCustomKeyStoreWithContext), varargs...)
 }
 
 // DeleteImportedKeyMaterial mocks base method
@@ -326,7 +458,7 @@ func (mr *MockKMSClientMockRecorder) DeleteImportedKeyMaterialRequest(arg0 inter
 }
 
 // DeleteImportedKeyMaterialWithContext mocks base method
-func (m *MockKMSClient) DeleteImportedKeyMaterialWithContext(arg0 aws.Context, arg1 *kms.DeleteImportedKeyMaterialInput, arg2 ...request.Option) (*kms.DeleteImportedKeyMaterialOutput, error) {
+func (m *MockKMSClient) DeleteImportedKeyMaterialWithContext(arg0 context.Context, arg1 *kms.DeleteImportedKeyMaterialInput, arg2 ...request.Option) (*kms.DeleteImportedKeyMaterialOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -341,6 +473,50 @@ func (m *MockKMSClient) DeleteImportedKeyMaterialWithContext(arg0 aws.Context, a
 func (mr *MockKMSClientMockRecorder) DeleteImportedKeyMaterialWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteImportedKeyMaterialWithContext", reflect.TypeOf((*MockKMSClient)(nil).DeleteImportedKeyMaterialWithContext), varargs...)
+}
+
+// DescribeCustomKeyStores mocks base method
+func (m *MockKMSClient) DescribeCustomKeyStores(arg0 *kms.DescribeCustomKeyStoresInput) (*kms.DescribeCustomKeyStoresOutput, error) {
+	ret := m.ctrl.Call(m, "DescribeCustomKeyStores", arg0)
+	ret0, _ := ret[0].(*kms.DescribeCustomKeyStoresOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeCustomKeyStores indicates an expected call of DescribeCustomKeyStores
+func (mr *MockKMSClientMockRecorder) DescribeCustomKeyStores(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCustomKeyStores", reflect.TypeOf((*MockKMSClient)(nil).DescribeCustomKeyStores), arg0)
+}
+
+// DescribeCustomKeyStoresRequest mocks base method
+func (m *MockKMSClient) DescribeCustomKeyStoresRequest(arg0 *kms.DescribeCustomKeyStoresInput) (*request.Request, *kms.DescribeCustomKeyStoresOutput) {
+	ret := m.ctrl.Call(m, "DescribeCustomKeyStoresRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*kms.DescribeCustomKeyStoresOutput)
+	return ret0, ret1
+}
+
+// DescribeCustomKeyStoresRequest indicates an expected call of DescribeCustomKeyStoresRequest
+func (mr *MockKMSClientMockRecorder) DescribeCustomKeyStoresRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCustomKeyStoresRequest", reflect.TypeOf((*MockKMSClient)(nil).DescribeCustomKeyStoresRequest), arg0)
+}
+
+// DescribeCustomKeyStoresWithContext mocks base method
+func (m *MockKMSClient) DescribeCustomKeyStoresWithContext(arg0 context.Context, arg1 *kms.DescribeCustomKeyStoresInput, arg2 ...request.Option) (*kms.DescribeCustomKeyStoresOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DescribeCustomKeyStoresWithContext", varargs...)
+	ret0, _ := ret[0].(*kms.DescribeCustomKeyStoresOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DescribeCustomKeyStoresWithContext indicates an expected call of DescribeCustomKeyStoresWithContext
+func (mr *MockKMSClientMockRecorder) DescribeCustomKeyStoresWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DescribeCustomKeyStoresWithContext", reflect.TypeOf((*MockKMSClient)(nil).DescribeCustomKeyStoresWithContext), varargs...)
 }
 
 // DescribeKey mocks base method
@@ -370,7 +546,7 @@ func (mr *MockKMSClientMockRecorder) DescribeKeyRequest(arg0 interface{}) *gomoc
 }
 
 // DescribeKeyWithContext mocks base method
-func (m *MockKMSClient) DescribeKeyWithContext(arg0 aws.Context, arg1 *kms.DescribeKeyInput, arg2 ...request.Option) (*kms.DescribeKeyOutput, error) {
+func (m *MockKMSClient) DescribeKeyWithContext(arg0 context.Context, arg1 *kms.DescribeKeyInput, arg2 ...request.Option) (*kms.DescribeKeyOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -440,7 +616,7 @@ func (mr *MockKMSClientMockRecorder) DisableKeyRotationRequest(arg0 interface{})
 }
 
 // DisableKeyRotationWithContext mocks base method
-func (m *MockKMSClient) DisableKeyRotationWithContext(arg0 aws.Context, arg1 *kms.DisableKeyRotationInput, arg2 ...request.Option) (*kms.DisableKeyRotationOutput, error) {
+func (m *MockKMSClient) DisableKeyRotationWithContext(arg0 context.Context, arg1 *kms.DisableKeyRotationInput, arg2 ...request.Option) (*kms.DisableKeyRotationOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -458,7 +634,7 @@ func (mr *MockKMSClientMockRecorder) DisableKeyRotationWithContext(arg0, arg1 in
 }
 
 // DisableKeyWithContext mocks base method
-func (m *MockKMSClient) DisableKeyWithContext(arg0 aws.Context, arg1 *kms.DisableKeyInput, arg2 ...request.Option) (*kms.DisableKeyOutput, error) {
+func (m *MockKMSClient) DisableKeyWithContext(arg0 context.Context, arg1 *kms.DisableKeyInput, arg2 ...request.Option) (*kms.DisableKeyOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -473,6 +649,50 @@ func (m *MockKMSClient) DisableKeyWithContext(arg0 aws.Context, arg1 *kms.Disabl
 func (mr *MockKMSClientMockRecorder) DisableKeyWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DisableKeyWithContext", reflect.TypeOf((*MockKMSClient)(nil).DisableKeyWithContext), varargs...)
+}
+
+// DisconnectCustomKeyStore mocks base method
+func (m *MockKMSClient) DisconnectCustomKeyStore(arg0 *kms.DisconnectCustomKeyStoreInput) (*kms.DisconnectCustomKeyStoreOutput, error) {
+	ret := m.ctrl.Call(m, "DisconnectCustomKeyStore", arg0)
+	ret0, _ := ret[0].(*kms.DisconnectCustomKeyStoreOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DisconnectCustomKeyStore indicates an expected call of DisconnectCustomKeyStore
+func (mr *MockKMSClientMockRecorder) DisconnectCustomKeyStore(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DisconnectCustomKeyStore", reflect.TypeOf((*MockKMSClient)(nil).DisconnectCustomKeyStore), arg0)
+}
+
+// DisconnectCustomKeyStoreRequest mocks base method
+func (m *MockKMSClient) DisconnectCustomKeyStoreRequest(arg0 *kms.DisconnectCustomKeyStoreInput) (*request.Request, *kms.DisconnectCustomKeyStoreOutput) {
+	ret := m.ctrl.Call(m, "DisconnectCustomKeyStoreRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*kms.DisconnectCustomKeyStoreOutput)
+	return ret0, ret1
+}
+
+// DisconnectCustomKeyStoreRequest indicates an expected call of DisconnectCustomKeyStoreRequest
+func (mr *MockKMSClientMockRecorder) DisconnectCustomKeyStoreRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DisconnectCustomKeyStoreRequest", reflect.TypeOf((*MockKMSClient)(nil).DisconnectCustomKeyStoreRequest), arg0)
+}
+
+// DisconnectCustomKeyStoreWithContext mocks base method
+func (m *MockKMSClient) DisconnectCustomKeyStoreWithContext(arg0 context.Context, arg1 *kms.DisconnectCustomKeyStoreInput, arg2 ...request.Option) (*kms.DisconnectCustomKeyStoreOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "DisconnectCustomKeyStoreWithContext", varargs...)
+	ret0, _ := ret[0].(*kms.DisconnectCustomKeyStoreOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DisconnectCustomKeyStoreWithContext indicates an expected call of DisconnectCustomKeyStoreWithContext
+func (mr *MockKMSClientMockRecorder) DisconnectCustomKeyStoreWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DisconnectCustomKeyStoreWithContext", reflect.TypeOf((*MockKMSClient)(nil).DisconnectCustomKeyStoreWithContext), varargs...)
 }
 
 // EnableKey mocks base method
@@ -528,7 +748,7 @@ func (mr *MockKMSClientMockRecorder) EnableKeyRotationRequest(arg0 interface{}) 
 }
 
 // EnableKeyRotationWithContext mocks base method
-func (m *MockKMSClient) EnableKeyRotationWithContext(arg0 aws.Context, arg1 *kms.EnableKeyRotationInput, arg2 ...request.Option) (*kms.EnableKeyRotationOutput, error) {
+func (m *MockKMSClient) EnableKeyRotationWithContext(arg0 context.Context, arg1 *kms.EnableKeyRotationInput, arg2 ...request.Option) (*kms.EnableKeyRotationOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -546,7 +766,7 @@ func (mr *MockKMSClientMockRecorder) EnableKeyRotationWithContext(arg0, arg1 int
 }
 
 // EnableKeyWithContext mocks base method
-func (m *MockKMSClient) EnableKeyWithContext(arg0 aws.Context, arg1 *kms.EnableKeyInput, arg2 ...request.Option) (*kms.EnableKeyOutput, error) {
+func (m *MockKMSClient) EnableKeyWithContext(arg0 context.Context, arg1 *kms.EnableKeyInput, arg2 ...request.Option) (*kms.EnableKeyOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -590,7 +810,7 @@ func (mr *MockKMSClientMockRecorder) EncryptRequest(arg0 interface{}) *gomock.Ca
 }
 
 // EncryptWithContext mocks base method
-func (m *MockKMSClient) EncryptWithContext(arg0 aws.Context, arg1 *kms.EncryptInput, arg2 ...request.Option) (*kms.EncryptOutput, error) {
+func (m *MockKMSClient) EncryptWithContext(arg0 context.Context, arg1 *kms.EncryptInput, arg2 ...request.Option) (*kms.EncryptOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -620,6 +840,94 @@ func (mr *MockKMSClientMockRecorder) GenerateDataKey(arg0 interface{}) *gomock.C
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateDataKey", reflect.TypeOf((*MockKMSClient)(nil).GenerateDataKey), arg0)
 }
 
+// GenerateDataKeyPair mocks base method
+func (m *MockKMSClient) GenerateDataKeyPair(arg0 *kms.GenerateDataKeyPairInput) (*kms.GenerateDataKeyPairOutput, error) {
+	ret := m.ctrl.Call(m, "GenerateDataKeyPair", arg0)
+	ret0, _ := ret[0].(*kms.GenerateDataKeyPairOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GenerateDataKeyPair indicates an expected call of GenerateDataKeyPair
+func (mr *MockKMSClientMockRecorder) GenerateDataKeyPair(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateDataKeyPair", reflect.TypeOf((*MockKMSClient)(nil).GenerateDataKeyPair), arg0)
+}
+
+// GenerateDataKeyPairRequest mocks base method
+func (m *MockKMSClient) GenerateDataKeyPairRequest(arg0 *kms.GenerateDataKeyPairInput) (*request.Request, *kms.GenerateDataKeyPairOutput) {
+	ret := m.ctrl.Call(m, "GenerateDataKeyPairRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*kms.GenerateDataKeyPairOutput)
+	return ret0, ret1
+}
+
+// GenerateDataKeyPairRequest indicates an expected call of GenerateDataKeyPairRequest
+func (mr *MockKMSClientMockRecorder) GenerateDataKeyPairRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateDataKeyPairRequest", reflect.TypeOf((*MockKMSClient)(nil).GenerateDataKeyPairRequest), arg0)
+}
+
+// GenerateDataKeyPairWithContext mocks base method
+func (m *MockKMSClient) GenerateDataKeyPairWithContext(arg0 context.Context, arg1 *kms.GenerateDataKeyPairInput, arg2 ...request.Option) (*kms.GenerateDataKeyPairOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GenerateDataKeyPairWithContext", varargs...)
+	ret0, _ := ret[0].(*kms.GenerateDataKeyPairOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GenerateDataKeyPairWithContext indicates an expected call of GenerateDataKeyPairWithContext
+func (mr *MockKMSClientMockRecorder) GenerateDataKeyPairWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateDataKeyPairWithContext", reflect.TypeOf((*MockKMSClient)(nil).GenerateDataKeyPairWithContext), varargs...)
+}
+
+// GenerateDataKeyPairWithoutPlaintext mocks base method
+func (m *MockKMSClient) GenerateDataKeyPairWithoutPlaintext(arg0 *kms.GenerateDataKeyPairWithoutPlaintextInput) (*kms.GenerateDataKeyPairWithoutPlaintextOutput, error) {
+	ret := m.ctrl.Call(m, "GenerateDataKeyPairWithoutPlaintext", arg0)
+	ret0, _ := ret[0].(*kms.GenerateDataKeyPairWithoutPlaintextOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GenerateDataKeyPairWithoutPlaintext indicates an expected call of GenerateDataKeyPairWithoutPlaintext
+func (mr *MockKMSClientMockRecorder) GenerateDataKeyPairWithoutPlaintext(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateDataKeyPairWithoutPlaintext", reflect.TypeOf((*MockKMSClient)(nil).GenerateDataKeyPairWithoutPlaintext), arg0)
+}
+
+// GenerateDataKeyPairWithoutPlaintextRequest mocks base method
+func (m *MockKMSClient) GenerateDataKeyPairWithoutPlaintextRequest(arg0 *kms.GenerateDataKeyPairWithoutPlaintextInput) (*request.Request, *kms.GenerateDataKeyPairWithoutPlaintextOutput) {
+	ret := m.ctrl.Call(m, "GenerateDataKeyPairWithoutPlaintextRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*kms.GenerateDataKeyPairWithoutPlaintextOutput)
+	return ret0, ret1
+}
+
+// GenerateDataKeyPairWithoutPlaintextRequest indicates an expected call of GenerateDataKeyPairWithoutPlaintextRequest
+func (mr *MockKMSClientMockRecorder) GenerateDataKeyPairWithoutPlaintextRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateDataKeyPairWithoutPlaintextRequest", reflect.TypeOf((*MockKMSClient)(nil).GenerateDataKeyPairWithoutPlaintextRequest), arg0)
+}
+
+// GenerateDataKeyPairWithoutPlaintextWithContext mocks base method
+func (m *MockKMSClient) GenerateDataKeyPairWithoutPlaintextWithContext(arg0 context.Context, arg1 *kms.GenerateDataKeyPairWithoutPlaintextInput, arg2 ...request.Option) (*kms.GenerateDataKeyPairWithoutPlaintextOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GenerateDataKeyPairWithoutPlaintextWithContext", varargs...)
+	ret0, _ := ret[0].(*kms.GenerateDataKeyPairWithoutPlaintextOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GenerateDataKeyPairWithoutPlaintextWithContext indicates an expected call of GenerateDataKeyPairWithoutPlaintextWithContext
+func (mr *MockKMSClientMockRecorder) GenerateDataKeyPairWithoutPlaintextWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateDataKeyPairWithoutPlaintextWithContext", reflect.TypeOf((*MockKMSClient)(nil).GenerateDataKeyPairWithoutPlaintextWithContext), varargs...)
+}
+
 // GenerateDataKeyRequest mocks base method
 func (m *MockKMSClient) GenerateDataKeyRequest(arg0 *kms.GenerateDataKeyInput) (*request.Request, *kms.GenerateDataKeyOutput) {
 	ret := m.ctrl.Call(m, "GenerateDataKeyRequest", arg0)
@@ -634,7 +942,7 @@ func (mr *MockKMSClientMockRecorder) GenerateDataKeyRequest(arg0 interface{}) *g
 }
 
 // GenerateDataKeyWithContext mocks base method
-func (m *MockKMSClient) GenerateDataKeyWithContext(arg0 aws.Context, arg1 *kms.GenerateDataKeyInput, arg2 ...request.Option) (*kms.GenerateDataKeyOutput, error) {
+func (m *MockKMSClient) GenerateDataKeyWithContext(arg0 context.Context, arg1 *kms.GenerateDataKeyInput, arg2 ...request.Option) (*kms.GenerateDataKeyOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -678,7 +986,7 @@ func (mr *MockKMSClientMockRecorder) GenerateDataKeyWithoutPlaintextRequest(arg0
 }
 
 // GenerateDataKeyWithoutPlaintextWithContext mocks base method
-func (m *MockKMSClient) GenerateDataKeyWithoutPlaintextWithContext(arg0 aws.Context, arg1 *kms.GenerateDataKeyWithoutPlaintextInput, arg2 ...request.Option) (*kms.GenerateDataKeyWithoutPlaintextOutput, error) {
+func (m *MockKMSClient) GenerateDataKeyWithoutPlaintextWithContext(arg0 context.Context, arg1 *kms.GenerateDataKeyWithoutPlaintextInput, arg2 ...request.Option) (*kms.GenerateDataKeyWithoutPlaintextOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -722,7 +1030,7 @@ func (mr *MockKMSClientMockRecorder) GenerateRandomRequest(arg0 interface{}) *go
 }
 
 // GenerateRandomWithContext mocks base method
-func (m *MockKMSClient) GenerateRandomWithContext(arg0 aws.Context, arg1 *kms.GenerateRandomInput, arg2 ...request.Option) (*kms.GenerateRandomOutput, error) {
+func (m *MockKMSClient) GenerateRandomWithContext(arg0 context.Context, arg1 *kms.GenerateRandomInput, arg2 ...request.Option) (*kms.GenerateRandomOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -766,7 +1074,7 @@ func (mr *MockKMSClientMockRecorder) GetKeyPolicyRequest(arg0 interface{}) *gomo
 }
 
 // GetKeyPolicyWithContext mocks base method
-func (m *MockKMSClient) GetKeyPolicyWithContext(arg0 aws.Context, arg1 *kms.GetKeyPolicyInput, arg2 ...request.Option) (*kms.GetKeyPolicyOutput, error) {
+func (m *MockKMSClient) GetKeyPolicyWithContext(arg0 context.Context, arg1 *kms.GetKeyPolicyInput, arg2 ...request.Option) (*kms.GetKeyPolicyOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -810,7 +1118,7 @@ func (mr *MockKMSClientMockRecorder) GetKeyRotationStatusRequest(arg0 interface{
 }
 
 // GetKeyRotationStatusWithContext mocks base method
-func (m *MockKMSClient) GetKeyRotationStatusWithContext(arg0 aws.Context, arg1 *kms.GetKeyRotationStatusInput, arg2 ...request.Option) (*kms.GetKeyRotationStatusOutput, error) {
+func (m *MockKMSClient) GetKeyRotationStatusWithContext(arg0 context.Context, arg1 *kms.GetKeyRotationStatusInput, arg2 ...request.Option) (*kms.GetKeyRotationStatusOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -854,7 +1162,7 @@ func (mr *MockKMSClientMockRecorder) GetParametersForImportRequest(arg0 interfac
 }
 
 // GetParametersForImportWithContext mocks base method
-func (m *MockKMSClient) GetParametersForImportWithContext(arg0 aws.Context, arg1 *kms.GetParametersForImportInput, arg2 ...request.Option) (*kms.GetParametersForImportOutput, error) {
+func (m *MockKMSClient) GetParametersForImportWithContext(arg0 context.Context, arg1 *kms.GetParametersForImportInput, arg2 ...request.Option) (*kms.GetParametersForImportOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -869,6 +1177,50 @@ func (m *MockKMSClient) GetParametersForImportWithContext(arg0 aws.Context, arg1
 func (mr *MockKMSClientMockRecorder) GetParametersForImportWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetParametersForImportWithContext", reflect.TypeOf((*MockKMSClient)(nil).GetParametersForImportWithContext), varargs...)
+}
+
+// GetPublicKey mocks base method
+func (m *MockKMSClient) GetPublicKey(arg0 *kms.GetPublicKeyInput) (*kms.GetPublicKeyOutput, error) {
+	ret := m.ctrl.Call(m, "GetPublicKey", arg0)
+	ret0, _ := ret[0].(*kms.GetPublicKeyOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetPublicKey indicates an expected call of GetPublicKey
+func (mr *MockKMSClientMockRecorder) GetPublicKey(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPublicKey", reflect.TypeOf((*MockKMSClient)(nil).GetPublicKey), arg0)
+}
+
+// GetPublicKeyRequest mocks base method
+func (m *MockKMSClient) GetPublicKeyRequest(arg0 *kms.GetPublicKeyInput) (*request.Request, *kms.GetPublicKeyOutput) {
+	ret := m.ctrl.Call(m, "GetPublicKeyRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*kms.GetPublicKeyOutput)
+	return ret0, ret1
+}
+
+// GetPublicKeyRequest indicates an expected call of GetPublicKeyRequest
+func (mr *MockKMSClientMockRecorder) GetPublicKeyRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPublicKeyRequest", reflect.TypeOf((*MockKMSClient)(nil).GetPublicKeyRequest), arg0)
+}
+
+// GetPublicKeyWithContext mocks base method
+func (m *MockKMSClient) GetPublicKeyWithContext(arg0 context.Context, arg1 *kms.GetPublicKeyInput, arg2 ...request.Option) (*kms.GetPublicKeyOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetPublicKeyWithContext", varargs...)
+	ret0, _ := ret[0].(*kms.GetPublicKeyOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetPublicKeyWithContext indicates an expected call of GetPublicKeyWithContext
+func (mr *MockKMSClientMockRecorder) GetPublicKeyWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPublicKeyWithContext", reflect.TypeOf((*MockKMSClient)(nil).GetPublicKeyWithContext), varargs...)
 }
 
 // ImportKeyMaterial mocks base method
@@ -898,7 +1250,7 @@ func (mr *MockKMSClientMockRecorder) ImportKeyMaterialRequest(arg0 interface{}) 
 }
 
 // ImportKeyMaterialWithContext mocks base method
-func (m *MockKMSClient) ImportKeyMaterialWithContext(arg0 aws.Context, arg1 *kms.ImportKeyMaterialInput, arg2 ...request.Option) (*kms.ImportKeyMaterialOutput, error) {
+func (m *MockKMSClient) ImportKeyMaterialWithContext(arg0 context.Context, arg1 *kms.ImportKeyMaterialInput, arg2 ...request.Option) (*kms.ImportKeyMaterialOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -941,7 +1293,7 @@ func (mr *MockKMSClientMockRecorder) ListAliasesPages(arg0, arg1 interface{}) *g
 }
 
 // ListAliasesPagesWithContext mocks base method
-func (m *MockKMSClient) ListAliasesPagesWithContext(arg0 aws.Context, arg1 *kms.ListAliasesInput, arg2 func(*kms.ListAliasesOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockKMSClient) ListAliasesPagesWithContext(arg0 context.Context, arg1 *kms.ListAliasesInput, arg2 func(*kms.ListAliasesOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -971,7 +1323,7 @@ func (mr *MockKMSClientMockRecorder) ListAliasesRequest(arg0 interface{}) *gomoc
 }
 
 // ListAliasesWithContext mocks base method
-func (m *MockKMSClient) ListAliasesWithContext(arg0 aws.Context, arg1 *kms.ListAliasesInput, arg2 ...request.Option) (*kms.ListAliasesOutput, error) {
+func (m *MockKMSClient) ListAliasesWithContext(arg0 context.Context, arg1 *kms.ListAliasesInput, arg2 ...request.Option) (*kms.ListAliasesOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1014,7 +1366,7 @@ func (mr *MockKMSClientMockRecorder) ListGrantsPages(arg0, arg1 interface{}) *go
 }
 
 // ListGrantsPagesWithContext mocks base method
-func (m *MockKMSClient) ListGrantsPagesWithContext(arg0 aws.Context, arg1 *kms.ListGrantsInput, arg2 func(*kms.ListGrantsResponse, bool) bool, arg3 ...request.Option) error {
+func (m *MockKMSClient) ListGrantsPagesWithContext(arg0 context.Context, arg1 *kms.ListGrantsInput, arg2 func(*kms.ListGrantsResponse, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -1044,7 +1396,7 @@ func (mr *MockKMSClientMockRecorder) ListGrantsRequest(arg0 interface{}) *gomock
 }
 
 // ListGrantsWithContext mocks base method
-func (m *MockKMSClient) ListGrantsWithContext(arg0 aws.Context, arg1 *kms.ListGrantsInput, arg2 ...request.Option) (*kms.ListGrantsResponse, error) {
+func (m *MockKMSClient) ListGrantsWithContext(arg0 context.Context, arg1 *kms.ListGrantsInput, arg2 ...request.Option) (*kms.ListGrantsResponse, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1087,7 +1439,7 @@ func (mr *MockKMSClientMockRecorder) ListKeyPoliciesPages(arg0, arg1 interface{}
 }
 
 // ListKeyPoliciesPagesWithContext mocks base method
-func (m *MockKMSClient) ListKeyPoliciesPagesWithContext(arg0 aws.Context, arg1 *kms.ListKeyPoliciesInput, arg2 func(*kms.ListKeyPoliciesOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockKMSClient) ListKeyPoliciesPagesWithContext(arg0 context.Context, arg1 *kms.ListKeyPoliciesInput, arg2 func(*kms.ListKeyPoliciesOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -1117,7 +1469,7 @@ func (mr *MockKMSClientMockRecorder) ListKeyPoliciesRequest(arg0 interface{}) *g
 }
 
 // ListKeyPoliciesWithContext mocks base method
-func (m *MockKMSClient) ListKeyPoliciesWithContext(arg0 aws.Context, arg1 *kms.ListKeyPoliciesInput, arg2 ...request.Option) (*kms.ListKeyPoliciesOutput, error) {
+func (m *MockKMSClient) ListKeyPoliciesWithContext(arg0 context.Context, arg1 *kms.ListKeyPoliciesInput, arg2 ...request.Option) (*kms.ListKeyPoliciesOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1160,7 +1512,7 @@ func (mr *MockKMSClientMockRecorder) ListKeysPages(arg0, arg1 interface{}) *gomo
 }
 
 // ListKeysPagesWithContext mocks base method
-func (m *MockKMSClient) ListKeysPagesWithContext(arg0 aws.Context, arg1 *kms.ListKeysInput, arg2 func(*kms.ListKeysOutput, bool) bool, arg3 ...request.Option) error {
+func (m *MockKMSClient) ListKeysPagesWithContext(arg0 context.Context, arg1 *kms.ListKeysInput, arg2 func(*kms.ListKeysOutput, bool) bool, arg3 ...request.Option) error {
 	varargs := []interface{}{arg0, arg1, arg2}
 	for _, a := range arg3 {
 		varargs = append(varargs, a)
@@ -1190,7 +1542,7 @@ func (mr *MockKMSClientMockRecorder) ListKeysRequest(arg0 interface{}) *gomock.C
 }
 
 // ListKeysWithContext mocks base method
-func (m *MockKMSClient) ListKeysWithContext(arg0 aws.Context, arg1 *kms.ListKeysInput, arg2 ...request.Option) (*kms.ListKeysOutput, error) {
+func (m *MockKMSClient) ListKeysWithContext(arg0 context.Context, arg1 *kms.ListKeysInput, arg2 ...request.Option) (*kms.ListKeysOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1234,7 +1586,7 @@ func (mr *MockKMSClientMockRecorder) ListResourceTagsRequest(arg0 interface{}) *
 }
 
 // ListResourceTagsWithContext mocks base method
-func (m *MockKMSClient) ListResourceTagsWithContext(arg0 aws.Context, arg1 *kms.ListResourceTagsInput, arg2 ...request.Option) (*kms.ListResourceTagsOutput, error) {
+func (m *MockKMSClient) ListResourceTagsWithContext(arg0 context.Context, arg1 *kms.ListResourceTagsInput, arg2 ...request.Option) (*kms.ListResourceTagsOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1278,7 +1630,7 @@ func (mr *MockKMSClientMockRecorder) ListRetirableGrantsRequest(arg0 interface{}
 }
 
 // ListRetirableGrantsWithContext mocks base method
-func (m *MockKMSClient) ListRetirableGrantsWithContext(arg0 aws.Context, arg1 *kms.ListRetirableGrantsInput, arg2 ...request.Option) (*kms.ListGrantsResponse, error) {
+func (m *MockKMSClient) ListRetirableGrantsWithContext(arg0 context.Context, arg1 *kms.ListRetirableGrantsInput, arg2 ...request.Option) (*kms.ListGrantsResponse, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1322,7 +1674,7 @@ func (mr *MockKMSClientMockRecorder) PutKeyPolicyRequest(arg0 interface{}) *gomo
 }
 
 // PutKeyPolicyWithContext mocks base method
-func (m *MockKMSClient) PutKeyPolicyWithContext(arg0 aws.Context, arg1 *kms.PutKeyPolicyInput, arg2 ...request.Option) (*kms.PutKeyPolicyOutput, error) {
+func (m *MockKMSClient) PutKeyPolicyWithContext(arg0 context.Context, arg1 *kms.PutKeyPolicyInput, arg2 ...request.Option) (*kms.PutKeyPolicyOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1366,7 +1718,7 @@ func (mr *MockKMSClientMockRecorder) ReEncryptRequest(arg0 interface{}) *gomock.
 }
 
 // ReEncryptWithContext mocks base method
-func (m *MockKMSClient) ReEncryptWithContext(arg0 aws.Context, arg1 *kms.ReEncryptInput, arg2 ...request.Option) (*kms.ReEncryptOutput, error) {
+func (m *MockKMSClient) ReEncryptWithContext(arg0 context.Context, arg1 *kms.ReEncryptInput, arg2 ...request.Option) (*kms.ReEncryptOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1410,7 +1762,7 @@ func (mr *MockKMSClientMockRecorder) RetireGrantRequest(arg0 interface{}) *gomoc
 }
 
 // RetireGrantWithContext mocks base method
-func (m *MockKMSClient) RetireGrantWithContext(arg0 aws.Context, arg1 *kms.RetireGrantInput, arg2 ...request.Option) (*kms.RetireGrantOutput, error) {
+func (m *MockKMSClient) RetireGrantWithContext(arg0 context.Context, arg1 *kms.RetireGrantInput, arg2 ...request.Option) (*kms.RetireGrantOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1454,7 +1806,7 @@ func (mr *MockKMSClientMockRecorder) RevokeGrantRequest(arg0 interface{}) *gomoc
 }
 
 // RevokeGrantWithContext mocks base method
-func (m *MockKMSClient) RevokeGrantWithContext(arg0 aws.Context, arg1 *kms.RevokeGrantInput, arg2 ...request.Option) (*kms.RevokeGrantOutput, error) {
+func (m *MockKMSClient) RevokeGrantWithContext(arg0 context.Context, arg1 *kms.RevokeGrantInput, arg2 ...request.Option) (*kms.RevokeGrantOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1498,7 +1850,7 @@ func (mr *MockKMSClientMockRecorder) ScheduleKeyDeletionRequest(arg0 interface{}
 }
 
 // ScheduleKeyDeletionWithContext mocks base method
-func (m *MockKMSClient) ScheduleKeyDeletionWithContext(arg0 aws.Context, arg1 *kms.ScheduleKeyDeletionInput, arg2 ...request.Option) (*kms.ScheduleKeyDeletionOutput, error) {
+func (m *MockKMSClient) ScheduleKeyDeletionWithContext(arg0 context.Context, arg1 *kms.ScheduleKeyDeletionInput, arg2 ...request.Option) (*kms.ScheduleKeyDeletionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1513,6 +1865,50 @@ func (m *MockKMSClient) ScheduleKeyDeletionWithContext(arg0 aws.Context, arg1 *k
 func (mr *MockKMSClientMockRecorder) ScheduleKeyDeletionWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ScheduleKeyDeletionWithContext", reflect.TypeOf((*MockKMSClient)(nil).ScheduleKeyDeletionWithContext), varargs...)
+}
+
+// Sign mocks base method
+func (m *MockKMSClient) Sign(arg0 *kms.SignInput) (*kms.SignOutput, error) {
+	ret := m.ctrl.Call(m, "Sign", arg0)
+	ret0, _ := ret[0].(*kms.SignOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Sign indicates an expected call of Sign
+func (mr *MockKMSClientMockRecorder) Sign(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Sign", reflect.TypeOf((*MockKMSClient)(nil).Sign), arg0)
+}
+
+// SignRequest mocks base method
+func (m *MockKMSClient) SignRequest(arg0 *kms.SignInput) (*request.Request, *kms.SignOutput) {
+	ret := m.ctrl.Call(m, "SignRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*kms.SignOutput)
+	return ret0, ret1
+}
+
+// SignRequest indicates an expected call of SignRequest
+func (mr *MockKMSClientMockRecorder) SignRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SignRequest", reflect.TypeOf((*MockKMSClient)(nil).SignRequest), arg0)
+}
+
+// SignWithContext mocks base method
+func (m *MockKMSClient) SignWithContext(arg0 context.Context, arg1 *kms.SignInput, arg2 ...request.Option) (*kms.SignOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "SignWithContext", varargs...)
+	ret0, _ := ret[0].(*kms.SignOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// SignWithContext indicates an expected call of SignWithContext
+func (mr *MockKMSClientMockRecorder) SignWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SignWithContext", reflect.TypeOf((*MockKMSClient)(nil).SignWithContext), varargs...)
 }
 
 // TagResource mocks base method
@@ -1542,7 +1938,7 @@ func (mr *MockKMSClientMockRecorder) TagResourceRequest(arg0 interface{}) *gomoc
 }
 
 // TagResourceWithContext mocks base method
-func (m *MockKMSClient) TagResourceWithContext(arg0 aws.Context, arg1 *kms.TagResourceInput, arg2 ...request.Option) (*kms.TagResourceOutput, error) {
+func (m *MockKMSClient) TagResourceWithContext(arg0 context.Context, arg1 *kms.TagResourceInput, arg2 ...request.Option) (*kms.TagResourceOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1586,7 +1982,7 @@ func (mr *MockKMSClientMockRecorder) UntagResourceRequest(arg0 interface{}) *gom
 }
 
 // UntagResourceWithContext mocks base method
-func (m *MockKMSClient) UntagResourceWithContext(arg0 aws.Context, arg1 *kms.UntagResourceInput, arg2 ...request.Option) (*kms.UntagResourceOutput, error) {
+func (m *MockKMSClient) UntagResourceWithContext(arg0 context.Context, arg1 *kms.UntagResourceInput, arg2 ...request.Option) (*kms.UntagResourceOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1630,7 +2026,7 @@ func (mr *MockKMSClientMockRecorder) UpdateAliasRequest(arg0 interface{}) *gomoc
 }
 
 // UpdateAliasWithContext mocks base method
-func (m *MockKMSClient) UpdateAliasWithContext(arg0 aws.Context, arg1 *kms.UpdateAliasInput, arg2 ...request.Option) (*kms.UpdateAliasOutput, error) {
+func (m *MockKMSClient) UpdateAliasWithContext(arg0 context.Context, arg1 *kms.UpdateAliasInput, arg2 ...request.Option) (*kms.UpdateAliasOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1645,6 +2041,50 @@ func (m *MockKMSClient) UpdateAliasWithContext(arg0 aws.Context, arg1 *kms.Updat
 func (mr *MockKMSClientMockRecorder) UpdateAliasWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateAliasWithContext", reflect.TypeOf((*MockKMSClient)(nil).UpdateAliasWithContext), varargs...)
+}
+
+// UpdateCustomKeyStore mocks base method
+func (m *MockKMSClient) UpdateCustomKeyStore(arg0 *kms.UpdateCustomKeyStoreInput) (*kms.UpdateCustomKeyStoreOutput, error) {
+	ret := m.ctrl.Call(m, "UpdateCustomKeyStore", arg0)
+	ret0, _ := ret[0].(*kms.UpdateCustomKeyStoreOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// UpdateCustomKeyStore indicates an expected call of UpdateCustomKeyStore
+func (mr *MockKMSClientMockRecorder) UpdateCustomKeyStore(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateCustomKeyStore", reflect.TypeOf((*MockKMSClient)(nil).UpdateCustomKeyStore), arg0)
+}
+
+// UpdateCustomKeyStoreRequest mocks base method
+func (m *MockKMSClient) UpdateCustomKeyStoreRequest(arg0 *kms.UpdateCustomKeyStoreInput) (*request.Request, *kms.UpdateCustomKeyStoreOutput) {
+	ret := m.ctrl.Call(m, "UpdateCustomKeyStoreRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*kms.UpdateCustomKeyStoreOutput)
+	return ret0, ret1
+}
+
+// UpdateCustomKeyStoreRequest indicates an expected call of UpdateCustomKeyStoreRequest
+func (mr *MockKMSClientMockRecorder) UpdateCustomKeyStoreRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateCustomKeyStoreRequest", reflect.TypeOf((*MockKMSClient)(nil).UpdateCustomKeyStoreRequest), arg0)
+}
+
+// UpdateCustomKeyStoreWithContext mocks base method
+func (m *MockKMSClient) UpdateCustomKeyStoreWithContext(arg0 context.Context, arg1 *kms.UpdateCustomKeyStoreInput, arg2 ...request.Option) (*kms.UpdateCustomKeyStoreOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "UpdateCustomKeyStoreWithContext", varargs...)
+	ret0, _ := ret[0].(*kms.UpdateCustomKeyStoreOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// UpdateCustomKeyStoreWithContext indicates an expected call of UpdateCustomKeyStoreWithContext
+func (mr *MockKMSClientMockRecorder) UpdateCustomKeyStoreWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateCustomKeyStoreWithContext", reflect.TypeOf((*MockKMSClient)(nil).UpdateCustomKeyStoreWithContext), varargs...)
 }
 
 // UpdateKeyDescription mocks base method
@@ -1674,7 +2114,7 @@ func (mr *MockKMSClientMockRecorder) UpdateKeyDescriptionRequest(arg0 interface{
 }
 
 // UpdateKeyDescriptionWithContext mocks base method
-func (m *MockKMSClient) UpdateKeyDescriptionWithContext(arg0 aws.Context, arg1 *kms.UpdateKeyDescriptionInput, arg2 ...request.Option) (*kms.UpdateKeyDescriptionOutput, error) {
+func (m *MockKMSClient) UpdateKeyDescriptionWithContext(arg0 context.Context, arg1 *kms.UpdateKeyDescriptionInput, arg2 ...request.Option) (*kms.UpdateKeyDescriptionOutput, error) {
 	varargs := []interface{}{arg0, arg1}
 	for _, a := range arg2 {
 		varargs = append(varargs, a)
@@ -1689,4 +2129,48 @@ func (m *MockKMSClient) UpdateKeyDescriptionWithContext(arg0 aws.Context, arg1 *
 func (mr *MockKMSClientMockRecorder) UpdateKeyDescriptionWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateKeyDescriptionWithContext", reflect.TypeOf((*MockKMSClient)(nil).UpdateKeyDescriptionWithContext), varargs...)
+}
+
+// Verify mocks base method
+func (m *MockKMSClient) Verify(arg0 *kms.VerifyInput) (*kms.VerifyOutput, error) {
+	ret := m.ctrl.Call(m, "Verify", arg0)
+	ret0, _ := ret[0].(*kms.VerifyOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Verify indicates an expected call of Verify
+func (mr *MockKMSClientMockRecorder) Verify(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Verify", reflect.TypeOf((*MockKMSClient)(nil).Verify), arg0)
+}
+
+// VerifyRequest mocks base method
+func (m *MockKMSClient) VerifyRequest(arg0 *kms.VerifyInput) (*request.Request, *kms.VerifyOutput) {
+	ret := m.ctrl.Call(m, "VerifyRequest", arg0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*kms.VerifyOutput)
+	return ret0, ret1
+}
+
+// VerifyRequest indicates an expected call of VerifyRequest
+func (mr *MockKMSClientMockRecorder) VerifyRequest(arg0 interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "VerifyRequest", reflect.TypeOf((*MockKMSClient)(nil).VerifyRequest), arg0)
+}
+
+// VerifyWithContext mocks base method
+func (m *MockKMSClient) VerifyWithContext(arg0 context.Context, arg1 *kms.VerifyInput, arg2 ...request.Option) (*kms.VerifyOutput, error) {
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "VerifyWithContext", varargs...)
+	ret0, _ := ret[0].(*kms.VerifyOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// VerifyWithContext indicates an expected call of VerifyWithContext
+func (mr *MockKMSClientMockRecorder) VerifyWithContext(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "VerifyWithContext", reflect.TypeOf((*MockKMSClient)(nil).VerifyWithContext), varargs...)
 }
