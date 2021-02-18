@@ -18,9 +18,8 @@ func TestMain(t *testing.T) {
 	tests := []struct {
 		description string
 		envKey      string
-		secretKey   string
 		envValue    string
-		secretValue string
+		secretMap   map[string]string
 		expect      string
 		json        bool
 		callsSM     bool
@@ -83,12 +82,14 @@ func TestMain(t *testing.T) {
 			envKey:      "TEST",
 			envValue:    "sm://<secret-path>",
 			expect:      "sm://<secret-path>",
-			secretKey:   "password",
-			secretValue: "secret",
-			json:        true,
-			callsSM:     true,
+			secretMap: map[string]string{
+				"user":     "test",
+				"password": "secret",
+			},
+			json:    true,
+			callsSM: true,
 			smOutput: &secretsmanager.GetSecretValueOutput{
-				SecretString: aws.String("{\"password\": \"secret\"}"),
+				SecretString: aws.String("{\"user\": \"test\",\"password\": \"secret\"}"),
 			},
 		},
 	}
@@ -136,8 +137,10 @@ func TestMain(t *testing.T) {
 				if got, want := os.Getenv(tc.envKey), tc.expect; got != want {
 					t.Errorf("\ngot: %s\nwanted: %s", got, want)
 				}
-				if got, want := os.Getenv(tc.secretKey), tc.secretValue; got != want {
-					t.Errorf("\ngot: %s\nwanted: %s", got, want)
+				for secretKey, secretValue := range tc.secretMap {
+					if got, want := os.Getenv(secretKey), secretValue; got != want {
+						t.Errorf("\ngot: %s\nwanted: %s", got, want)
+					}
 				}
 			}
 		})
