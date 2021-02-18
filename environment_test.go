@@ -17,9 +17,12 @@ import (
 func TestMain(t *testing.T) {
 	tests := []struct {
 		description string
-		key         string
-		value       string
+		envKey      string
+		secretKey   string
+		envValue    string
+		secretValue string
 		expect      string
+		json        bool
 		callsSM     bool
 		smOutput    *secretsmanager.GetSecretValueOutput
 		callsSSM    bool
@@ -29,14 +32,14 @@ func TestMain(t *testing.T) {
 	}{
 		{
 			description: "does not have sideffects for the regular environment",
-			key:         "TEST",
-			value:       "somevalue",
+			envKey:      "TEST",
+			envValue:    "somevalue",
 			expect:      "somevalue",
 		},
 		{
 			description: "allows empty strings as secrets",
-			key:         "TEST",
-			value:       "sm://<secret-path>",
+			envKey:      "TEST",
+			envValue:    "sm://<secret-path>",
 			expect:      "",
 			callsSM:     true,
 			smOutput: &secretsmanager.GetSecretValueOutput{
@@ -45,8 +48,8 @@ func TestMain(t *testing.T) {
 		},
 		{
 			description: "picks up sm secrets",
-			key:         "TEST",
-			value:       "sm://<secret-path>",
+			envKey:      "TEST",
+			envValue:    "sm://<secret-path>",
 			expect:      "secret",
 			callsSM:     true,
 			smOutput: &secretsmanager.GetSecretValueOutput{
@@ -55,8 +58,8 @@ func TestMain(t *testing.T) {
 		},
 		{
 			description: "picks up ssm secrets",
-			key:         "TEST",
-			value:       "ssm://<parameter-path>",
+			envKey:      "TEST",
+			envValue:    "ssm://<parameter-path>",
 			expect:      "secret",
 			callsSSM:    true,
 			ssmOutput: &ssm.GetParameterOutput{
@@ -67,12 +70,25 @@ func TestMain(t *testing.T) {
 		},
 		{
 			description: "picks up kms secrets",
-			key:         "TEST",
-			value:       "kms://" + base64.StdEncoding.EncodeToString([]byte("<encrypted>")),
+			envKey:      "TEST",
+			envValue:    "kms://" + base64.StdEncoding.EncodeToString([]byte("<encrypted>")),
 			expect:      "secret",
 			callsKMS:    true,
 			kmsOutput: &kms.DecryptOutput{
 				Plaintext: []byte("secret"),
+			},
+		},
+		{
+			description: "test multi key-value secret within json",
+			envKey:      "TEST",
+			envValue:    "sm://<secret-path>",
+			expect:      "sm://<secret-path>",
+			secretKey:   "password",
+			secretValue: "secret",
+			json:        true,
+			callsSM:     true,
+			smOutput: &secretsmanager.GetSecretValueOutput{
+				SecretString: aws.String("{\"password\": \"secret\"}"),
 			},
 		},
 	}
@@ -96,13 +112,13 @@ func TestMain(t *testing.T) {
 			}
 
 			// Set environment
-			old := os.Getenv(tc.key)
-			if err := os.Setenv(tc.key, tc.value); err != nil {
+			old := os.Getenv(tc.envKey)
+			if err := os.Setenv(tc.envKey, tc.envValue); err != nil {
 				t.Fatalf("failed to set environment variable: %s", err)
 			}
 			// Set the old value before exiting
 			defer func() {
-				if err := os.Setenv(tc.key, old); err != nil {
+				if err := os.Setenv(tc.envKey, old); err != nil {
 					t.Fatalf("failed to set environment variable: %s", err)
 				}
 			}()
@@ -112,8 +128,17 @@ func TestMain(t *testing.T) {
 			if err := env.Populate(); err != nil {
 				t.Fatalf("unexpected error: %s", err)
 			}
-			if got, want := os.Getenv(tc.key), tc.expect; got != want {
-				t.Errorf("\ngot: %s\nwanted: %s", got, want)
+			if tc.json != true {
+				if got, want := os.Getenv(tc.envKey), tc.expect; got != want {
+					t.Errorf("\ngot: %s\nwanted: %s", got, want)
+				}
+			} else {
+				if got, want := os.Getenv(tc.envKey), tc.expect; got != want {
+					t.Errorf("\ngot: %s\nwanted: %s", got, want)
+				}
+				if got, want := os.Getenv(tc.secretKey), tc.secretValue; got != want {
+					t.Errorf("\ngot: %s\nwanted: %s", got, want)
+				}
 			}
 		})
 	}

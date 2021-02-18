@@ -2,6 +2,7 @@ package environment
 
 import (
 	"encoding/base64"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"os"
@@ -106,7 +107,17 @@ func (m *Manager) Populate() error {
 		}
 
 		if found {
-			env[name] = secret
+			secretMap := make(map[string]string)
+			err = json.Unmarshal([]byte(secret), &secretMap)
+			// if the json Unmarshal errors that means the secret is not a json and we set the original env variable to the secret
+			if err != nil {
+				env[name] = secret
+			} else {
+				// if the secret is a json we want to set the key-value pairs within the json to the env variables
+				for keySecret, valueSecret := range secretMap {
+					env[keySecret] = valueSecret
+				}
+			}
 		}
 	}
 
