@@ -75,6 +75,30 @@ func TestEnvironment(t *testing.T) {
 				Plaintext: []byte("secret"),
 			},
 		},
+		{
+			description:  "allows JSON strings as secrets",
+			key:          "TEST",
+			value:        "ssm://<parameter-path>",
+			expect:       `{"key":"secret"}`,
+			ssmCallCount: 1,
+			ssmOutput: &ssm.GetParameterOutput{
+				Parameter: &ssm.Parameter{
+					Value: aws.String(`{"key":"secret"}`),
+				},
+			},
+		},
+		{
+			description:  "supports multi-value secrets",
+			key:          "TEST",
+			value:        "ssm://<parameter-path>#key",
+			expect:       "secret",
+			ssmCallCount: 1,
+			ssmOutput: &ssm.GetParameterOutput{
+				Parameter: &ssm.Parameter{
+					Value: aws.String(`{"key":"secret"}`),
+				},
+			},
+		},
 	}
 
 	for _, tc := range tests {

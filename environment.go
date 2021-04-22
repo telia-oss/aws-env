@@ -2,6 +2,7 @@ package environment
 
 import (
 	"encoding/base64"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"os"
@@ -16,9 +17,11 @@ import (
 )
 
 const (
-	smPrefix  = "sm://"
-	ssmPrefix = "ssm://"
-	kmsPrefix = "kms://"
+	smPrefix     = "sm://"
+	ssmPrefix    = "ssm://"
+	kmsPrefix    = "kms://"
+	envDelmiter  = "="
+	mvsDelimiter = "#"
 )
 
 // Generate test fakes.
@@ -87,31 +90,49 @@ func (m *Manager) Populate() error {
 			err    error
 		)
 
-		name, value := parseEnvironmentVariable(v)
-
-		if strings.HasPrefix(value, ssmPrefix) {
-			secret, err = m.getParameter(strings.TrimPrefix(value, ssmPrefix))
-			if err != nil {
-				return fmt.Errorf("failed to get secret from parameter store: '%s': %s", name, err)
-			}
-			found = true
-		}
-		if strings.HasPrefix(value, smPrefix) {
-			secret, err = m.getSecretValue(strings.TrimPrefix(value, smPrefix))
-			if err != nil {
-				return fmt.Errorf("failed to get secret from secret manager: '%s': %s", name, err)
-			}
-			found = true
-		}
-		if strings.HasPrefix(value, kmsPrefix) {
-			secret, err = m.decrypt(strings.TrimPrefix(value, kmsPrefix))
-			if err != nil {
-				return fmt.Errorf("failed to decrypt kms secret: '%s': %s", name, err)
-			}
-			found = true
+		name, value, ok := strings.Cut(v, envDelmiter)
+		if !ok {
+			return fmt.Errorf("failed to parse environment variable with delimiter: %q", envDelmiter)
 		}
 
+		// # is not a legal character in secrets manager, parameter store or an
+		// encrypted (and base64 encoded) string from KMS. I.e. it should only
+		// be present if we are dealing with a multi-value secret.
+		path, secretKey, isMultiValueSecret := strings.Cut(value, mvsDelimiter)
+
+		if strings.HasPrefix(path, ssmPrefix) {
+			secret, err = m.getParameter(strings.TrimPrefix(path, ssmPrefix))
+			if err != nil {
+				return fmt.Errorf("failed to get secret from parameter store: %q: %s", name, err)
+			}
+			found = true
+		}
+		if strings.HasPrefix(path, smPrefix) {
+			secret, err = m.getSecretValue(strings.TrimPrefix(path, smPrefix))
+			if err != nil {
+				return fmt.Errorf("failed to get secret from secret manager: %q: %s", name, err)
+			}
+			found = true
+		}
+		if strings.HasPrefix(path, kmsPrefix) {
+			secret, err = m.decrypt(strings.TrimPrefix(path, kmsPrefix))
+			if err != nil {
+				return fmt.Errorf("failed to decrypt kms secret: %q: %s", name, err)
+			}
+			found = true
+		}
 		if found {
+			if isMultiValueSecret {
+				o := make(map[string]string)
+				if err := json.Unmarshal([]byte(secret), &o); err != nil {
+					return fmt.Errorf("failed to unmarshal multi-value secret: %q", name)
+				}
+
+				secret, ok = o[secretKey]
+				if !ok {
+					return fmt.Errorf("failed to get multi-value secret with key (%q): %q", secretKey, name)
+				}
+			}
 			env[name] = secret
 		}
 	}
@@ -122,11 +143,6 @@ func (m *Manager) Populate() error {
 		}
 	}
 	return nil
-}
-
-func parseEnvironmentVariable(s string) (string, string) {
-	pair := strings.SplitN(s, "=", 2)
-	return pair[0], pair[1]
 }
 
 func (m *Manager) getSecretValue(path string) (out string, err error) {
