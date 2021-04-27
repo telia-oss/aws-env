@@ -1,0 +1,34 @@
+version: "3"
+
+env:
+  TERM: screen-256color
+
+tasks:
+  default:
+    cmds:
+      - task: test
+
+  test:
+    desc: Run tests.
+    cmds:
+      - task: go-test
+
+  build:
+    desc: Build binary.
+    cmds:
+      - task: go-generate
+      - task: go-test
+      - goreleaser --snapshot --rm-dist
+
+  go-generate:
+    desc: Generate test fakes
+    cmds:
+    - go generate ./...
+
+  go-test:
+    desc: Run tests for all Go code.
+    silent: true
+    cmds:
+    - gofmt -s -l -w .
+    - go vet -v ./...
+    - go test -race -v ./...
