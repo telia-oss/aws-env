@@ -24,16 +24,19 @@ const (
 	kmsPrefix = "kms://"
 )
 
+// Generate test fakes.
+//go:generate go run github.com/maxbrunsfeld/counterfeiter/v6 -generate
+
 // SMClient (secrets manager client) for testing purposes.
-//go:generate mockgen -destination=mocks/mock_sm_client.go -package=mocks github.com/telia-oss/aws-env SMClient
+//counterfeiter:generate -o ./fakes . SMClient
 type SMClient secretsmanageriface.SecretsManagerAPI
 
 // SSMClient for testing purposes.
-//go:generate mockgen -destination=mocks/mock_ssm_client.go -package=mocks github.com/telia-oss/aws-env SSMClient
+//counterfeiter:generate -o ./fakes . SSMClient
 type SSMClient ssmiface.SSMAPI
 
 // KMSClient for testing purposes.
-//go:generate mockgen -destination=mocks/mock_kms_client.go -package=mocks github.com/telia-oss/aws-env KMSClient
+//counterfeiter:generate -o ./fakes . KMSClient
 type KMSClient kmsiface.KMSAPI
 
 // NewTestManager for testing purposes.

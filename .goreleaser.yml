@@ -1,0 +1,50 @@
+before:
+  hooks:
+    - go mod download
+
+builds:
+- main: ./cmd/aws-env/main.go
+  env:
+    - CGO_ENABLED=0
+  goos:
+    - darwin
+    - linux
+    - windows
+  goarch:
+    - amd64
+  ldflags: 
+    - -buildid="" -s -w -X main.version={{.Version}}
+
+archives:
+  - format_overrides:
+      - goos: windows
+        format: zip
+    name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ .Version }}-{{ .ShortCommit }}"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+release:
+  prerelease: auto
+
+brews:
+  - description: A small binary for securely handling secrets in environment variables on AWS.
+    homepage: https://github.com/telia-oss/aws-env
+    install: |
+      bin.install "aws-env"
+    test: |
+      system "#{bin}/aws-env --version"
+    tap:
+      owner: telia-oss 
+      name: homebrew-tap
+    folder: Formula

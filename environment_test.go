@@ -3,29 +3,29 @@ package environment_test
 import (
 	"encoding/base64"
 	"os"
+	"reflect"
 	"testing"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/kms"
 	"github.com/aws/aws-sdk-go/service/secretsmanager"
 	"github.com/aws/aws-sdk-go/service/ssm"
-	"github.com/golang/mock/gomock"
 	environment "github.com/telia-oss/aws-env"
-	"github.com/telia-oss/aws-env/mocks"
+	"github.com/telia-oss/aws-env/fakes"
 )
 
 func TestMain(t *testing.T) {
 	tests := []struct {
-		description string
-		key         string
-		value       string
-		expect      string
-		callsSM     bool
-		smOutput    *secretsmanager.GetSecretValueOutput
-		callsSSM    bool
-		ssmOutput   *ssm.GetParameterOutput
-		callsKMS    bool
-		kmsOutput   *kms.DecryptOutput
+		description  string
+		key          string
+		value        string
+		expect       string
+		smCallCount  int
+		smOutput     *secretsmanager.GetSecretValueOutput
+		ssmCallCount int
+		ssmOutput    *ssm.GetParameterOutput
+		kmsCallCount int
+		kmsOutput    *kms.DecryptOutput
 	}{
 		{
 			description: "does not have sideffects for the regular environment",
@@ -38,7 +38,7 @@ func TestMain(t *testing.T) {
 			key:         "TEST",
 			value:       "sm://<secret-path>",
 			expect:      "",
-			callsSM:     true,
+			smCallCount: 1,
 			smOutput: &secretsmanager.GetSecretValueOutput{
 				SecretString: aws.String(""),
 			},
@@ -48,17 +48,17 @@ func TestMain(t *testing.T) {
 			key:         "TEST",
 			value:       "sm://<secret-path>",
 			expect:      "secret",
-			callsSM:     true,
+			smCallCount: 1,
 			smOutput: &secretsmanager.GetSecretValueOutput{
 				SecretString: aws.String("secret"),
 			},
 		},
 		{
-			description: "picks up ssm secrets",
-			key:         "TEST",
-			value:       "ssm://<parameter-path>",
-			expect:      "secret",
-			callsSSM:    true,
+			description:  "picks up ssm secrets",
+			key:          "TEST",
+			value:        "ssm://<parameter-path>",
+			expect:       "secret",
+			ssmCallCount: 1,
 			ssmOutput: &ssm.GetParameterOutput{
 				Parameter: &ssm.Parameter{
 					Value: aws.String("secret"),
@@ -66,11 +66,11 @@ func TestMain(t *testing.T) {
 			},
 		},
 		{
-			description: "picks up kms secrets",
-			key:         "TEST",
-			value:       "kms://" + base64.StdEncoding.EncodeToString([]byte("<encrypted>")),
-			expect:      "secret",
-			callsKMS:    true,
+			description:  "picks up kms secrets",
+			key:          "TEST",
+			value:        "kms://" + base64.StdEncoding.EncodeToString([]byte("<encrypted>")),
+			expect:       "secret",
+			kmsCallCount: 1,
 			kmsOutput: &kms.DecryptOutput{
 				Plaintext: []byte("secret"),
 			},
@@ -79,42 +79,33 @@ func TestMain(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.description, func(t *testing.T) {
-			ctrl := gomock.NewController(t)
-			defer ctrl.Finish()
+			sm := &fakes.FakeSMClient{}
+			sm.GetSecretValueReturns(tc.smOutput, nil)
 
-			sm := mocks.NewMockSMClient(ctrl)
-			if tc.callsSM {
-				sm.EXPECT().GetSecretValue(gomock.Any()).Times(1).Return(tc.smOutput, nil)
-			}
-			ssm := mocks.NewMockSSMClient(ctrl)
-			if tc.callsSSM {
-				ssm.EXPECT().GetParameter(gomock.Any()).Times(1).Return(tc.ssmOutput, nil)
-			}
-			kms := mocks.NewMockKMSClient(ctrl)
-			if tc.callsKMS {
-				kms.EXPECT().Decrypt(gomock.Any()).Times(1).Return(tc.kmsOutput, nil)
-			}
+			ssm := &fakes.FakeSSMClient{}
+			ssm.GetParameterReturns(tc.ssmOutput, nil)
 
-			// Set environment
-			old := os.Getenv(tc.key)
+			kms := &fakes.FakeKMSClient{}
+			kms.DecryptReturns(tc.kmsOutput, nil)
+
 			if err := os.Setenv(tc.key, tc.value); err != nil {
 				t.Fatalf("failed to set environment variable: %s", err)
 			}
-			// Set the old value before exiting
-			defer func() {
-				if err := os.Setenv(tc.key, old); err != nil {
-					t.Fatalf("failed to set environment variable: %s", err)
-				}
-			}()
 
-			// Run tests
-			env := environment.NewTestManager(sm, ssm, kms)
-			if err := env.Populate(); err != nil {
+			if err := environment.NewTestManager(sm, ssm, kms).Populate(); err != nil {
 				t.Fatalf("unexpected error: %s", err)
 			}
-			if got, want := os.Getenv(tc.key), tc.expect; got != want {
-				t.Errorf("\ngot: %s\nwanted: %s", got, want)
-			}
+			eq(t, tc.smCallCount, sm.GetSecretValueCallCount())
+			eq(t, tc.ssmCallCount, ssm.GetParameterCallCount())
+			eq(t, tc.kmsCallCount, kms.DecryptCallCount())
+			eq(t, tc.expect, os.Getenv(tc.key))
 		})
+	}
+}
+
+func eq(t *testing.T, expected, got interface{}) {
+	t.Helper()
+	if !reflect.DeepEqual(got, expected) {
+		t.Errorf("\nexpected:\n%v\n\ngot:\n%v", expected, got)
 	}
 }
