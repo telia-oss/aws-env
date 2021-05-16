@@ -1,6 +1,6 @@
 ## aws-env
 
-[![build status](https://img.shields.io/github/workflow/status/telia-oss/aws-env/workflow?label=build&logo=github&style=flat-square)](https://github.com/telia-oss/aws-env/actions?query=workflow%3Atest)
+[![build status](https://img.shields.io/github/workflow/status/telia-oss/aws-env/test?label=build&logo=github&style=flat-square)](https://github.com/telia-oss/aws-env/actions?query=workflow%3Atest)
 
 A small library and binary for securely handling secrets in environment variables on AWS. Supports KMS, SSM Parameter store and secrets manager. Inspired by [ssm-env](https://github.com/remind101/ssm-env).
 
