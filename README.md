@@ -27,7 +27,13 @@ Required IAM privileges:
 
 #### Binary
 
-Grab a binary from the [releases](https://github.com/telia-oss/aws-env/releases) and start your process with:
+Install using [homebrew](https://brew.sh/):
+
+```bash
+brew install telia-oss/tap/aws-env
+```
+
+Or grab binary from the [releases](https://github.com/telia-oss/aws-env/releases), and start your process with:
 
 ```bash
 aws-env exec -- <command>
