@@ -11,11 +11,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws/ec2metadata"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/kms"
-	"github.com/aws/aws-sdk-go/service/kms/kmsiface"
 	"github.com/aws/aws-sdk-go/service/secretsmanager"
-	"github.com/aws/aws-sdk-go/service/secretsmanager/secretsmanageriface"
 	"github.com/aws/aws-sdk-go/service/ssm"
-	"github.com/aws/aws-sdk-go/service/ssm/ssmiface"
 )
 
 const (
@@ -29,15 +26,21 @@ const (
 
 // SMClient (secrets manager client) for testing purposes.
 //counterfeiter:generate -o ./fakes . SMClient
-type SMClient secretsmanageriface.SecretsManagerAPI
+type SMClient interface {
+	GetSecretValue(*secretsmanager.GetSecretValueInput) (*secretsmanager.GetSecretValueOutput, error)
+}
 
 // SSMClient for testing purposes.
 //counterfeiter:generate -o ./fakes . SSMClient
-type SSMClient ssmiface.SSMAPI
+type SSMClient interface {
+	GetParameter(*ssm.GetParameterInput) (*ssm.GetParameterOutput, error)
+}
 
 // KMSClient for testing purposes.
 //counterfeiter:generate -o ./fakes . KMSClient
-type KMSClient kmsiface.KMSAPI
+type KMSClient interface {
+	Decrypt(*kms.DecryptInput) (*kms.DecryptOutput, error)
+}
 
 // NewTestManager for testing purposes.
 func NewTestManager(sm SMClient, ssm SSMClient, kms KMSClient) *Manager {
