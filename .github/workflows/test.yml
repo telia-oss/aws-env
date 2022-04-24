@@ -1,6 +1,6 @@
 name: test
 
-on: 
+on:
   pull_request: {}
   push:
     branches:
@@ -10,11 +10,11 @@ jobs:
   code:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Go
-      uses: actions/setup-go@v2
-      with: { go-version: 1.16 }
-    - name: Install Taskfile
-      run: curl -sL https://taskfile.dev/install.sh | sh
-    - name: Run tests
-      run: ./bin/task test
+      - uses: actions/checkout@v2
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with: { go-version: 1.18 }
+      - name: Install Taskfile
+        run: curl -sL https://taskfile.dev/install.sh | sh
+      - name: Run tests
+        run: ./bin/task test
