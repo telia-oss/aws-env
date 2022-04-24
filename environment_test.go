@@ -14,7 +14,7 @@ import (
 	"github.com/telia-oss/aws-env/fakes"
 )
 
-func TestMain(t *testing.T) {
+func TestEnvironment(t *testing.T) {
 	tests := []struct {
 		description  string
 		key          string
