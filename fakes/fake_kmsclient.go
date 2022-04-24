@@ -913,6 +913,47 @@ type FakeKMSClient struct {
 		result1 *kms.GenerateDataKeyWithoutPlaintextOutput
 		result2 error
 	}
+	GenerateMacStub        func(*kms.GenerateMacInput) (*kms.GenerateMacOutput, error)
+	generateMacMutex       sync.RWMutex
+	generateMacArgsForCall []struct {
+		arg1 *kms.GenerateMacInput
+	}
+	generateMacReturns struct {
+		result1 *kms.GenerateMacOutput
+		result2 error
+	}
+	generateMacReturnsOnCall map[int]struct {
+		result1 *kms.GenerateMacOutput
+		result2 error
+	}
+	GenerateMacRequestStub        func(*kms.GenerateMacInput) (*request.Request, *kms.GenerateMacOutput)
+	generateMacRequestMutex       sync.RWMutex
+	generateMacRequestArgsForCall []struct {
+		arg1 *kms.GenerateMacInput
+	}
+	generateMacRequestReturns struct {
+		result1 *request.Request
+		result2 *kms.GenerateMacOutput
+	}
+	generateMacRequestReturnsOnCall map[int]struct {
+		result1 *request.Request
+		result2 *kms.GenerateMacOutput
+	}
+	GenerateMacWithContextStub        func(context.Context, *kms.GenerateMacInput, ...request.Option) (*kms.GenerateMacOutput, error)
+	generateMacWithContextMutex       sync.RWMutex
+	generateMacWithContextArgsForCall []struct {
+		arg1 context.Context
+		arg2 *kms.GenerateMacInput
+		arg3 []request.Option
+	}
+	generateMacWithContextReturns struct {
+		result1 *kms.GenerateMacOutput
+		result2 error
+	}
+	generateMacWithContextReturnsOnCall map[int]struct {
+		result1 *kms.GenerateMacOutput
+		result2 error
+	}
 	GenerateRandomStub        func(*kms.GenerateRandomInput) (*kms.GenerateRandomOutput, error)
 	generateRandomMutex       sync.RWMutex
 	generateRandomArgsForCall []struct {
@@ -1591,6 +1632,47 @@ type FakeKMSClient struct {
 		result1 *kms.ReEncryptOutput
 		result2 error
 	}
+	ReplicateKeyStub        func(*kms.ReplicateKeyInput) (*kms.ReplicateKeyOutput, error)
+	replicateKeyMutex       sync.RWMutex
+	replicateKeyArgsForCall []struct {
+		arg1 *kms.ReplicateKeyInput
+	}
+	replicateKeyReturns struct {
+		result1 *kms.ReplicateKeyOutput
+		result2 error
+	}
+	replicateKeyReturnsOnCall map[int]struct {
+		result1 *kms.ReplicateKeyOutput
+		result2 error
+	}
+	ReplicateKeyRequestStub        func(*kms.ReplicateKeyInput) (*request.Request, *kms.ReplicateKeyOutput)
+	replicateKeyRequestMutex       sync.RWMutex
+	replicateKeyRequestArgsForCall []struct {
+		arg1 *kms.ReplicateKeyInput
+	}
+	replicateKeyRequestReturns struct {
+		result1 *request.Request
+		result2 *kms.ReplicateKeyOutput
+	}
+	replicateKeyRequestReturnsOnCall map[int]struct {
+		result1 *request.Request
+		result2 *kms.ReplicateKeyOutput
+	}
+	ReplicateKeyWithContextStub        func(context.Context, *kms.ReplicateKeyInput, ...request.Option) (*kms.ReplicateKeyOutput, error)
+	replicateKeyWithContextMutex       sync.RWMutex
+	replicateKeyWithContextArgsForCall []struct {
+		arg1 context.Context
+		arg2 *kms.ReplicateKeyInput
+		arg3 []request.Option
+	}
+	replicateKeyWithContextReturns struct {
+		result1 *kms.ReplicateKeyOutput
+		result2 error
+	}
+	replicateKeyWithContextReturnsOnCall map[int]struct {
+		result1 *kms.ReplicateKeyOutput
+		result2 error
+	}
 	RetireGrantStub        func(*kms.RetireGrantInput) (*kms.RetireGrantOutput, error)
 	retireGrantMutex       sync.RWMutex
 	retireGrantArgsForCall []struct {
@@ -1960,6 +2042,47 @@ type FakeKMSClient struct {
 		result1 *kms.UpdateKeyDescriptionOutput
 		result2 error
 	}
+	UpdatePrimaryRegionStub        func(*kms.UpdatePrimaryRegionInput) (*kms.UpdatePrimaryRegionOutput, error)
+	updatePrimaryRegionMutex       sync.RWMutex
+	updatePrimaryRegionArgsForCall []struct {
+		arg1 *kms.UpdatePrimaryRegionInput
+	}
+	updatePrimaryRegionReturns struct {
+		result1 *kms.UpdatePrimaryRegionOutput
+		result2 error
+	}
+	updatePrimaryRegionReturnsOnCall map[int]struct {
+		result1 *kms.UpdatePrimaryRegionOutput
+		result2 error
+	}
+	UpdatePrimaryRegionRequestStub        func(*kms.UpdatePrimaryRegionInput) (*request.Request, *kms.UpdatePrimaryRegionOutput)
+	updatePrimaryRegionRequestMutex       sync.RWMutex
+	updatePrimaryRegionRequestArgsForCall []struct {
+		arg1 *kms.UpdatePrimaryRegionInput
+	}
+	updatePrimaryRegionRequestReturns struct {
+		result1 *request.Request
+		result2 *kms.UpdatePrimaryRegionOutput
+	}
+	updatePrimaryRegionRequestReturnsOnCall map[int]struct {
+		result1 *request.Request
+		result2 *kms.UpdatePrimaryRegionOutput
+	}
+	UpdatePrimaryRegionWithContextStub        func(context.Context, *kms.UpdatePrimaryRegionInput, ...request.Option) (*kms.UpdatePrimaryRegionOutput, error)
+	updatePrimaryRegionWithContextMutex       sync.RWMutex
+	updatePrimaryRegionWithContextArgsForCall []struct {
+		arg1 context.Context
+		arg2 *kms.UpdatePrimaryRegionInput
+		arg3 []request.Option
+	}
+	updatePrimaryRegionWithContextReturns struct {
+		result1 *kms.UpdatePrimaryRegionOutput
+		result2 error
+	}
+	updatePrimaryRegionWithContextReturnsOnCall map[int]struct {
+		result1 *kms.UpdatePrimaryRegionOutput
+		result2 error
+	}
 	VerifyStub        func(*kms.VerifyInput) (*kms.VerifyOutput, error)
 	verifyMutex       sync.RWMutex
 	verifyArgsForCall []struct {
@@ -1971,6 +2094,47 @@ type FakeKMSClient struct {
 	}
 	verifyReturnsOnCall map[int]struct {
 		result1 *kms.VerifyOutput
+		result2 error
+	}
+	VerifyMacStub        func(*kms.VerifyMacInput) (*kms.VerifyMacOutput, error)
+	verifyMacMutex       sync.RWMutex
+	verifyMacArgsForCall []struct {
+		arg1 *kms.VerifyMacInput
+	}
+	verifyMacReturns struct {
+		result1 *kms.VerifyMacOutput
+		result2 error
+	}
+	verifyMacReturnsOnCall map[int]struct {
+		result1 *kms.VerifyMacOutput
+		result2 error
+	}
+	VerifyMacRequestStub        func(*kms.VerifyMacInput) (*request.Request, *kms.VerifyMacOutput)
+	verifyMacRequestMutex       sync.RWMutex
+	verifyMacRequestArgsForCall []struct {
+		arg1 *kms.VerifyMacInput
+	}
+	verifyMacRequestReturns struct {
+		result1 *request.Request
+		result2 *kms.VerifyMacOutput
+	}
+	verifyMacRequestReturnsOnCall map[int]struct {
+		result1 *request.Request
+		result2 *kms.VerifyMacOutput
+	}
+	VerifyMacWithContextStub        func(context.Context, *kms.VerifyMacInput, ...request.Option) (*kms.VerifyMacOutput, error)
+	verifyMacWithContextMutex       sync.RWMutex
+	verifyMacWithContextArgsForCall []struct {
+		arg1 context.Context
+		arg2 *kms.VerifyMacInput
+		arg3 []request.Option
+	}
+	verifyMacWithContextReturns struct {
+		result1 *kms.VerifyMacOutput
+		result2 error
+	}
+	verifyMacWithContextReturnsOnCall map[int]struct {
+		result1 *kms.VerifyMacOutput
 		result2 error
 	}
 	VerifyRequestStub        func(*kms.VerifyInput) (*request.Request, *kms.VerifyOutput)
@@ -6273,6 +6437,200 @@ func (fake *FakeKMSClient) GenerateDataKeyWithoutPlaintextWithContextReturnsOnCa
 	}{result1, result2}
 }
 
+func (fake *FakeKMSClient) GenerateMac(arg1 *kms.GenerateMacInput) (*kms.GenerateMacOutput, error) {
+	fake.generateMacMutex.Lock()
+	ret, specificReturn := fake.generateMacReturnsOnCall[len(fake.generateMacArgsForCall)]
+	fake.generateMacArgsForCall = append(fake.generateMacArgsForCall, struct {
+		arg1 *kms.GenerateMacInput
+	}{arg1})
+	stub := fake.GenerateMacStub
+	fakeReturns := fake.generateMacReturns
+	fake.recordInvocation("GenerateMac", []interface{}{arg1})
+	fake.generateMacMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) GenerateMacCallCount() int {
+	fake.generateMacMutex.RLock()
+	defer fake.generateMacMutex.RUnlock()
+	return len(fake.generateMacArgsForCall)
+}
+
+func (fake *FakeKMSClient) GenerateMacCalls(stub func(*kms.GenerateMacInput) (*kms.GenerateMacOutput, error)) {
+	fake.generateMacMutex.Lock()
+	defer fake.generateMacMutex.Unlock()
+	fake.GenerateMacStub = stub
+}
+
+func (fake *FakeKMSClient) GenerateMacArgsForCall(i int) *kms.GenerateMacInput {
+	fake.generateMacMutex.RLock()
+	defer fake.generateMacMutex.RUnlock()
+	argsForCall := fake.generateMacArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKMSClient) GenerateMacReturns(result1 *kms.GenerateMacOutput, result2 error) {
+	fake.generateMacMutex.Lock()
+	defer fake.generateMacMutex.Unlock()
+	fake.GenerateMacStub = nil
+	fake.generateMacReturns = struct {
+		result1 *kms.GenerateMacOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) GenerateMacReturnsOnCall(i int, result1 *kms.GenerateMacOutput, result2 error) {
+	fake.generateMacMutex.Lock()
+	defer fake.generateMacMutex.Unlock()
+	fake.GenerateMacStub = nil
+	if fake.generateMacReturnsOnCall == nil {
+		fake.generateMacReturnsOnCall = make(map[int]struct {
+			result1 *kms.GenerateMacOutput
+			result2 error
+		})
+	}
+	fake.generateMacReturnsOnCall[i] = struct {
+		result1 *kms.GenerateMacOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) GenerateMacRequest(arg1 *kms.GenerateMacInput) (*request.Request, *kms.GenerateMacOutput) {
+	fake.generateMacRequestMutex.Lock()
+	ret, specificReturn := fake.generateMacRequestReturnsOnCall[len(fake.generateMacRequestArgsForCall)]
+	fake.generateMacRequestArgsForCall = append(fake.generateMacRequestArgsForCall, struct {
+		arg1 *kms.GenerateMacInput
+	}{arg1})
+	stub := fake.GenerateMacRequestStub
+	fakeReturns := fake.generateMacRequestReturns
+	fake.recordInvocation("GenerateMacRequest", []interface{}{arg1})
+	fake.generateMacRequestMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) GenerateMacRequestCallCount() int {
+	fake.generateMacRequestMutex.RLock()
+	defer fake.generateMacRequestMutex.RUnlock()
+	return len(fake.generateMacRequestArgsForCall)
+}
+
+func (fake *FakeKMSClient) GenerateMacRequestCalls(stub func(*kms.GenerateMacInput) (*request.Request, *kms.GenerateMacOutput)) {
+	fake.generateMacRequestMutex.Lock()
+	defer fake.generateMacRequestMutex.Unlock()
+	fake.GenerateMacRequestStub = stub
+}
+
+func (fake *FakeKMSClient) GenerateMacRequestArgsForCall(i int) *kms.GenerateMacInput {
+	fake.generateMacRequestMutex.RLock()
+	defer fake.generateMacRequestMutex.RUnlock()
+	argsForCall := fake.generateMacRequestArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKMSClient) GenerateMacRequestReturns(result1 *request.Request, result2 *kms.GenerateMacOutput) {
+	fake.generateMacRequestMutex.Lock()
+	defer fake.generateMacRequestMutex.Unlock()
+	fake.GenerateMacRequestStub = nil
+	fake.generateMacRequestReturns = struct {
+		result1 *request.Request
+		result2 *kms.GenerateMacOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) GenerateMacRequestReturnsOnCall(i int, result1 *request.Request, result2 *kms.GenerateMacOutput) {
+	fake.generateMacRequestMutex.Lock()
+	defer fake.generateMacRequestMutex.Unlock()
+	fake.GenerateMacRequestStub = nil
+	if fake.generateMacRequestReturnsOnCall == nil {
+		fake.generateMacRequestReturnsOnCall = make(map[int]struct {
+			result1 *request.Request
+			result2 *kms.GenerateMacOutput
+		})
+	}
+	fake.generateMacRequestReturnsOnCall[i] = struct {
+		result1 *request.Request
+		result2 *kms.GenerateMacOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) GenerateMacWithContext(arg1 context.Context, arg2 *kms.GenerateMacInput, arg3 ...request.Option) (*kms.GenerateMacOutput, error) {
+	fake.generateMacWithContextMutex.Lock()
+	ret, specificReturn := fake.generateMacWithContextReturnsOnCall[len(fake.generateMacWithContextArgsForCall)]
+	fake.generateMacWithContextArgsForCall = append(fake.generateMacWithContextArgsForCall, struct {
+		arg1 context.Context
+		arg2 *kms.GenerateMacInput
+		arg3 []request.Option
+	}{arg1, arg2, arg3})
+	stub := fake.GenerateMacWithContextStub
+	fakeReturns := fake.generateMacWithContextReturns
+	fake.recordInvocation("GenerateMacWithContext", []interface{}{arg1, arg2, arg3})
+	fake.generateMacWithContextMutex.Unlock()
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) GenerateMacWithContextCallCount() int {
+	fake.generateMacWithContextMutex.RLock()
+	defer fake.generateMacWithContextMutex.RUnlock()
+	return len(fake.generateMacWithContextArgsForCall)
+}
+
+func (fake *FakeKMSClient) GenerateMacWithContextCalls(stub func(context.Context, *kms.GenerateMacInput, ...request.Option) (*kms.GenerateMacOutput, error)) {
+	fake.generateMacWithContextMutex.Lock()
+	defer fake.generateMacWithContextMutex.Unlock()
+	fake.GenerateMacWithContextStub = stub
+}
+
+func (fake *FakeKMSClient) GenerateMacWithContextArgsForCall(i int) (context.Context, *kms.GenerateMacInput, []request.Option) {
+	fake.generateMacWithContextMutex.RLock()
+	defer fake.generateMacWithContextMutex.RUnlock()
+	argsForCall := fake.generateMacWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
+}
+
+func (fake *FakeKMSClient) GenerateMacWithContextReturns(result1 *kms.GenerateMacOutput, result2 error) {
+	fake.generateMacWithContextMutex.Lock()
+	defer fake.generateMacWithContextMutex.Unlock()
+	fake.GenerateMacWithContextStub = nil
+	fake.generateMacWithContextReturns = struct {
+		result1 *kms.GenerateMacOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) GenerateMacWithContextReturnsOnCall(i int, result1 *kms.GenerateMacOutput, result2 error) {
+	fake.generateMacWithContextMutex.Lock()
+	defer fake.generateMacWithContextMutex.Unlock()
+	fake.GenerateMacWithContextStub = nil
+	if fake.generateMacWithContextReturnsOnCall == nil {
+		fake.generateMacWithContextReturnsOnCall = make(map[int]struct {
+			result1 *kms.GenerateMacOutput
+			result2 error
+		})
+	}
+	fake.generateMacWithContextReturnsOnCall[i] = struct {
+		result1 *kms.GenerateMacOutput
+		result2 error
+	}{result1, result2}
+}
+
 func (fake *FakeKMSClient) GenerateRandom(arg1 *kms.GenerateRandomInput) (*kms.GenerateRandomOutput, error) {
 	fake.generateRandomMutex.Lock()
 	ret, specificReturn := fake.generateRandomReturnsOnCall[len(fake.generateRandomArgsForCall)]
@@ -9493,6 +9851,200 @@ func (fake *FakeKMSClient) ReEncryptWithContextReturnsOnCall(i int, result1 *kms
 	}{result1, result2}
 }
 
+func (fake *FakeKMSClient) ReplicateKey(arg1 *kms.ReplicateKeyInput) (*kms.ReplicateKeyOutput, error) {
+	fake.replicateKeyMutex.Lock()
+	ret, specificReturn := fake.replicateKeyReturnsOnCall[len(fake.replicateKeyArgsForCall)]
+	fake.replicateKeyArgsForCall = append(fake.replicateKeyArgsForCall, struct {
+		arg1 *kms.ReplicateKeyInput
+	}{arg1})
+	stub := fake.ReplicateKeyStub
+	fakeReturns := fake.replicateKeyReturns
+	fake.recordInvocation("ReplicateKey", []interface{}{arg1})
+	fake.replicateKeyMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) ReplicateKeyCallCount() int {
+	fake.replicateKeyMutex.RLock()
+	defer fake.replicateKeyMutex.RUnlock()
+	return len(fake.replicateKeyArgsForCall)
+}
+
+func (fake *FakeKMSClient) ReplicateKeyCalls(stub func(*kms.ReplicateKeyInput) (*kms.ReplicateKeyOutput, error)) {
+	fake.replicateKeyMutex.Lock()
+	defer fake.replicateKeyMutex.Unlock()
+	fake.ReplicateKeyStub = stub
+}
+
+func (fake *FakeKMSClient) ReplicateKeyArgsForCall(i int) *kms.ReplicateKeyInput {
+	fake.replicateKeyMutex.RLock()
+	defer fake.replicateKeyMutex.RUnlock()
+	argsForCall := fake.replicateKeyArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKMSClient) ReplicateKeyReturns(result1 *kms.ReplicateKeyOutput, result2 error) {
+	fake.replicateKeyMutex.Lock()
+	defer fake.replicateKeyMutex.Unlock()
+	fake.ReplicateKeyStub = nil
+	fake.replicateKeyReturns = struct {
+		result1 *kms.ReplicateKeyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) ReplicateKeyReturnsOnCall(i int, result1 *kms.ReplicateKeyOutput, result2 error) {
+	fake.replicateKeyMutex.Lock()
+	defer fake.replicateKeyMutex.Unlock()
+	fake.ReplicateKeyStub = nil
+	if fake.replicateKeyReturnsOnCall == nil {
+		fake.replicateKeyReturnsOnCall = make(map[int]struct {
+			result1 *kms.ReplicateKeyOutput
+			result2 error
+		})
+	}
+	fake.replicateKeyReturnsOnCall[i] = struct {
+		result1 *kms.ReplicateKeyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) ReplicateKeyRequest(arg1 *kms.ReplicateKeyInput) (*request.Request, *kms.ReplicateKeyOutput) {
+	fake.replicateKeyRequestMutex.Lock()
+	ret, specificReturn := fake.replicateKeyRequestReturnsOnCall[len(fake.replicateKeyRequestArgsForCall)]
+	fake.replicateKeyRequestArgsForCall = append(fake.replicateKeyRequestArgsForCall, struct {
+		arg1 *kms.ReplicateKeyInput
+	}{arg1})
+	stub := fake.ReplicateKeyRequestStub
+	fakeReturns := fake.replicateKeyRequestReturns
+	fake.recordInvocation("ReplicateKeyRequest", []interface{}{arg1})
+	fake.replicateKeyRequestMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) ReplicateKeyRequestCallCount() int {
+	fake.replicateKeyRequestMutex.RLock()
+	defer fake.replicateKeyRequestMutex.RUnlock()
+	return len(fake.replicateKeyRequestArgsForCall)
+}
+
+func (fake *FakeKMSClient) ReplicateKeyRequestCalls(stub func(*kms.ReplicateKeyInput) (*request.Request, *kms.ReplicateKeyOutput)) {
+	fake.replicateKeyRequestMutex.Lock()
+	defer fake.replicateKeyRequestMutex.Unlock()
+	fake.ReplicateKeyRequestStub = stub
+}
+
+func (fake *FakeKMSClient) ReplicateKeyRequestArgsForCall(i int) *kms.ReplicateKeyInput {
+	fake.replicateKeyRequestMutex.RLock()
+	defer fake.replicateKeyRequestMutex.RUnlock()
+	argsForCall := fake.replicateKeyRequestArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKMSClient) ReplicateKeyRequestReturns(result1 *request.Request, result2 *kms.ReplicateKeyOutput) {
+	fake.replicateKeyRequestMutex.Lock()
+	defer fake.replicateKeyRequestMutex.Unlock()
+	fake.ReplicateKeyRequestStub = nil
+	fake.replicateKeyRequestReturns = struct {
+		result1 *request.Request
+		result2 *kms.ReplicateKeyOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) ReplicateKeyRequestReturnsOnCall(i int, result1 *request.Request, result2 *kms.ReplicateKeyOutput) {
+	fake.replicateKeyRequestMutex.Lock()
+	defer fake.replicateKeyRequestMutex.Unlock()
+	fake.ReplicateKeyRequestStub = nil
+	if fake.replicateKeyRequestReturnsOnCall == nil {
+		fake.replicateKeyRequestReturnsOnCall = make(map[int]struct {
+			result1 *request.Request
+			result2 *kms.ReplicateKeyOutput
+		})
+	}
+	fake.replicateKeyRequestReturnsOnCall[i] = struct {
+		result1 *request.Request
+		result2 *kms.ReplicateKeyOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) ReplicateKeyWithContext(arg1 context.Context, arg2 *kms.ReplicateKeyInput, arg3 ...request.Option) (*kms.ReplicateKeyOutput, error) {
+	fake.replicateKeyWithContextMutex.Lock()
+	ret, specificReturn := fake.replicateKeyWithContextReturnsOnCall[len(fake.replicateKeyWithContextArgsForCall)]
+	fake.replicateKeyWithContextArgsForCall = append(fake.replicateKeyWithContextArgsForCall, struct {
+		arg1 context.Context
+		arg2 *kms.ReplicateKeyInput
+		arg3 []request.Option
+	}{arg1, arg2, arg3})
+	stub := fake.ReplicateKeyWithContextStub
+	fakeReturns := fake.replicateKeyWithContextReturns
+	fake.recordInvocation("ReplicateKeyWithContext", []interface{}{arg1, arg2, arg3})
+	fake.replicateKeyWithContextMutex.Unlock()
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) ReplicateKeyWithContextCallCount() int {
+	fake.replicateKeyWithContextMutex.RLock()
+	defer fake.replicateKeyWithContextMutex.RUnlock()
+	return len(fake.replicateKeyWithContextArgsForCall)
+}
+
+func (fake *FakeKMSClient) ReplicateKeyWithContextCalls(stub func(context.Context, *kms.ReplicateKeyInput, ...request.Option) (*kms.ReplicateKeyOutput, error)) {
+	fake.replicateKeyWithContextMutex.Lock()
+	defer fake.replicateKeyWithContextMutex.Unlock()
+	fake.ReplicateKeyWithContextStub = stub
+}
+
+func (fake *FakeKMSClient) ReplicateKeyWithContextArgsForCall(i int) (context.Context, *kms.ReplicateKeyInput, []request.Option) {
+	fake.replicateKeyWithContextMutex.RLock()
+	defer fake.replicateKeyWithContextMutex.RUnlock()
+	argsForCall := fake.replicateKeyWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
+}
+
+func (fake *FakeKMSClient) ReplicateKeyWithContextReturns(result1 *kms.ReplicateKeyOutput, result2 error) {
+	fake.replicateKeyWithContextMutex.Lock()
+	defer fake.replicateKeyWithContextMutex.Unlock()
+	fake.ReplicateKeyWithContextStub = nil
+	fake.replicateKeyWithContextReturns = struct {
+		result1 *kms.ReplicateKeyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) ReplicateKeyWithContextReturnsOnCall(i int, result1 *kms.ReplicateKeyOutput, result2 error) {
+	fake.replicateKeyWithContextMutex.Lock()
+	defer fake.replicateKeyWithContextMutex.Unlock()
+	fake.ReplicateKeyWithContextStub = nil
+	if fake.replicateKeyWithContextReturnsOnCall == nil {
+		fake.replicateKeyWithContextReturnsOnCall = make(map[int]struct {
+			result1 *kms.ReplicateKeyOutput
+			result2 error
+		})
+	}
+	fake.replicateKeyWithContextReturnsOnCall[i] = struct {
+		result1 *kms.ReplicateKeyOutput
+		result2 error
+	}{result1, result2}
+}
+
 func (fake *FakeKMSClient) RetireGrant(arg1 *kms.RetireGrantInput) (*kms.RetireGrantOutput, error) {
 	fake.retireGrantMutex.Lock()
 	ret, specificReturn := fake.retireGrantReturnsOnCall[len(fake.retireGrantArgsForCall)]
@@ -11239,6 +11791,200 @@ func (fake *FakeKMSClient) UpdateKeyDescriptionWithContextReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
+func (fake *FakeKMSClient) UpdatePrimaryRegion(arg1 *kms.UpdatePrimaryRegionInput) (*kms.UpdatePrimaryRegionOutput, error) {
+	fake.updatePrimaryRegionMutex.Lock()
+	ret, specificReturn := fake.updatePrimaryRegionReturnsOnCall[len(fake.updatePrimaryRegionArgsForCall)]
+	fake.updatePrimaryRegionArgsForCall = append(fake.updatePrimaryRegionArgsForCall, struct {
+		arg1 *kms.UpdatePrimaryRegionInput
+	}{arg1})
+	stub := fake.UpdatePrimaryRegionStub
+	fakeReturns := fake.updatePrimaryRegionReturns
+	fake.recordInvocation("UpdatePrimaryRegion", []interface{}{arg1})
+	fake.updatePrimaryRegionMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionCallCount() int {
+	fake.updatePrimaryRegionMutex.RLock()
+	defer fake.updatePrimaryRegionMutex.RUnlock()
+	return len(fake.updatePrimaryRegionArgsForCall)
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionCalls(stub func(*kms.UpdatePrimaryRegionInput) (*kms.UpdatePrimaryRegionOutput, error)) {
+	fake.updatePrimaryRegionMutex.Lock()
+	defer fake.updatePrimaryRegionMutex.Unlock()
+	fake.UpdatePrimaryRegionStub = stub
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionArgsForCall(i int) *kms.UpdatePrimaryRegionInput {
+	fake.updatePrimaryRegionMutex.RLock()
+	defer fake.updatePrimaryRegionMutex.RUnlock()
+	argsForCall := fake.updatePrimaryRegionArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionReturns(result1 *kms.UpdatePrimaryRegionOutput, result2 error) {
+	fake.updatePrimaryRegionMutex.Lock()
+	defer fake.updatePrimaryRegionMutex.Unlock()
+	fake.UpdatePrimaryRegionStub = nil
+	fake.updatePrimaryRegionReturns = struct {
+		result1 *kms.UpdatePrimaryRegionOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionReturnsOnCall(i int, result1 *kms.UpdatePrimaryRegionOutput, result2 error) {
+	fake.updatePrimaryRegionMutex.Lock()
+	defer fake.updatePrimaryRegionMutex.Unlock()
+	fake.UpdatePrimaryRegionStub = nil
+	if fake.updatePrimaryRegionReturnsOnCall == nil {
+		fake.updatePrimaryRegionReturnsOnCall = make(map[int]struct {
+			result1 *kms.UpdatePrimaryRegionOutput
+			result2 error
+		})
+	}
+	fake.updatePrimaryRegionReturnsOnCall[i] = struct {
+		result1 *kms.UpdatePrimaryRegionOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionRequest(arg1 *kms.UpdatePrimaryRegionInput) (*request.Request, *kms.UpdatePrimaryRegionOutput) {
+	fake.updatePrimaryRegionRequestMutex.Lock()
+	ret, specificReturn := fake.updatePrimaryRegionRequestReturnsOnCall[len(fake.updatePrimaryRegionRequestArgsForCall)]
+	fake.updatePrimaryRegionRequestArgsForCall = append(fake.updatePrimaryRegionRequestArgsForCall, struct {
+		arg1 *kms.UpdatePrimaryRegionInput
+	}{arg1})
+	stub := fake.UpdatePrimaryRegionRequestStub
+	fakeReturns := fake.updatePrimaryRegionRequestReturns
+	fake.recordInvocation("UpdatePrimaryRegionRequest", []interface{}{arg1})
+	fake.updatePrimaryRegionRequestMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionRequestCallCount() int {
+	fake.updatePrimaryRegionRequestMutex.RLock()
+	defer fake.updatePrimaryRegionRequestMutex.RUnlock()
+	return len(fake.updatePrimaryRegionRequestArgsForCall)
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionRequestCalls(stub func(*kms.UpdatePrimaryRegionInput) (*request.Request, *kms.UpdatePrimaryRegionOutput)) {
+	fake.updatePrimaryRegionRequestMutex.Lock()
+	defer fake.updatePrimaryRegionRequestMutex.Unlock()
+	fake.UpdatePrimaryRegionRequestStub = stub
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionRequestArgsForCall(i int) *kms.UpdatePrimaryRegionInput {
+	fake.updatePrimaryRegionRequestMutex.RLock()
+	defer fake.updatePrimaryRegionRequestMutex.RUnlock()
+	argsForCall := fake.updatePrimaryRegionRequestArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionRequestReturns(result1 *request.Request, result2 *kms.UpdatePrimaryRegionOutput) {
+	fake.updatePrimaryRegionRequestMutex.Lock()
+	defer fake.updatePrimaryRegionRequestMutex.Unlock()
+	fake.UpdatePrimaryRegionRequestStub = nil
+	fake.updatePrimaryRegionRequestReturns = struct {
+		result1 *request.Request
+		result2 *kms.UpdatePrimaryRegionOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionRequestReturnsOnCall(i int, result1 *request.Request, result2 *kms.UpdatePrimaryRegionOutput) {
+	fake.updatePrimaryRegionRequestMutex.Lock()
+	defer fake.updatePrimaryRegionRequestMutex.Unlock()
+	fake.UpdatePrimaryRegionRequestStub = nil
+	if fake.updatePrimaryRegionRequestReturnsOnCall == nil {
+		fake.updatePrimaryRegionRequestReturnsOnCall = make(map[int]struct {
+			result1 *request.Request
+			result2 *kms.UpdatePrimaryRegionOutput
+		})
+	}
+	fake.updatePrimaryRegionRequestReturnsOnCall[i] = struct {
+		result1 *request.Request
+		result2 *kms.UpdatePrimaryRegionOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionWithContext(arg1 context.Context, arg2 *kms.UpdatePrimaryRegionInput, arg3 ...request.Option) (*kms.UpdatePrimaryRegionOutput, error) {
+	fake.updatePrimaryRegionWithContextMutex.Lock()
+	ret, specificReturn := fake.updatePrimaryRegionWithContextReturnsOnCall[len(fake.updatePrimaryRegionWithContextArgsForCall)]
+	fake.updatePrimaryRegionWithContextArgsForCall = append(fake.updatePrimaryRegionWithContextArgsForCall, struct {
+		arg1 context.Context
+		arg2 *kms.UpdatePrimaryRegionInput
+		arg3 []request.Option
+	}{arg1, arg2, arg3})
+	stub := fake.UpdatePrimaryRegionWithContextStub
+	fakeReturns := fake.updatePrimaryRegionWithContextReturns
+	fake.recordInvocation("UpdatePrimaryRegionWithContext", []interface{}{arg1, arg2, arg3})
+	fake.updatePrimaryRegionWithContextMutex.Unlock()
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionWithContextCallCount() int {
+	fake.updatePrimaryRegionWithContextMutex.RLock()
+	defer fake.updatePrimaryRegionWithContextMutex.RUnlock()
+	return len(fake.updatePrimaryRegionWithContextArgsForCall)
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionWithContextCalls(stub func(context.Context, *kms.UpdatePrimaryRegionInput, ...request.Option) (*kms.UpdatePrimaryRegionOutput, error)) {
+	fake.updatePrimaryRegionWithContextMutex.Lock()
+	defer fake.updatePrimaryRegionWithContextMutex.Unlock()
+	fake.UpdatePrimaryRegionWithContextStub = stub
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionWithContextArgsForCall(i int) (context.Context, *kms.UpdatePrimaryRegionInput, []request.Option) {
+	fake.updatePrimaryRegionWithContextMutex.RLock()
+	defer fake.updatePrimaryRegionWithContextMutex.RUnlock()
+	argsForCall := fake.updatePrimaryRegionWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionWithContextReturns(result1 *kms.UpdatePrimaryRegionOutput, result2 error) {
+	fake.updatePrimaryRegionWithContextMutex.Lock()
+	defer fake.updatePrimaryRegionWithContextMutex.Unlock()
+	fake.UpdatePrimaryRegionWithContextStub = nil
+	fake.updatePrimaryRegionWithContextReturns = struct {
+		result1 *kms.UpdatePrimaryRegionOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) UpdatePrimaryRegionWithContextReturnsOnCall(i int, result1 *kms.UpdatePrimaryRegionOutput, result2 error) {
+	fake.updatePrimaryRegionWithContextMutex.Lock()
+	defer fake.updatePrimaryRegionWithContextMutex.Unlock()
+	fake.UpdatePrimaryRegionWithContextStub = nil
+	if fake.updatePrimaryRegionWithContextReturnsOnCall == nil {
+		fake.updatePrimaryRegionWithContextReturnsOnCall = make(map[int]struct {
+			result1 *kms.UpdatePrimaryRegionOutput
+			result2 error
+		})
+	}
+	fake.updatePrimaryRegionWithContextReturnsOnCall[i] = struct {
+		result1 *kms.UpdatePrimaryRegionOutput
+		result2 error
+	}{result1, result2}
+}
+
 func (fake *FakeKMSClient) Verify(arg1 *kms.VerifyInput) (*kms.VerifyOutput, error) {
 	fake.verifyMutex.Lock()
 	ret, specificReturn := fake.verifyReturnsOnCall[len(fake.verifyArgsForCall)]
@@ -11299,6 +12045,200 @@ func (fake *FakeKMSClient) VerifyReturnsOnCall(i int, result1 *kms.VerifyOutput,
 	}
 	fake.verifyReturnsOnCall[i] = struct {
 		result1 *kms.VerifyOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) VerifyMac(arg1 *kms.VerifyMacInput) (*kms.VerifyMacOutput, error) {
+	fake.verifyMacMutex.Lock()
+	ret, specificReturn := fake.verifyMacReturnsOnCall[len(fake.verifyMacArgsForCall)]
+	fake.verifyMacArgsForCall = append(fake.verifyMacArgsForCall, struct {
+		arg1 *kms.VerifyMacInput
+	}{arg1})
+	stub := fake.VerifyMacStub
+	fakeReturns := fake.verifyMacReturns
+	fake.recordInvocation("VerifyMac", []interface{}{arg1})
+	fake.verifyMacMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) VerifyMacCallCount() int {
+	fake.verifyMacMutex.RLock()
+	defer fake.verifyMacMutex.RUnlock()
+	return len(fake.verifyMacArgsForCall)
+}
+
+func (fake *FakeKMSClient) VerifyMacCalls(stub func(*kms.VerifyMacInput) (*kms.VerifyMacOutput, error)) {
+	fake.verifyMacMutex.Lock()
+	defer fake.verifyMacMutex.Unlock()
+	fake.VerifyMacStub = stub
+}
+
+func (fake *FakeKMSClient) VerifyMacArgsForCall(i int) *kms.VerifyMacInput {
+	fake.verifyMacMutex.RLock()
+	defer fake.verifyMacMutex.RUnlock()
+	argsForCall := fake.verifyMacArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKMSClient) VerifyMacReturns(result1 *kms.VerifyMacOutput, result2 error) {
+	fake.verifyMacMutex.Lock()
+	defer fake.verifyMacMutex.Unlock()
+	fake.VerifyMacStub = nil
+	fake.verifyMacReturns = struct {
+		result1 *kms.VerifyMacOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) VerifyMacReturnsOnCall(i int, result1 *kms.VerifyMacOutput, result2 error) {
+	fake.verifyMacMutex.Lock()
+	defer fake.verifyMacMutex.Unlock()
+	fake.VerifyMacStub = nil
+	if fake.verifyMacReturnsOnCall == nil {
+		fake.verifyMacReturnsOnCall = make(map[int]struct {
+			result1 *kms.VerifyMacOutput
+			result2 error
+		})
+	}
+	fake.verifyMacReturnsOnCall[i] = struct {
+		result1 *kms.VerifyMacOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) VerifyMacRequest(arg1 *kms.VerifyMacInput) (*request.Request, *kms.VerifyMacOutput) {
+	fake.verifyMacRequestMutex.Lock()
+	ret, specificReturn := fake.verifyMacRequestReturnsOnCall[len(fake.verifyMacRequestArgsForCall)]
+	fake.verifyMacRequestArgsForCall = append(fake.verifyMacRequestArgsForCall, struct {
+		arg1 *kms.VerifyMacInput
+	}{arg1})
+	stub := fake.VerifyMacRequestStub
+	fakeReturns := fake.verifyMacRequestReturns
+	fake.recordInvocation("VerifyMacRequest", []interface{}{arg1})
+	fake.verifyMacRequestMutex.Unlock()
+	if stub != nil {
+		return stub(arg1)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) VerifyMacRequestCallCount() int {
+	fake.verifyMacRequestMutex.RLock()
+	defer fake.verifyMacRequestMutex.RUnlock()
+	return len(fake.verifyMacRequestArgsForCall)
+}
+
+func (fake *FakeKMSClient) VerifyMacRequestCalls(stub func(*kms.VerifyMacInput) (*request.Request, *kms.VerifyMacOutput)) {
+	fake.verifyMacRequestMutex.Lock()
+	defer fake.verifyMacRequestMutex.Unlock()
+	fake.VerifyMacRequestStub = stub
+}
+
+func (fake *FakeKMSClient) VerifyMacRequestArgsForCall(i int) *kms.VerifyMacInput {
+	fake.verifyMacRequestMutex.RLock()
+	defer fake.verifyMacRequestMutex.RUnlock()
+	argsForCall := fake.verifyMacRequestArgsForCall[i]
+	return argsForCall.arg1
+}
+
+func (fake *FakeKMSClient) VerifyMacRequestReturns(result1 *request.Request, result2 *kms.VerifyMacOutput) {
+	fake.verifyMacRequestMutex.Lock()
+	defer fake.verifyMacRequestMutex.Unlock()
+	fake.VerifyMacRequestStub = nil
+	fake.verifyMacRequestReturns = struct {
+		result1 *request.Request
+		result2 *kms.VerifyMacOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) VerifyMacRequestReturnsOnCall(i int, result1 *request.Request, result2 *kms.VerifyMacOutput) {
+	fake.verifyMacRequestMutex.Lock()
+	defer fake.verifyMacRequestMutex.Unlock()
+	fake.VerifyMacRequestStub = nil
+	if fake.verifyMacRequestReturnsOnCall == nil {
+		fake.verifyMacRequestReturnsOnCall = make(map[int]struct {
+			result1 *request.Request
+			result2 *kms.VerifyMacOutput
+		})
+	}
+	fake.verifyMacRequestReturnsOnCall[i] = struct {
+		result1 *request.Request
+		result2 *kms.VerifyMacOutput
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) VerifyMacWithContext(arg1 context.Context, arg2 *kms.VerifyMacInput, arg3 ...request.Option) (*kms.VerifyMacOutput, error) {
+	fake.verifyMacWithContextMutex.Lock()
+	ret, specificReturn := fake.verifyMacWithContextReturnsOnCall[len(fake.verifyMacWithContextArgsForCall)]
+	fake.verifyMacWithContextArgsForCall = append(fake.verifyMacWithContextArgsForCall, struct {
+		arg1 context.Context
+		arg2 *kms.VerifyMacInput
+		arg3 []request.Option
+	}{arg1, arg2, arg3})
+	stub := fake.VerifyMacWithContextStub
+	fakeReturns := fake.verifyMacWithContextReturns
+	fake.recordInvocation("VerifyMacWithContext", []interface{}{arg1, arg2, arg3})
+	fake.verifyMacWithContextMutex.Unlock()
+	if stub != nil {
+		return stub(arg1, arg2, arg3...)
+	}
+	if specificReturn {
+		return ret.result1, ret.result2
+	}
+	return fakeReturns.result1, fakeReturns.result2
+}
+
+func (fake *FakeKMSClient) VerifyMacWithContextCallCount() int {
+	fake.verifyMacWithContextMutex.RLock()
+	defer fake.verifyMacWithContextMutex.RUnlock()
+	return len(fake.verifyMacWithContextArgsForCall)
+}
+
+func (fake *FakeKMSClient) VerifyMacWithContextCalls(stub func(context.Context, *kms.VerifyMacInput, ...request.Option) (*kms.VerifyMacOutput, error)) {
+	fake.verifyMacWithContextMutex.Lock()
+	defer fake.verifyMacWithContextMutex.Unlock()
+	fake.VerifyMacWithContextStub = stub
+}
+
+func (fake *FakeKMSClient) VerifyMacWithContextArgsForCall(i int) (context.Context, *kms.VerifyMacInput, []request.Option) {
+	fake.verifyMacWithContextMutex.RLock()
+	defer fake.verifyMacWithContextMutex.RUnlock()
+	argsForCall := fake.verifyMacWithContextArgsForCall[i]
+	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
+}
+
+func (fake *FakeKMSClient) VerifyMacWithContextReturns(result1 *kms.VerifyMacOutput, result2 error) {
+	fake.verifyMacWithContextMutex.Lock()
+	defer fake.verifyMacWithContextMutex.Unlock()
+	fake.VerifyMacWithContextStub = nil
+	fake.verifyMacWithContextReturns = struct {
+		result1 *kms.VerifyMacOutput
+		result2 error
+	}{result1, result2}
+}
+
+func (fake *FakeKMSClient) VerifyMacWithContextReturnsOnCall(i int, result1 *kms.VerifyMacOutput, result2 error) {
+	fake.verifyMacWithContextMutex.Lock()
+	defer fake.verifyMacWithContextMutex.Unlock()
+	fake.VerifyMacWithContextStub = nil
+	if fake.verifyMacWithContextReturnsOnCall == nil {
+		fake.verifyMacWithContextReturnsOnCall = make(map[int]struct {
+			result1 *kms.VerifyMacOutput
+			result2 error
+		})
+	}
+	fake.verifyMacWithContextReturnsOnCall[i] = struct {
+		result1 *kms.VerifyMacOutput
 		result2 error
 	}{result1, result2}
 }
@@ -11568,6 +12508,12 @@ func (fake *FakeKMSClient) Invocations() map[string][][]interface{} {
 	defer fake.generateDataKeyWithoutPlaintextRequestMutex.RUnlock()
 	fake.generateDataKeyWithoutPlaintextWithContextMutex.RLock()
 	defer fake.generateDataKeyWithoutPlaintextWithContextMutex.RUnlock()
+	fake.generateMacMutex.RLock()
+	defer fake.generateMacMutex.RUnlock()
+	fake.generateMacRequestMutex.RLock()
+	defer fake.generateMacRequestMutex.RUnlock()
+	fake.generateMacWithContextMutex.RLock()
+	defer fake.generateMacWithContextMutex.RUnlock()
 	fake.generateRandomMutex.RLock()
 	defer fake.generateRandomMutex.RUnlock()
 	fake.generateRandomRequestMutex.RLock()
@@ -11668,6 +12614,12 @@ func (fake *FakeKMSClient) Invocations() map[string][][]interface{} {
 	defer fake.reEncryptRequestMutex.RUnlock()
 	fake.reEncryptWithContextMutex.RLock()
 	defer fake.reEncryptWithContextMutex.RUnlock()
+	fake.replicateKeyMutex.RLock()
+	defer fake.replicateKeyMutex.RUnlock()
+	fake.replicateKeyRequestMutex.RLock()
+	defer fake.replicateKeyRequestMutex.RUnlock()
+	fake.replicateKeyWithContextMutex.RLock()
+	defer fake.replicateKeyWithContextMutex.RUnlock()
 	fake.retireGrantMutex.RLock()
 	defer fake.retireGrantMutex.RUnlock()
 	fake.retireGrantRequestMutex.RLock()
@@ -11722,8 +12674,20 @@ func (fake *FakeKMSClient) Invocations() map[string][][]interface{} {
 	defer fake.updateKeyDescriptionRequestMutex.RUnlock()
 	fake.updateKeyDescriptionWithContextMutex.RLock()
 	defer fake.updateKeyDescriptionWithContextMutex.RUnlock()
+	fake.updatePrimaryRegionMutex.RLock()
+	defer fake.updatePrimaryRegionMutex.RUnlock()
+	fake.updatePrimaryRegionRequestMutex.RLock()
+	defer fake.updatePrimaryRegionRequestMutex.RUnlock()
+	fake.updatePrimaryRegionWithContextMutex.RLock()
+	defer fake.updatePrimaryRegionWithContextMutex.RUnlock()
 	fake.verifyMutex.RLock()
 	defer fake.verifyMutex.RUnlock()
+	fake.verifyMacMutex.RLock()
+	defer fake.verifyMacMutex.RUnlock()
+	fake.verifyMacRequestMutex.RLock()
+	defer fake.verifyMacRequestMutex.RUnlock()
+	fake.verifyMacWithContextMutex.RLock()
+	defer fake.verifyMacWithContextMutex.RUnlock()
 	fake.verifyRequestMutex.RLock()
 	defer fake.verifyRequestMutex.RUnlock()
 	fake.verifyWithContextMutex.RLock()
