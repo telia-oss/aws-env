@@ -14,7 +14,7 @@ import (
 	"github.com/telia-oss/aws-env/fakes"
 )
 
-func TestMain(t *testing.T) {
+func TestEnvironment(t *testing.T) {
 	tests := []struct {
 		description  string
 		key          string
@@ -73,6 +73,30 @@ func TestMain(t *testing.T) {
 			kmsCallCount: 1,
 			kmsOutput: &kms.DecryptOutput{
 				Plaintext: []byte("secret"),
+			},
+		},
+		{
+			description:  "allows JSON strings as secrets",
+			key:          "TEST",
+			value:        "ssm://<parameter-path>",
+			expect:       `{"key":"secret"}`,
+			ssmCallCount: 1,
+			ssmOutput: &ssm.GetParameterOutput{
+				Parameter: &ssm.Parameter{
+					Value: aws.String(`{"key":"secret"}`),
+				},
+			},
+		},
+		{
+			description:  "supports multi-value secrets",
+			key:          "TEST",
+			value:        "ssm://<parameter-path>#key",
+			expect:       "secret",
+			ssmCallCount: 1,
+			ssmOutput: &ssm.GetParameterOutput{
+				Parameter: &ssm.Parameter{
+					Value: aws.String(`{"key":"secret"}`),
+				},
 			},
 		},
 	}
