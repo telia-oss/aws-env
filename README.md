@@ -15,6 +15,7 @@ For instance:
 - `export SECRETSMANAGER=sm://<path>`
 - `export PARAMETERSTORE=ssm://<path>`
 - `export KMSENCRYPTED=kms://<encrypted-secret>`
+- `export MULTIVALUE=sm://<path>#<key>` (if the secret itself contains JSON).
 
 Where `<path>` is the name of the secret in secrets manager or parameter store. `aws-env` will look up secrets in the region specified
 in the `AWS_REGION` or `AWS_DEFAULT_REGION` environment variables, and if they are both unset/empty it will contact the EC2 Metadata endpoint 
@@ -50,6 +51,8 @@ Import the library and invoke it prior to parsing flags or reading environment v
 package main
 
 import (
+	"fmt"
+
 	"github.com/aws/aws-sdk-go/aws/session"
 	environment "github.com/telia-oss/aws-env"
 )
