@@ -8,7 +8,8 @@ import (
 	"syscall"
 
 	"github.com/aws/aws-sdk-go/aws/session"
-	flags "github.com/jessevdk/go-flags"
+	"github.com/jessevdk/go-flags"
+
 	environment "github.com/telia-oss/aws-env"
 )
 
