@@ -10,6 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/kms"
 	"github.com/aws/aws-sdk-go/service/secretsmanager"
 	"github.com/aws/aws-sdk-go/service/ssm"
+
 	environment "github.com/telia-oss/aws-env"
 	"github.com/telia-oss/aws-env/fakes"
 )
@@ -103,25 +104,25 @@ func TestEnvironment(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.description, func(t *testing.T) {
-			sm := &fakes.FakeSMClient{}
-			sm.GetSecretValueReturns(tc.smOutput, nil)
+			fakeSM := &fakes.FakeSMClient{}
+			fakeSM.GetSecretValueReturns(tc.smOutput, nil)
 
-			ssm := &fakes.FakeSSMClient{}
-			ssm.GetParameterReturns(tc.ssmOutput, nil)
+			fakeSSM := &fakes.FakeSSMClient{}
+			fakeSSM.GetParameterReturns(tc.ssmOutput, nil)
 
-			kms := &fakes.FakeKMSClient{}
-			kms.DecryptReturns(tc.kmsOutput, nil)
+			fakeKMS := &fakes.FakeKMSClient{}
+			fakeKMS.DecryptReturns(tc.kmsOutput, nil)
 
 			if err := os.Setenv(tc.key, tc.value); err != nil {
 				t.Fatalf("failed to set environment variable: %s", err)
 			}
 
-			if err := environment.NewTestManager(sm, ssm, kms).Populate(); err != nil {
+			if err := environment.NewTestManager(fakeSM, fakeSSM, fakeKMS).Populate(); err != nil {
 				t.Fatalf("unexpected error: %s", err)
 			}
-			eq(t, tc.smCallCount, sm.GetSecretValueCallCount())
-			eq(t, tc.ssmCallCount, ssm.GetParameterCallCount())
-			eq(t, tc.kmsCallCount, kms.DecryptCallCount())
+			eq(t, tc.smCallCount, fakeSM.GetSecretValueCallCount())
+			eq(t, tc.ssmCallCount, fakeSSM.GetParameterCallCount())
+			eq(t, tc.kmsCallCount, fakeKMS.DecryptCallCount())
 			eq(t, tc.expect, os.Getenv(tc.key))
 		})
 	}
